@@ -1,4 +1,4 @@
-package com.nopcommerce.user;
+/*package com.nopcommerce.user;
 
 import java.io.File;
 import java.util.Random;
@@ -147,4 +147,4 @@ public class Level_02_Base_Page_P1 {
 		Random rand = new Random();
 		return rand.nextInt(9909);
 	}
-}
+}*/
