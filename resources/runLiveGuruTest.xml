@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="NopCommerce">
+
+	<test name="Run on Firefox">
+		<parameter name="browser" value="Firefox" />
+		<classes>
+			<class name="com.liveguru.user.Level_06_Page_Generater_Manager" />
+		</classes>
+	</test>
+
+</suite> 
