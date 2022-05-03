@@ -11,7 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import commons.BasePage;
+import commons.nopCommerce.BasePage;
 
 public class Level_02_Base_Page_P3 extends BasePage {
 	WebDriver driver;

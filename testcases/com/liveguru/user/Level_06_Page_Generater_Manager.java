@@ -7,19 +7,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BaseTest;
-import pageObject.liveGuru.HomePageObject;
-import pageObject.liveGuru.LoginPageObject;
-import pageObject.liveGuru.MyDashboardPageObject;
-import pageObject.liveGuru.PageGeneratorManager;
-import pageObject.liveGuru.RegisterPageObject;
+import commons.liveGuru.PageGeneratorManager;
+import commons.liveGuru.BaseTest;
+import pageObjects.liveGuru.HomePageObject;
+import pageObjects.liveGuru.LoginPageObject;
+import pageObjects.liveGuru.MyDashboardPageObject;
+import pageObjects.liveGuru.RegisterPageObject;
 
 public class Level_06_Page_Generater_Manager extends BaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		driver.get("http://live.techpanda.org/");
 		homePage = PageGeneratorManager.getHomePage(driver);
 
 		firstName = "Page";

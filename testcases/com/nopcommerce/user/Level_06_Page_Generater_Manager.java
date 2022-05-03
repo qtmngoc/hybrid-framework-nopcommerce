@@ -7,12 +7,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.BaseTest;
-import pageObject.nopCommerce.HomePageObject;
-import pageObject.nopCommerce.LoginPageObject;
-import pageObject.nopCommerce.MyAccountPageObject;
-import pageObject.nopCommerce.PageGeneratorManager;
-import pageObject.nopCommerce.RegisterPageObject;
+import commons.nopCommerce.BaseTest;
+import commons.nopCommerce.PageGeneratorManager;
+import pageObjects.nopCommerce.HomePageObject;
+import pageObjects.nopCommerce.LoginPageObject;
+import pageObjects.nopCommerce.CustomerInfoPageObject;
+import pageObjects.nopCommerce.RegisterPageObject;
 
 public class Level_06_Page_Generater_Manager extends BaseTest {
 	@Parameters("browser")
@@ -122,6 +122,6 @@ public class Level_06_Page_Generater_Manager extends BaseTest {
 	private HomePageObject homePage;
 	private RegisterPageObject registerPage;
 	private LoginPageObject loginPage;
-	private MyAccountPageObject myAccountPage;
+	private CustomerInfoPageObject myAccountPage;
 	private String firstName, lastName, invalidEmail, nonExistentEmail, existingEmail, correctPassword, incorrectPassword, companyName;
 }
