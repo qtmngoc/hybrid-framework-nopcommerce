@@ -1,6 +1,7 @@
-package pageUIs.nopCommerce;
+package pageUIs.nopCommerce.admin;
 
-public class LoginPageUI {
+public class AdminLoginPageUI {
+	
 	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
 	public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
 
@@ -8,4 +9,5 @@ public class LoginPageUI {
 
 	public static final String EMAIL_ERROR_MESSAGE = "//span[@id='Email-error']";
 	public static final String LOGIN_UNSUCCESS_MESSAGE = "//div[contains(@class, 'validation-summary-errors')]";
+	
 }

@@ -10,13 +10,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.nopCommerce.BaseTest;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
 public class Level_04_Multiple_Browsers extends BaseTest{
 	private WebDriver driver;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
 	private String firstName, lastName, password, emailAddress;
 
 	@Parameters("browser")
@@ -25,7 +25,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 		driver = getBrowserDriver(browserName);
 		driver.get("https://demo.nopcommerce.com/");
 
-		homePage = new HomePageObject(driver);
+		homePage = new UserHomePageObject(driver);
 
 		firstName = "Page";
 		lastName = "Object";
@@ -37,7 +37,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 	public void Register_01_Empty_Data() {
 		homePage.clickOnRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		registerPage.clickOnRegisterButton();
 
@@ -52,7 +52,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 	public void Register_02_Invalid_Email() {
 		homePage.clickOnRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		registerPage.inputIntoFirstNameTextbox(firstName);
 		registerPage.inputIntoLastNameTextbox(lastName);
@@ -70,7 +70,7 @@ public class Level_04_Multiple_Browsers extends BaseTest{
 
 		homePage.clickOnRegisterLink();
 
-		registerPage = new RegisterPageObject(driver);
+		registerPage = new UserRegisterPageObject(driver);
 
 		registerPage.inputIntoFirstNameTextbox(firstName);
 		registerPage.inputIntoLastNameTextbox(lastName);

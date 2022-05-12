@@ -292,4 +292,5 @@ public class BasePageFactory {
 	}
 	
 	private long longTimeout = 30;
+	
 }

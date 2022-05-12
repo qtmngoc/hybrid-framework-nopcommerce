@@ -15,6 +15,7 @@ import pageFactories.nopCommerce.LoginPageFactory;
 import pageFactories.nopCommerce.RegisterPageFactory;
 
 public class Level_05_Page_Factory extends BaseTest {
+	
 	private WebDriver driver;
 	private HomePageFactory homePage;
 	private RegisterPageFactory registerPage;
@@ -147,4 +148,5 @@ public class Level_05_Page_Factory extends BaseTest {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
+	
 }

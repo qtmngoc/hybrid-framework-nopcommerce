@@ -13,6 +13,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
+	
 	private WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName) {
@@ -36,7 +37,7 @@ public class BaseTest {
 		}
 
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get(GlobalConstants.USER_PAGE_URL);
 		return driver;
 	}
 	
@@ -44,4 +45,5 @@ public class BaseTest {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
+	
 }

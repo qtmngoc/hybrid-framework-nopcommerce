@@ -2,50 +2,72 @@ package commons.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
-import pageObjects.nopCommerce.AddressesPageObject;
-import pageObjects.nopCommerce.CustomerInfoPageObject;
-import pageObjects.nopCommerce.DownloadableProductsPageObject;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.MyProductReviewsPageObject;
-import pageObjects.nopCommerce.OrdersPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
-import pageObjects.nopCommerce.RewardPointsPageObject;
+import pageObjects.nopCommerce.admin.AdminConfigurationStoresPageObject;
+import pageObjects.nopCommerce.admin.AdminDashboardPageObject;
+import pageObjects.nopCommerce.admin.AdminLoginPageObject;
+import pageObjects.nopCommerce.admin.AdminReportsSalesSummaryPageObject;
+import pageObjects.nopCommerce.user.UserAddressesPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
+import pageObjects.nopCommerce.user.UserDownloadableProductsPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewsPageObject;
+import pageObjects.nopCommerce.user.UserOrdersPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointsPageObject;
 
 public class PageGeneratorManager {
-	public static HomePageObject getHomePage(WebDriver driver) {
-		return new HomePageObject(driver);
+
+	public static UserHomePageObject getUserHomePage(WebDriver driver) {
+		return new UserHomePageObject(driver);
 	}
 
-	public static RegisterPageObject getRegisterPage(WebDriver driver) {
-		return new RegisterPageObject(driver);
+	public static UserRegisterPageObject getUserRegisterPage(WebDriver driver) {
+		return new UserRegisterPageObject(driver);
 	}
 
-	public static LoginPageObject getLoginPage(WebDriver driver) {
-		return new LoginPageObject(driver);
-	}
-	
-	public static CustomerInfoPageObject getCustomerInfoPage(WebDriver driver) {
-		return new CustomerInfoPageObject(driver);
-	}
-	
-	public static AddressesPageObject getAddressesPage(WebDriver driver) {
-		return new AddressesPageObject(driver);
-	}
-	
-	public static OrdersPageObject getOrdersPage(WebDriver driver) {
-		return new OrdersPageObject(driver);
-	}
-	
-	public static DownloadableProductsPageObject getDownloadableProductsPage(WebDriver driver) {
-		return new DownloadableProductsPageObject(driver);
-	}
-	
-	public static RewardPointsPageObject getRewardPointsPage(WebDriver driver) {
-		return new RewardPointsPageObject(driver);
+	public static UserLoginPageObject getUserLoginPage(WebDriver driver) {
+		return new UserLoginPageObject(driver);
 	}
 
-	public static MyProductReviewsPageObject getMyProductReviewsPage(WebDriver driver) {
-		return new MyProductReviewsPageObject(driver);
+	public static UserCustomerInfoPageObject getUserCustomerInfoPage(WebDriver driver) {
+		return new UserCustomerInfoPageObject(driver);
 	}
+
+	public static UserAddressesPageObject getUserAddressesPage(WebDriver driver) {
+		return new UserAddressesPageObject(driver);
+	}
+
+	public static UserOrdersPageObject getUserOrdersPage(WebDriver driver) {
+		return new UserOrdersPageObject(driver);
+	}
+
+	public static UserDownloadableProductsPageObject getUserDownloadableProductsPage(WebDriver driver) {
+		return new UserDownloadableProductsPageObject(driver);
+	}
+
+	public static UserRewardPointsPageObject getUserRewardPointsPage(WebDriver driver) {
+		return new UserRewardPointsPageObject(driver);
+	}
+
+	public static UserMyProductReviewsPageObject getUserMyProductReviewsPage(WebDriver driver) {
+		return new UserMyProductReviewsPageObject(driver);
+	}
+
+	public static AdminLoginPageObject getAdminLoginPage(WebDriver driver) {
+		return new AdminLoginPageObject(driver);
+	}
+
+	public static AdminDashboardPageObject getAdminDashboardPage(WebDriver driver) {
+		return new AdminDashboardPageObject(driver);
+	}
+
+	public static AdminConfigurationStoresPageObject getAdminConfigurationStoresPage(WebDriver driver) {
+		return new AdminConfigurationStoresPageObject(driver);
+	}
+
+	public static AdminReportsSalesSummaryPageObject getAdminReportsSalesSummaryPage(WebDriver driver) {
+		return new AdminReportsSalesSummaryPageObject(driver);
+	}
+
 }

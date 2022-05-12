@@ -1,5 +1,7 @@
-package pageUIs.nopCommerce;
+package pageUIs.nopCommerce.user;
 
-public class OrdersPageUI {
+public class UserOrdersPageUI {
+	
 	public static final String ORDERS_HEADER = "//h1[contains(text(), 'Orders')]";
+	
 }

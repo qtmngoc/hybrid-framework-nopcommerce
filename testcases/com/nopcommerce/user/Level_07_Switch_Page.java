@@ -9,27 +9,28 @@ import org.testng.annotations.Test;
 
 import commons.nopCommerce.BaseTest;
 import commons.nopCommerce.PageGeneratorManager;
-import pageObjects.nopCommerce.AddressesPageObject;
-import pageObjects.nopCommerce.CustomerInfoPageObject;
-import pageObjects.nopCommerce.DownloadableProductsPageObject;
-import pageObjects.nopCommerce.HomePageObject;
-import pageObjects.nopCommerce.LoginPageObject;
-import pageObjects.nopCommerce.MyProductReviewsPageObject;
-import pageObjects.nopCommerce.OrdersPageObject;
-import pageObjects.nopCommerce.RegisterPageObject;
-import pageObjects.nopCommerce.RewardPointsPageObject;
+import pageObjects.nopCommerce.user.UserAddressesPageObject;
+import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
+import pageObjects.nopCommerce.user.UserDownloadableProductsPageObject;
+import pageObjects.nopCommerce.user.UserHomePageObject;
+import pageObjects.nopCommerce.user.UserLoginPageObject;
+import pageObjects.nopCommerce.user.UserMyProductReviewsPageObject;
+import pageObjects.nopCommerce.user.UserOrdersPageObject;
+import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import pageObjects.nopCommerce.user.UserRewardPointsPageObject;
 
 public class Level_07_Switch_Page extends BaseTest {
+	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Switch";
 		lastName = "Page";
 		email = "switchpage.level7" + generateFakeNumber() + "@mail.vn";
-		password = "352022";
+		password = "532022";
 	}
 
 	@Test
@@ -62,34 +63,34 @@ public class Level_07_Switch_Page extends BaseTest {
 		Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
 
 		customerInfoPage = homePage.clickOnMyAccountLink();
-		Assert.assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+		Assert.assertTrue(customerInfoPage.isCustomerInfoHeaderDisplayed());
 	}
 
 	@Test
 	public void User_04_Switch_Page() {
 		// Customer Info -> Reward points
-		rewardPointsPage = customerInfoPage.openRewardPointsPage(driver);
-		Assert.assertTrue(rewardPointsPage.isRewardPointsPageDisplayed());
+		rewardPointsPage = customerInfoPage.openUserRewardPointsPage(driver);
+		Assert.assertTrue(rewardPointsPage.isRewardPointsHeaderDisplayed());
 
 		// Reward points -> Orders
-		ordersPage = rewardPointsPage.openOrdersPage(driver);
-		Assert.assertTrue(ordersPage.isOrdersPageDisplayed());
+		ordersPage = rewardPointsPage.openUserOrdersPage(driver);
+		Assert.assertTrue(ordersPage.isOrdersHeaderDisplayed());
 
 		// Orders -> My product reviews
-		myProductReviewsPage = ordersPage.openMyProductReviewsPage(driver);
-		Assert.assertTrue(myProductReviewsPage.isMyProductReviewsPageDisplayed());
+		myProductReviewsPage = ordersPage.openUserMyProductReviewsPage(driver);
+		Assert.assertTrue(myProductReviewsPage.isMyProductReviewsHeaderDisplayed());
 
 		// My product reviews - > Addresses
-		addressesPage = myProductReviewsPage.openAddressesPage(driver);
-		Assert.assertTrue(addressesPage.isAddressesPageDisplayed());
+		addressesPage = myProductReviewsPage.openUserAddressesPage(driver);
+		Assert.assertTrue(addressesPage.isAddressesHeaderDisplayed());
 
 		// Addresses -> Downloadable products
-		downloadableProductsPage = addressesPage.openDownloadableProductsPage(driver);
-		Assert.assertTrue(downloadableProductsPage.isDownloadableProductsPageDisplayed());
+		downloadableProductsPage = addressesPage.openUserDownloadableProductsPage(driver);
+		Assert.assertTrue(downloadableProductsPage.isDownloadableProductsHeaderDisplayed());
 
 		// Downloadable products -> Customer Info
-		customerInfoPage = downloadableProductsPage.openCustomerInfoPage(driver);
-		Assert.assertTrue(customerInfoPage.isCustomerInfoPageDisplayed());
+		customerInfoPage = downloadableProductsPage.openUserCustomerInfoPage(driver);
+		Assert.assertTrue(customerInfoPage.isCustomerInfoHeaderDisplayed());
 	}
 
 	@AfterClass
@@ -98,14 +99,15 @@ public class Level_07_Switch_Page extends BaseTest {
 	}
 
 	private WebDriver driver;
-	private HomePageObject homePage;
-	private RegisterPageObject registerPage;
-	private LoginPageObject loginPage;
-	private CustomerInfoPageObject customerInfoPage;
-	private AddressesPageObject addressesPage;
-	private OrdersPageObject ordersPage;
-	private DownloadableProductsPageObject downloadableProductsPage;
-	private RewardPointsPageObject rewardPointsPage;
-	private MyProductReviewsPageObject myProductReviewsPage;
+	private UserHomePageObject homePage;
+	private UserRegisterPageObject registerPage;
+	private UserLoginPageObject loginPage;
+	private UserCustomerInfoPageObject customerInfoPage;
+	private UserAddressesPageObject addressesPage;
+	private UserOrdersPageObject ordersPage;
+	private UserDownloadableProductsPageObject downloadableProductsPage;
+	private UserRewardPointsPageObject rewardPointsPage;
+	private UserMyProductReviewsPageObject myProductReviewsPage;
 	private String firstName, lastName, email, password;
+	
 }
