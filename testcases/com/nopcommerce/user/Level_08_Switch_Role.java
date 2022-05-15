@@ -27,7 +27,7 @@ public class Level_08_Switch_Role extends BaseTest {
 		driver = getBrowserDriver(browserName);
 
 		firstName = "Switch";
-		lastName = "Page";
+		lastName = "Role";
 		userEmail = "switchrole.level8" + generateFakeNumber() + "@mail.vn";
 		userPassword = "532022";
 		adminEmail = "admin@yourstore.com";
