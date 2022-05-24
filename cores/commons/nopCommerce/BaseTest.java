@@ -5,34 +5,54 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-	
+
 	private WebDriver driver;
 
 	protected WebDriver getBrowserDriver(String browserName) {
-		if (browserName.equals("Firefox")) {
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+
+		switch (browser) {
+		case FIREFOX:
 			WebDriverManager.firefoxdriver().arch64().setup();
 			driver = new FirefoxDriver();
-		} else if (browserName.equals("Chrome")) {
+			break;
+		case CHROME:
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		} else if (browserName.equals("Edge")) {
+			break;
+		case EDGE:
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
-		} else if (browserName.equals("IE")) {
+			break;
+		case IE:
 			WebDriverManager.iedriver().arch32().setup();
 			driver = new InternetExplorerDriver();
-		} else if (browserName.equals("Opera")) {
+			break;
+		case OPERA:
 			WebDriverManager.operadriver().setup();
 			driver = new OperaDriver();
-		} else {
+			break;
+		case SAFARI:
+			driver = new SafariDriver();
+			break;
+		case H_CHROME:
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("headless");
+			options.addArguments("window-size=1920x1080");
+			driver = new ChromeDriver(options);
+			break;
+		default:
 			throw new RuntimeException("Invalid browser name");
 		}
 
@@ -40,10 +60,10 @@ public class BaseTest {
 		driver.get(GlobalConstants.USER_PAGE_URL);
 		return driver;
 	}
-	
+
 	protected int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
 	}
-	
+
 }
