@@ -497,6 +497,6 @@ public class BasePage {
 		clickOnElement(driver, BasePageUI.DYNAMIC_MY_ACCOUNT_PAGES, pageName);
 	}
 	
-	private long longTimeout = 30;
+	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 
 }
