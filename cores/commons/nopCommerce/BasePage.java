@@ -145,18 +145,18 @@ public class BasePage {
 		return by;
 	}
 
-	private String getDynamicXpath(String locatorType, String... dynamicValues) {
-		if (locatorType.startsWith("xpath=")) {
-			locatorType = String.format(locatorType, (Object[]) dynamicValues);
+	private String getDynamicXpath(String dynamicXpath, String... dynamicValues) {
+		if (dynamicXpath.startsWith("xpath=")) {
+			dynamicXpath = String.format(dynamicXpath, (Object[]) dynamicValues);
 		}
-		return locatorType;
+		return dynamicXpath;
 	}
 
-	private WebElement getElement(WebDriver driver, String locatorType) {
+	public WebElement getElement(WebDriver driver, String locatorType) {
 		return driver.findElement(getByLocator(locatorType));
 	}
 
-	private List<WebElement> getListElements(WebDriver driver, String locatorType) {
+	public List<WebElement> getListElements(WebDriver driver, String locatorType) {
 		return driver.findElements(getByLocator(locatorType));
 	}
 
@@ -164,8 +164,8 @@ public class BasePage {
 		waitElementClickable(driver, locatorType).click();
 	}
 
-	public void clickOnElement(WebDriver driver, String locatorType, String... dynamicValues) {
-		waitElementClickable(driver, getDynamicXpath(locatorType, dynamicValues)).click();
+	public void clickOnElement(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		waitElementClickable(driver, getDynamicXpath(dynamicXpath, dynamicValues)).click();
 	}
 
 	public void sendKeysToElement(WebDriver driver, String locatorType, String textValue) {
@@ -174,20 +174,20 @@ public class BasePage {
 		element.sendKeys(textValue);
 	}
 
-	public void sendKeysToElement(WebDriver driver, String locatorType, String textValue, String... dynamicValues) {
-		WebElement element = waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues));
+	public void sendKeysToElement(WebDriver driver, String dynamicXpath, String textValue, String... dynamicValues) {
+		WebElement element = waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues));
 		element.clear();
 		element.sendKeys(textValue);
 	}
 
 	public void selectOptionInDefaultDropdown(WebDriver driver, String locatorType, String textOption) {
-		Select select = new Select(waitElementVisible(driver, locatorType));
-		select.selectByValue(textOption);
+		Select select = new Select(waitElementClickable(driver, locatorType));
+		select.selectByVisibleText(textOption);
 	}
 
-	public void selectOptionInDefaultDropdown(WebDriver driver, String locatorType, String textOption, String... dynamicValues) {
-		Select select = new Select(waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues)));
-		select.selectByValue(textOption);
+	public void selectOptionInDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
+		Select select = new Select(waitElementClickable(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
+		select.selectByVisibleText(textOption);
 	}
 
 	public String getSelectedOptionTextInDefaultDropdown(WebDriver driver, String locatorType) {
@@ -195,8 +195,8 @@ public class BasePage {
 		return select.getFirstSelectedOption().getText();
 	}
 
-	public String getSelectedOptionTextInDefaultDropdown(WebDriver driver, String locatorType, String... dynamicValues) {
-		Select select = new Select(waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues)));
+	public String getSelectedOptionTextInDefaultDropdown(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		Select select = new Select(waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
 		return select.getFirstSelectedOption().getText();
 	}
 
@@ -223,16 +223,16 @@ public class BasePage {
 		return waitElementVisible(driver, locatorType).getAttribute(attributeName);
 	}
 
-	public String getElementAttribute(WebDriver driver, String locatorType, String attributeName, String... dynamicValues) {
-		return waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues)).getAttribute(attributeName);
+	public String getElementAttribute(WebDriver driver, String dynamicXpath, String attributeName, String... dynamicValues) {
+		return waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)).getAttribute(attributeName);
 	}
 
 	public String getElementText(WebDriver driver, String locatorType) {
 		return waitElementVisible(driver, locatorType).getText();
 	}
 
-	public String getElementText(WebDriver driver, String locatorType, String... dynamicValues) {
-		return waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues)).getText();
+	public String getElementText(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)).getText();
 	}
 
 	public String getElementCssValue(WebDriver driver, String locatorType, String propertyName) {
@@ -247,8 +247,8 @@ public class BasePage {
 		return getListElements(driver, locatorType).size();
 	}
 
-	public int getListElementsSize(WebDriver driver, String locatorType, String... dynamicValues) {
-		return getListElements(driver, getDynamicXpath(locatorType, dynamicValues)).size();
+	public int getListElementsSize(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return getListElements(driver, getDynamicXpath(dynamicXpath, dynamicValues)).size();
 	}
 
 	public void checkCheckboxRadio(WebDriver driver, String locatorType) {
@@ -267,8 +267,8 @@ public class BasePage {
 		return waitElementVisible(driver, locatorType).isDisplayed();
 	}
 
-	public boolean isElementDisplayed(WebDriver driver, String locatorType, String... dynamicValues) {
-		return waitElementVisible(driver, getDynamicXpath(locatorType, dynamicValues)).isDisplayed();
+	public boolean isElementDisplayed(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)).isDisplayed();
 	}
 
 	public boolean isElementEnabled(WebDriver driver, String locatorType) {
@@ -310,6 +310,11 @@ public class BasePage {
 	public void sendKeypressToElement(WebDriver driver, String locatorType, Keys key) {
 		Actions action = new Actions(driver);
 		action.sendKeys(waitElementVisible(driver, locatorType), key).perform();
+	}
+	
+	public void sendKeypressToElement(WebDriver driver, String dynamicXpath, Keys key, String... dynamicValues) {
+		Actions action = new Actions(driver);
+		action.sendKeys(waitElementVisible(driver, dynamicXpath, dynamicValues), key).perform();
 	}
 
 	public void scrollToBottomPageByJS(WebDriver driver) {
@@ -385,8 +390,8 @@ public class BasePage {
 		return explicitWait(driver).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorType)));
 	}
 
-	public WebElement waitElementVisible(WebDriver driver, String locatorType, String... dynamicValues) {
-		return explicitWait(driver).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+	public WebElement waitElementVisible(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return explicitWait(driver).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(getDynamicXpath(dynamicXpath, dynamicValues))));
 	}
 
 	public void waitAllElementsVisible(WebDriver driver, String locatorType) {
@@ -397,8 +402,8 @@ public class BasePage {
 		explicitWait(driver).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locatorType)));
 	}
 
-	public void waitElementInvisible(WebDriver driver, String locatorType, String... dynamicValues) {
-		explicitWait(driver).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+	public void waitElementInvisible(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		explicitWait(driver).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(getDynamicXpath(dynamicXpath, dynamicValues))));
 	}
 
 	public void waitAllElementsInvisible(WebDriver driver, String locatorType) {
@@ -409,8 +414,8 @@ public class BasePage {
 		return explicitWait(driver).until(ExpectedConditions.elementToBeClickable(getByLocator(locatorType)));
 	}
 
-	public WebElement waitElementClickable(WebDriver driver, String locatorType, String... dynamicValues) {
-		return explicitWait(driver).until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(locatorType, dynamicValues))));
+	public WebElement waitElementClickable(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return explicitWait(driver).until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(dynamicXpath, dynamicValues))));
 	}
 
 	// Level 07: Switch Page

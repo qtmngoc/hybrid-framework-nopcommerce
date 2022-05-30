@@ -75,7 +75,7 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 	
 	@Test
 	public void User_03_Dynamic_Page_01() {
-		// My product reviews - > Addresses
+		// My product reviews -> Addresses
 		userAddressesPage = (UserAddressesPageObject) userMyProductReviewsPage.openUserMyAccountPages_1(driver, "Addresses");
 		Assert.assertTrue(userAddressesPage.isAddressesHeaderDisplayed());
 		
@@ -90,7 +90,7 @@ public class Level_09_Dynamic_Locator extends BaseTest {
 	
 	@Test
 	public void User_04_Dynamic_Page_02() {
-		// Customer info - > My product reviews
+		// Customer info -> My product reviews
 		userCustomerInfoPage.openUserMyAccountPages_2(driver, "My product reviews");
 		userMyProductReviewsPage = PageGeneratorManager.getUserMyProductReviewsPage(driver);
 		Assert.assertTrue(userMyProductReviewsPage.isMyProductReviewsHeaderDisplayed());

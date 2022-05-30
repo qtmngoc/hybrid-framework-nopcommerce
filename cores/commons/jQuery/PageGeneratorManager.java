@@ -2,7 +2,7 @@ package commons.jQuery;
 
 import org.openqa.selenium.WebDriver;
 
-import pageObjects.jQuery.HomePageObject;
+import pageObjects.jQuery.dataTable.HomePageObject;
 
 public class PageGeneratorManager {
 

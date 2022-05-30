@@ -123,11 +123,11 @@ public class BasePage {
 		return String.format(dynamicXpath, (Object[]) dynamicValues);
 	}
 
-	private WebElement getElement(WebDriver driver, String xpathLocator) {
+	public WebElement getElement(WebDriver driver, String xpathLocator) {
 		return driver.findElement(getByXpath(xpathLocator));
 	}
 
-	private List<WebElement> getListElements(WebDriver driver, String xpathLocator) {
+	public List<WebElement> getListElements(WebDriver driver, String xpathLocator) {
 		return driver.findElements(getByXpath(xpathLocator));
 	}
 
@@ -152,13 +152,13 @@ public class BasePage {
 	}
 
 	public void selectOptionInDefaultDropdown(WebDriver driver, String xpathLocator, String textOption) {
-		Select select = new Select(waitElementVisible(driver, xpathLocator));
-		select.selectByValue(textOption);
+		Select select = new Select(waitElementClickable(driver, xpathLocator));
+		select.selectByVisibleText(textOption);
 	}
 
 	public void selectOptionInDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
-		Select select = new Select(waitElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
-		select.selectByValue(textOption);
+		Select select = new Select(waitElementClickable(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
+		select.selectByVisibleText(textOption);
 	}
 
 	public String getSelectedOptionTextInDefaultDropdown(WebDriver driver, String xpathLocator) {
@@ -281,6 +281,11 @@ public class BasePage {
 	public void sendKeypressToElement(WebDriver driver, String xpathLocator, Keys key) {
 		Actions action = new Actions(driver);
 		action.sendKeys(waitElementVisible(driver, xpathLocator), key).perform();
+	}
+	
+	public void sendKeypressToElement(WebDriver driver, String dynamicXpath, Keys key, String... dynamicValues) {
+		Actions action = new Actions(driver);
+		action.sendKeys(waitElementVisible(driver, dynamicXpath, dynamicValues), key).perform();
 	}
 
 	public void scrollToBottomPageByJS(WebDriver driver) {
