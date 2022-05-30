@@ -307,7 +307,7 @@ public class BasePage {
 		action.dragAndDrop(waitElementVisible(driver, sourceLocatorType), waitElementVisible(driver, targetLocatorType)).perform();
 	}
 
-	public void keyPressOnElement(WebDriver driver, String locatorType, Keys key) {
+	public void sendKeypressToElement(WebDriver driver, String locatorType, Keys key) {
 		Actions action = new Actions(driver);
 		action.sendKeys(waitElementVisible(driver, locatorType), key).perform();
 	}
@@ -380,7 +380,7 @@ public class BasePage {
 		WebElement element = (WebElement) jsExecutor.executeScript("return arguments[0].shadowRoot;", getElement(driver, locatorType));
 		return element;
 	}
-
+	
 	public WebElement waitElementVisible(WebDriver driver, String locatorType) {
 		return explicitWait(driver).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locatorType)));
 	}
