@@ -20,4 +20,6 @@ public class BasePageUI {
 	public static final String STORES_LINK = "xpath= //p[contains(text(),'Stores')]";
 	public static final String SALES_SUMMARY_LINK = "xpath= //p[contains(text(),'Sales summary')]";
 	
+	public static final String UPLOAD_FILE = "//input[@type='file']";
+	
 }

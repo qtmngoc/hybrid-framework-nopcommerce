@@ -5,11 +5,12 @@
 
 	<parameter name="quickgrid_url" value="https://www.jqueryscript.net/demo/CRUD-Data-Grid-Plugin-jQuery-Quickgrid/" />
 	<parameter name="appendGrid_url" value="https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/" />
+	<parameter name="upload_url" value="https://blueimp.github.io/jQuery-File-Upload/" />
 
-	<test name="Run on Firefox">
-		<parameter name="browser" value="Firefox" />
+	<test name="Run on Edge">
+		<parameter name="browser" value="Edge" />
 		<classes>
-			<class name="com.jquery.datatable.Level_10_Append_Grid" />
+			<class name="com.jquery.Level_11_Upload_Files" />
 		</classes>
 	</test>
 

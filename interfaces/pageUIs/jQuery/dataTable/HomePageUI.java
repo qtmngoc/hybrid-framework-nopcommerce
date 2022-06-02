@@ -13,5 +13,8 @@ public class HomePageUI {
 	public static final String COLUMN_INDEX_BY_NAME = "//tr/td[text()='%s']/preceding-sibling::td";
 	public static final String TEXTBOX_BY_COLUMN_AND_ROW_INDEX = "//tbody/tr[%s]/td[%s]/input";
 	public static final String DROPDOWN_BY_COLUMN_AND_ROW_INDEX = "//tbody/tr[%s]/td[%s]/select";
+	public static final String CHECKBOX_BY_COLUMN_AND_ROW_INDEX = "//tbody/tr[%s]/td[%s]/input[@type='checkbox']";
+	public static final String ICON_NAME_BY_ROW_INDEX = "//tbody/tr[%s]//button[@title='%s']";
+	public static final String LOAD_BUTTON = "//button[@id='btnLoad']";
 	
 }

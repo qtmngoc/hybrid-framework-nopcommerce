@@ -38,11 +38,6 @@ public class UserRegisterPageObject extends BasePage {
 		clickOnElement(driver, UserRegisterPageUI.REGISTER_BUTTON);
 	}
 
-	public UserHomePageObject clickOnLogoutLink() {
-		clickOnElement(driver, UserRegisterPageUI.LOGOUT_LINK);
-		return PageGeneratorManager.getUserHomePage(driver);
-	}
-
 	public String getErrorMessageBelowFirstNameTextbox() {
 		return getElementText(driver, UserRegisterPageUI.FIRSTNAME_ERROR_MESSAGE);
 	}
@@ -69,6 +64,11 @@ public class UserRegisterPageObject extends BasePage {
 
 	public String getErrorMessageExistingEmail() {
 		return getElementText(driver, UserRegisterPageUI.EXISTING_EMAIL_ERROR_MESSAGE);
+	}
+	
+	public UserHomePageObject clickOnLogoutLink() {
+		clickOnElement(driver, UserRegisterPageUI.LOGOUT_LINK);
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 	
 }

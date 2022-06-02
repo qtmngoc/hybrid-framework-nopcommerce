@@ -3,10 +3,10 @@
 
 <suite name="LiveGuru">
 
-	<test name="Run on Firefox">
-		<parameter name="browser" value="Firefox" />
+	<test name="Run on Chrome">
+		<parameter name="browser" value="Chrome" />
 		<classes>
-			<class name="com.liveguru.user.Level_06_Page_Generater_Manager" />
+			<class name="com.liveguru.user.Level_10_Data_Table" />
 		</classes>
 	</test>
 

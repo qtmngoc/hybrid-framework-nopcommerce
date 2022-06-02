@@ -22,7 +22,7 @@ public class UserCustomerInfoPageObject extends BasePage {
 	}
 
 	public void clickOnNewsletterCheckbox() {
-		checkCheckboxRadio(driver, UserCustomerInfoPageUI.NEWSLETTER_CHECKBOX);
+		checkCheckboxOrRadio(driver, UserCustomerInfoPageUI.NEWSLETTER_CHECKBOX);
 	}
 
 	public void clickOnSaveButton() {

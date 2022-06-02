@@ -74,4 +74,22 @@ public class HomePageObject extends BasePage{
 		selectOptionInDefaultDropdown(driver, HomePageUI.DROPDOWN_BY_COLUMN_AND_ROW_INDEX, value, rowNumber, columnIndex);
 	}
 
+	public void clickOnLoadButton() {
+		clickOnElement(driver, HomePageUI.LOAD_BUTTON);
+	}
+
+	public void checkCheckboxByRowNumberAndColumnName(String rowNumber, String columnName) {
+		String columnIndex = String.valueOf(getListElementsSize(driver, HomePageUI.COLUMN_INDEX_BY_NAME, columnName) + 1);
+		checkCheckboxOrRadio(driver, HomePageUI.CHECKBOX_BY_COLUMN_AND_ROW_INDEX, rowNumber, columnIndex);
+	}
+
+	public void uncheckCheckboxByRowNumberAndColumnName(String rowNumber, String columnName) {
+		String columnIndex = String.valueOf(getListElementsSize(driver, HomePageUI.COLUMN_INDEX_BY_NAME, columnName) + 1);
+		uncheckCheckbox(driver, HomePageUI.CHECKBOX_BY_COLUMN_AND_ROW_INDEX, rowNumber, columnIndex);
+	}
+
+	public void clickOnIconByRowNumber(String rowNumber, String iconName) {
+		clickOnElement(driver, HomePageUI.ICON_NAME_BY_ROW_INDEX, rowNumber, iconName);
+	}
+
 }

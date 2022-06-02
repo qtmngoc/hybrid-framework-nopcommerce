@@ -9,17 +9,17 @@ import org.testng.annotations.Test;
 
 import commons.liveGuru.BaseTest;
 import commons.liveGuru.PageGeneratorManager;
-import pageObjects.liveGuru.HomePageObject;
-import pageObjects.liveGuru.LoginPageObject;
-import pageObjects.liveGuru.MyDashboardPageObject;
-import pageObjects.liveGuru.RegisterPageObject;
+import pageObjects.liveGuru.user.UserHomePageObject;
+import pageObjects.liveGuru.user.UserLoginPageObject;
+import pageObjects.liveGuru.user.UserMyDashboardPageObject;
+import pageObjects.liveGuru.user.UserRegisterPageObject;
 
 public class Level_06_Page_Generater_Manager extends BaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = PageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Page";
 		lastName = "Generator";
@@ -63,9 +63,9 @@ public class Level_06_Page_Generater_Manager extends BaseTest {
 	}
 
 	private WebDriver driver;
-	private HomePageObject homePage;
-	private LoginPageObject loginPage;
-	private RegisterPageObject registerPage;
-	private MyDashboardPageObject myDashboardPage;
+	private UserHomePageObject homePage;
+	private UserLoginPageObject loginPage;
+	private UserRegisterPageObject registerPage;
+	private UserMyDashboardPageObject myDashboardPage;
 	private String firstName, lastName, email, password;
 }
