@@ -1,4 +1,4 @@
-package commons.nopCommerce;
+package commons.facebook;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +20,7 @@ public class BaseTest {
 
 	private WebDriver driver;
 
-	protected WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
 		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
 
 		switch (browser) {
@@ -59,7 +59,7 @@ public class BaseTest {
 		}
 
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(GlobalConstants.USER_PAGE_URL);
+		driver.get(appUrl);
 		return driver;
 	}
 

@@ -15,35 +15,35 @@ public class AdminCustomersPageObject extends BasePage {
 	}
 
 	public void closePopup() {
-		waitElementClickable(driver, AdminCustomersPageUI.CLOSE_MESSAGE_POPUP);
+		waitForElementClickable(driver, AdminCustomersPageUI.CLOSE_MESSAGE_POPUP);
 		clickOnElement(driver, AdminCustomersPageUI.CLOSE_MESSAGE_POPUP);
 	}
 
 	public void inputIntoFilterTextboxByColumnName(String columnName, String userEmail) {
 		String columnIndex = String.valueOf(getListElementsSize(driver, AdminCustomersPageUI.COLUMN_INDEX_BY_NAME, columnName) + 1);
-		waitElementVisible(driver, AdminCustomersPageUI.FILTER_TEXTBOX_BY_COLUMN_NAME, columnIndex);
+		waitForElementVisible(driver, AdminCustomersPageUI.FILTER_TEXTBOX_BY_COLUMN_NAME, columnIndex);
 		sendKeysToElement(driver, AdminCustomersPageUI.FILTER_TEXTBOX_BY_COLUMN_NAME, userEmail, columnIndex);
 	}
 
 	public void clickOnButtonByName(String buttonName) {
-		waitElementClickable(driver, AdminCustomersPageUI.BUTTON_BY_NAME, buttonName);
+		waitForElementClickable(driver, AdminCustomersPageUI.BUTTON_BY_NAME, buttonName);
 		clickOnElement(driver, AdminCustomersPageUI.BUTTON_BY_NAME, buttonName);
 	}
 
 	public String resultCellByRowNumberAndColumnName(String rowNumber, String columnName) {
 		String columnIndex = String.valueOf(getListElementsSize(driver, AdminCustomersPageUI.COLUMN_INDEX_BY_NAME, columnName) + 1);
-		waitElementVisible(driver, AdminCustomersPageUI.TEXT_CELL_BY_ROW_AND_COLUMN_INDEX, rowNumber, columnIndex);
+		waitForElementVisible(driver, AdminCustomersPageUI.TEXT_CELL_BY_ROW_AND_COLUMN_INDEX, rowNumber, columnIndex);
 		return getElementText(driver, AdminCustomersPageUI.TEXT_CELL_BY_ROW_AND_COLUMN_INDEX, rowNumber, columnIndex);
 	}
 
 	public void checkCheckboxByRowNumber(String rowNumber) {
 		sleepInSecond(1);
-		waitElementClickable(driver, AdminCustomersPageUI.CHECKBOX_CELL_BY_ROW_INDEX, rowNumber);
+		waitForElementClickable(driver, AdminCustomersPageUI.CHECKBOX_CELL_BY_ROW_INDEX, rowNumber);
 		checkCheckboxOrRadio(driver, AdminCustomersPageUI.CHECKBOX_CELL_BY_ROW_INDEX, rowNumber);
 	}
 
 	public void selectOptionInActionsDropdownByText(String visibleText) {
-		waitElementClickable(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
+		waitForElementClickable(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
 		selectOptionInDefaultDropdown(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
 	}
 
@@ -52,7 +52,7 @@ public class AdminCustomersPageObject extends BasePage {
 	}
 
 	public AdminLoginPageObject clickOnLogoutLink() {
-		waitElementClickable(driver, AdminCustomersPageUI.LOGOUT_LINK);
+		waitForElementClickable(driver, AdminCustomersPageUI.LOGOUT_LINK);
 		clickOnElement(driver, AdminCustomersPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getAdminLoginPage(driver);
 	}

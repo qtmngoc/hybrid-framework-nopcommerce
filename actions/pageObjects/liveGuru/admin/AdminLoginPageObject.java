@@ -15,17 +15,17 @@ public class AdminLoginPageObject extends BasePage{
 	}
 
 	public void inputIntoUserNameTextbox(String adminUserName) {
-		waitElementVisible(driver, AdminLoginPageUI.USER_NAME_TEXTBOX);
+		waitForElementVisible(driver, AdminLoginPageUI.USER_NAME_TEXTBOX);
 		sendKeysToElement(driver, AdminLoginPageUI.USER_NAME_TEXTBOX, adminUserName);
 	}
 
 	public void inputIntoPasswordTextbox(String adminPassword) {
-		waitElementVisible(driver, AdminLoginPageUI.PASSWORD_TEXTBOX);
+		waitForElementVisible(driver, AdminLoginPageUI.PASSWORD_TEXTBOX);
 		sendKeysToElement(driver, AdminLoginPageUI.PASSWORD_TEXTBOX, adminPassword);
 	}
 
 	public AdminCustomersPageObject clickOnLoginButton() {
-		waitElementClickable(driver, AdminLoginPageUI.LOGIN_BUTTON);
+		waitForElementClickable(driver, AdminLoginPageUI.LOGIN_BUTTON);
 		clickOnElement(driver, AdminLoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getAdminCustomersPage(driver);
 	}

@@ -15,12 +15,12 @@ public class UserHomePageObject extends BasePage {
 	}
 
 	public boolean isGuruLogoDisplayed() {
-		waitElementVisible(driver, UserHomePageUI.GURU_LOGO);
+		waitForElementVisible(driver, UserHomePageUI.GURU_LOGO);
 		return isElementDisplayed(driver, UserHomePageUI.GURU_LOGO);
 	}
 	
 	public UserLoginPageObject clickOnMyAccountLink() {
-		waitElementClickable(driver, UserHomePageUI.MY_ACCOUNT_LINK);
+		waitForElementClickable(driver, UserHomePageUI.MY_ACCOUNT_LINK);
 		clickOnElement(driver, UserHomePageUI.MY_ACCOUNT_LINK);
 		return PageGeneratorManager.getUserLoginPage(driver);
 	}

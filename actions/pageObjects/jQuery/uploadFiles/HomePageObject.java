@@ -33,7 +33,7 @@ public class HomePageObject extends BasePage{
 	}
 
 	public boolean isFileUploadedImageByName(String fileName) {
-		waitElementVisible(driver, HomePageUI.FILE_NAME_UPLOADED_IMAGE, fileName);
+		waitForElementVisible(driver, HomePageUI.FILE_NAME_UPLOADED_IMAGE, fileName);
 		return isImageLoadedByJS(driver, HomePageUI.FILE_NAME_UPLOADED_IMAGE, fileName);
 	}
 

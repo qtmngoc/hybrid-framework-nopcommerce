@@ -15,33 +15,33 @@ public class UserMyDashboardPageObject extends BasePage {
 	}
 
 	public boolean isRegisterSuccessMessageDisplayed() {
-		waitElementVisible(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
+		waitForElementVisible(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 		return isElementDisplayed(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
 	public String getRegisterSuccessMessage() {
-		waitElementVisible(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
+		waitForElementVisible(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 		return getElementText(driver, UserMyDashboardPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
 
 	public void clickOnAccountMenu() {
-		waitElementClickable(driver, UserMyDashboardPageUI.ACCOUNT_MENU);
+		waitForElementClickable(driver, UserMyDashboardPageUI.ACCOUNT_MENU);
 		clickOnElement(driver, UserMyDashboardPageUI.ACCOUNT_MENU);
 	}
 
 	public String getWelcomeMessage() {
-		waitElementVisible(driver, UserMyDashboardPageUI.WELCOME_MESSAGE);
+		waitForElementVisible(driver, UserMyDashboardPageUI.WELCOME_MESSAGE);
 		return getElementText(driver, UserMyDashboardPageUI.WELCOME_MESSAGE);
 	}
 
 	public String getContactInformation() {
-		waitElementVisible(driver, UserMyDashboardPageUI.CONTACT_INFORMATION);
+		waitForElementVisible(driver, UserMyDashboardPageUI.CONTACT_INFORMATION);
 		return getElementText(driver, UserMyDashboardPageUI.CONTACT_INFORMATION);
 	}
 	
 
 	public UserHomePageObject clickOnLogOutLink() {
-		waitElementClickable(driver, UserMyDashboardPageUI.LOGOUT_LINK);
+		waitForElementClickable(driver, UserMyDashboardPageUI.LOGOUT_LINK);
 		clickOnElement(driver, UserMyDashboardPageUI.LOGOUT_LINK);
 		return PageGeneratorManager.getUserHomePage(driver);
 	}

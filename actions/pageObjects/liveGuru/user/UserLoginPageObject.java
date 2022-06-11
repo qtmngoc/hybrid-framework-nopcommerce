@@ -15,29 +15,29 @@ public class UserLoginPageObject extends BasePage {
 	}
 
 	public UserRegisterPageObject clickOnCreateButton() {
-		waitElementClickable(driver, UserLoginPageUI.CREATE_BUTTON);
+		waitForElementClickable(driver, UserLoginPageUI.CREATE_BUTTON);
 		clickOnElement(driver, UserLoginPageUI.CREATE_BUTTON);
 		return PageGeneratorManager.getUserRegisterPage(driver);
 	}
 
 	public void inputIntoEmailTextbox(String emailValue) {
-		waitElementVisible(driver, UserLoginPageUI.EMAIL_TEXTBOX);
+		waitForElementVisible(driver, UserLoginPageUI.EMAIL_TEXTBOX);
 		sendKeysToElement(driver, UserLoginPageUI.EMAIL_TEXTBOX, emailValue);
 	}
 
 	public void inputIntoPasswordTextbox(String passwordValue) {
-		waitElementVisible(driver, UserLoginPageUI.PASSWORD_TEXTBOX);
+		waitForElementVisible(driver, UserLoginPageUI.PASSWORD_TEXTBOX);
 		sendKeysToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, passwordValue);
 	}
 
 	public UserMyDashboardPageObject clickOnLoginButton() {
-		waitElementClickable(driver, UserLoginPageUI.LOGIN_BUTTON);
+		waitForElementClickable(driver, UserLoginPageUI.LOGIN_BUTTON);
 		clickOnElement(driver, UserLoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getUserMyDashboardPage(driver);
 	}
 	
 	public String getLoginUnsuccessMessage() {
-		waitElementVisible(driver, UserLoginPageUI.LOGIN_UNSUCCESS_MESSAGE);
+		waitForElementVisible(driver, UserLoginPageUI.LOGIN_UNSUCCESS_MESSAGE);
 		return getElementText(driver, UserLoginPageUI.LOGIN_UNSUCCESS_MESSAGE);
 	}
 	
