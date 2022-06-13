@@ -1,0 +1,133 @@
+[INFO ] [2022-06-13 14:52:39,523] Register - Step 01: Navigate to Register page
+[INFO ] [2022-06-13 14:52:40,317] Register - Step 02: Enter 'Assert' into First Name text box
+[INFO ] [2022-06-13 14:52:40,373] Register - Step 03: Enter 'Verify' into Last Name text box
+[INFO ] [2022-06-13 14:52:40,417] Register - Step 04: Enter 'assertverify.level12.3737@mail.com' into Email text box
+[INFO ] [2022-06-13 14:52:40,478] Register - Step 05: Enter '110622' into Password text box
+[INFO ] [2022-06-13 14:52:40,523] Register - Step 06: Enter '110622' into Confirm Password text box
+[INFO ] [2022-06-13 14:52:40,567] Register - Step 07: Click on Register button
+[INFO ] [2022-06-13 14:52:41,971] Register - Step 08: Verify registration success message is displayed
+[INFO ] [2022-06-13 14:52:42,006]  -------------------------- FAILED -------------------------- 
+[INFO ] [2022-06-13 14:52:42,007] Register - Step 09: Click on Logout link
+[INFO ] [2022-06-13 14:52:42,829] Login - Step 01: Navigate to Login page
+[INFO ] [2022-06-13 14:52:43,933] Login - Step 02: Enter 'assertverify.level12.3737@mail.com' into Email text box
+[INFO ] [2022-06-13 14:52:43,990] Login - Step 03: Enter '110622' into Password text box
+[INFO ] [2022-06-13 14:52:44,031] Login - Step 04: Click on Login button
+[INFO ] [2022-06-13 14:52:45,545] Login - Step 05: Verify My Account link is displayed
+[INFO ] [2022-06-13 14:52:45,588]  -------------------------- FAILED -------------------------- 
+[INFO ] [2022-06-13 14:52:45,588] Login - Step 06: Navigate to My Account page
+[INFO ] [2022-06-13 14:52:59,486] Login - Step 07: Verify Customer Info page is displayed
+[INFO ] [2022-06-13 14:52:59,520]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:36:21,556] Register - Step 01: Navigate to Register page
+[2022-06-13 15:36:26,878] Register - Step 02: Enter 'Assert' into First Name text box
+[2022-06-13 15:36:26,948] Register - Step 03: Enter 'Verify' into Last Name text box
+[2022-06-13 15:36:26,988] Register - Step 04: Enter 'assertverify.level12.7499@mail.com' into Email text box
+[2022-06-13 15:36:27,040] Register - Step 05: Enter '110622' into Password text box
+[2022-06-13 15:36:27,082] Register - Step 06: Enter '110622' into Confirm Password text box
+[2022-06-13 15:36:27,123] Register - Step 07: Click on Register button
+[2022-06-13 15:36:32,855] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 15:36:32,885]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:36:32,885] Register - Step 09: Click on Logout link
+[2022-06-13 15:36:33,999] Login - Step 01: Navigate to Login page
+[2022-06-13 15:36:34,699] Login - Step 02: Enter 'assertverify.level12.7499@mail.com' into Email text box
+[2022-06-13 15:36:34,746] Login - Step 03: Enter '110622' into Password text box
+[2022-06-13 15:36:34,781] Login - Step 04: Click on Login button
+[2022-06-13 15:36:35,707] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 15:36:35,745]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:36:35,745] Login - Step 06: Navigate to My Account page
+[2022-06-13 15:36:36,928] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 15:36:36,964]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:38:48,208] Register - Step 01: Navigate to Register page
+[2022-06-13 15:38:49,246] Register - Step 02: Enter 'Assert' into First Name text box
+[2022-06-13 15:38:49,291] Register - Step 03: Enter 'Verify' into Last Name text box
+[2022-06-13 15:38:49,334] Register - Step 04: Enter 'assertverify.level12.381@mail.com' into Email text box
+[2022-06-13 15:38:49,386] Register - Step 05: Enter '110622' into Password text box
+[2022-06-13 15:38:49,430] Register - Step 06: Enter '110622' into Confirm Password text box
+[2022-06-13 15:38:49,477] Register - Step 07: Click on Register button
+[2022-06-13 15:38:51,176] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 15:38:51,206]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:38:51,206] Register - Step 09: Click on Logout link
+[2022-06-13 15:38:52,470] Login - Step 01: Navigate to Login page
+[2022-06-13 15:38:53,200] Login - Step 02: Enter 'assertverify.level12.381@mail.com' into Email text box
+[2022-06-13 15:38:53,246] Login - Step 03: Enter '110622' into Password text box
+[2022-06-13 15:38:53,281] Login - Step 04: Click on Login button
+[2022-06-13 15:38:54,056] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 15:38:54,095]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:38:54,095] Login - Step 06: Navigate to My Account page
+[2022-06-13 15:38:54,812] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 15:38:54,848]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:45:35,353] Register - Step 01: Navigate to Register page
+[2022-06-13 15:45:36,200] Register - Step 02: Enter 'Assert' into First Name text box
+[2022-06-13 15:45:36,253] Register - Step 03: Enter 'Verify' into Last Name text box
+[2022-06-13 15:45:36,292] Register - Step 04: Enter 'assertverify.level12.565@mail.com' into Email text box
+[2022-06-13 15:45:36,339] Register - Step 05: Enter '110622' into Password text box
+[2022-06-13 15:45:36,380] Register - Step 06: Enter '110622' into Confirm Password text box
+[2022-06-13 15:45:36,411] Register - Step 07: Click on Register button
+[2022-06-13 15:45:40,831] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 15:45:40,859]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:45:40,859] Register - Step 09: Click on Logout link
+[2022-06-13 15:45:45,992] Login - Step 01: Navigate to Login page
+[2022-06-13 15:45:53,844] Login - Step 02: Enter 'assertverify.level12.565@mail.com' into Email text box
+[2022-06-13 15:45:53,885] Login - Step 03: Enter '110622' into Password text box
+[2022-06-13 15:45:53,921] Login - Step 04: Click on Login button
+[2022-06-13 15:45:56,002] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 15:45:56,036]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:45:56,036] Login - Step 06: Navigate to My Account page
+[2022-06-13 15:45:59,630] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 15:45:59,662]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:55:54,578] Register - Step 01: Navigate to Register page
+[2022-06-13 15:55:55,388] Register - Step 02: Enter 'Assert' into First Name text box
+[2022-06-13 15:55:55,443] Register - Step 03: Enter 'Verify' into Last Name text box
+[2022-06-13 15:55:55,490] Register - Step 04: Enter 'assertverify.level12.7093@mail.com' into Email text box
+[2022-06-13 15:55:55,556] Register - Step 05: Enter '110622' into Password text box
+[2022-06-13 15:55:55,600] Register - Step 06: Enter '110622' into Confirm Password text box
+[2022-06-13 15:55:55,638] Register - Step 07: Click on Register button
+[2022-06-13 15:55:56,545] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 15:55:56,579]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:55:56,579] Register - Step 09: Click on Logout link
+[2022-06-13 15:55:57,558] Login - Step 01: Navigate to Login page
+[2022-06-13 15:55:58,295] Login - Step 02: Enter 'assertverify.level12.7093@mail.com' into Email text box
+[2022-06-13 15:55:58,342] Login - Step 03: Enter '110622' into Password text box
+[2022-06-13 15:55:58,378] Login - Step 04: Click on Login button
+[2022-06-13 15:55:59,496] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 15:55:59,529]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:55:59,529] Login - Step 06: Navigate to My Account page
+[2022-06-13 15:56:00,232] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 15:56:00,265]  -------------------------- FAILED -------------------------- 
+[2022-06-13 15:58:26,849] Register - Step 01: Navigate to Register page
+[2022-06-13 15:58:27,643] Register - Step 02: Enter 'Log' into First Name text box
+[2022-06-13 15:58:27,683] Register - Step 03: Enter 'ReportNG' into Last Name text box
+[2022-06-13 15:58:27,725] Register - Step 04: Enter 'logreportng.level14.219@mail.com' into Email text box
+[2022-06-13 15:58:27,777] Register - Step 05: Enter '130622' into Password text box
+[2022-06-13 15:58:27,815] Register - Step 06: Enter '130622' into Confirm Password text box
+[2022-06-13 15:58:27,854] Register - Step 07: Click on Register button
+[2022-06-13 15:58:28,913] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 15:58:28,944]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:58:28,944] Register - Step 09: Click on Logout link
+[2022-06-13 15:58:29,675] Login - Step 01: Navigate to Login page
+[2022-06-13 15:58:30,267] Login - Step 02: Enter 'logreportng.level14.219@mail.com' into Email text box
+[2022-06-13 15:58:30,315] Login - Step 03: Enter '130622' into Password text box
+[2022-06-13 15:58:30,353] Login - Step 04: Click on Login button
+[2022-06-13 15:58:31,145] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 15:58:31,183]  -------------------------- PASSED -------------------------- 
+[2022-06-13 15:58:31,183] Login - Step 06: Navigate to My Account page
+[2022-06-13 15:58:31,769] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 15:58:31,803]  -------------------------- FAILED -------------------------- 
+[2022-06-13 16:07:30,680] Register - Step 01: Navigate to Register page
+[2022-06-13 16:07:35,336] Register - Step 02: Enter 'Log' into First Name text box
+[2022-06-13 16:07:35,378] Register - Step 03: Enter 'ReportNG' into Last Name text box
+[2022-06-13 16:07:35,418] Register - Step 04: Enter 'logreportng.level14.7201@mail.com' into Email text box
+[2022-06-13 16:07:35,463] Register - Step 05: Enter '130622' into Password text box
+[2022-06-13 16:07:35,500] Register - Step 06: Enter '130622' into Confirm Password text box
+[2022-06-13 16:07:35,533] Register - Step 07: Click on Register button
+[2022-06-13 16:07:40,413] Register - Step 08: Verify registration success message is displayed
+[2022-06-13 16:07:40,443]  -------------------------- PASSED -------------------------- 
+[2022-06-13 16:07:40,443] Register - Step 09: Click on Logout link
+[2022-06-13 16:07:41,301] Login - Step 01: Navigate to Login page
+[2022-06-13 16:07:43,068] Login - Step 02: Enter 'logreportng.level14.7201@mail.com' into Email text box
+[2022-06-13 16:07:43,117] Login - Step 03: Enter '130622' into Password text box
+[2022-06-13 16:07:43,156] Login - Step 04: Click on Login button
+[2022-06-13 16:07:45,597] Login - Step 05: Verify My Account link is displayed
+[2022-06-13 16:07:45,630]  -------------------------- PASSED -------------------------- 
+[2022-06-13 16:07:45,631] Login - Step 06: Navigate to My Account page
+[2022-06-13 16:07:48,114] Login - Step 07: Verify Customer Info page is displayed
+[2022-06-13 16:07:48,153]  -------------------------- FAILED -------------------------- 
