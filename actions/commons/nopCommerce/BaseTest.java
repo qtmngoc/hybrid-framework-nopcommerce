@@ -69,6 +69,10 @@ public class BaseTest {
 		driver.get(GlobalConstants.USER_PAGE_URL);
 		return driver;
 	}
+	
+	public WebDriver getDriverInstance() {
+		return this.driver;
+	}
 
 	protected int generateFakeNumber() {
 		Random rand = new Random();

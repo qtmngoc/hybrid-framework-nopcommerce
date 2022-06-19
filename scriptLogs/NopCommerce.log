@@ -131,3 +131,38 @@
 [2022-06-13 16:07:45,631] Login - Step 06: Navigate to My Account page
 [2022-06-13 16:07:48,114] Login - Step 07: Verify Customer Info page is displayed
 [2022-06-13 16:07:48,153]  -------------------------- FAILED -------------------------- 
+[2022-06-16 23:55:01,070] Register - Step 01: Navigate to Register page
+[2022-06-16 23:55:01,726] Register - Step 02: Enter 'ReportNG' into First Name text box
+[2022-06-16 23:55:01,838] Register - Step 03: Enter 'Screenshot' into Last Name text box
+[2022-06-16 23:55:01,948] Register - Step 04: Enter 'reportngscreenshot.level15.7707@mail.com' into Email text box
+[2022-06-16 23:55:02,086] Register - Step 05: Enter '160622' into Password text box
+[2022-06-16 23:55:02,185] Register - Step 06: Enter '160622' into Confirm Password text box
+[2022-06-16 23:55:02,257] Register - Step 07: Click on Register button
+[2022-06-16 23:55:03,111] Register - Step 08: Verify registration success message is displayed
+[2022-06-16 23:55:03,300] Login - Step 01: Navigate to Login page
+[2022-06-17 10:25:48,405] Register - Step 01: Navigate to Register page
+[2022-06-17 10:25:49,265] Register - Step 02: Enter 'ReportNG' into First Name text box
+[2022-06-17 10:25:49,395] Register - Step 03: Enter 'Screenshot' into Last Name text box
+[2022-06-17 10:25:49,510] Register - Step 04: Enter 'reportngscreenshot.level15.4594@mail.com' into Email text box
+[2022-06-17 10:25:49,620] Register - Step 05: Enter '160622' into Password text box
+[2022-06-17 10:25:49,720] Register - Step 06: Enter '160622' into Confirm Password text box
+[2022-06-17 10:25:49,831] Register - Step 07: Click on Register button
+[2022-06-17 10:25:50,925] Register - Step 08: Verify registration success message is displayed
+[2022-06-17 10:25:52,124] Login - Step 01: Navigate to Login page
+[2022-06-17 10:25:52,702] Login - Step 02: Enter 'reportngscreenshot.level15.4594@mail.com' into Email text box
+[2022-06-17 10:25:52,820] Login - Step 03: Enter '160622' into Password text box
+[2022-06-17 10:25:52,926] Login - Step 04: Click on Login button
+[2022-06-17 10:25:53,915] Login - Step 05: Verify My Account link is displayed
+[2022-06-17 11:00:01,654] Register - Step 01: Navigate to Register page
+[2022-06-17 11:00:02,226] Register - Step 02: Enter 'ReportNG' into First Name text box
+[2022-06-17 11:00:02,346] Register - Step 03: Enter 'Screenshot' into Last Name text box
+[2022-06-17 11:00:02,437] Register - Step 04: Enter 'reportngscreenshot.level15.9827@mail.com' into Email text box
+[2022-06-17 11:00:02,568] Register - Step 05: Enter '160622' into Password text box
+[2022-06-17 11:00:02,694] Register - Step 06: Enter '160622' into Confirm Password text box
+[2022-06-17 11:00:02,815] Register - Step 07: Click on Register button
+[2022-06-17 11:00:05,083] Register - Step 08: Verify registration success message is displayed
+[2022-06-17 11:00:06,170] Login - Step 01: Navigate to Login page
+[2022-06-17 11:00:06,724] Login - Step 02: Enter 'reportngscreenshot.level15.9827@mail.com' into Email text box
+[2022-06-17 11:00:06,820] Login - Step 03: Enter '160622' into Password text box
+[2022-06-17 11:00:06,897] Login - Step 04: Click on Login button
+[2022-06-17 11:00:07,757] Login - Step 05: Verify My Account link is displayed
