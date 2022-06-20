@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.nopCommerce.BasePage;
 import commons.nopCommerce.PageGeneratorManager;
+import io.qameta.allure.Step;
 import pageUIs.nopCommerce.user.UserLoginPageUI;
 
 public class UserLoginPageObject extends BasePage {
@@ -22,6 +23,7 @@ public class UserLoginPageObject extends BasePage {
 		sendKeysToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, passwordValue);
 	}
 
+	@Step("Click on Login button")
 	public UserHomePageObject clickOnLoginButton() {
 		clickOnElement(driver, UserLoginPageUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getUserHomePage(driver);

@@ -1,5 +1,6 @@
 package commons.nopCommerce;
 
+import java.io.File;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +26,10 @@ public class BaseTest {
 	protected final Log log;
 	protected BaseTest() {
 		log = LogFactory.getLog(getClass());
+	}
+	
+	public void initBeforeSuite() {
+		deleteAllureReport();
 	}
 
 	protected WebDriver getBrowserDriver(String browserName) {
@@ -120,6 +125,21 @@ public class BaseTest {
 			Reporter.getCurrentTestResult().setThrowable(e);
 		}
 		return pass;
+	}
+	
+	public void deleteAllureReport() {
+		try {
+			String pathFolderDownload = GlobalConstants.PROJECT_PATH + "/allure-results";
+			File file = new File(pathFolderDownload);
+			File[] listOfFiles = file.listFiles();
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if(listOfFiles[i].isFile()) {
+					new File(listOfFiles[i].toString()).delete();
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

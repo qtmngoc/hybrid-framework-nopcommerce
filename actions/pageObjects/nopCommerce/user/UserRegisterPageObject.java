@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import commons.nopCommerce.BasePage;
 import commons.nopCommerce.PageGeneratorManager;
+import io.qameta.allure.Step;
 import pageUIs.nopCommerce.user.UserRegisterPageUI;
 
 public class UserRegisterPageObject extends BasePage {
@@ -14,6 +15,7 @@ public class UserRegisterPageObject extends BasePage {
 		this.driver = driver;
 	}
 
+	@Step("Enter {0} into First Name text box")
 	public void inputIntoFirstNameTextbox(String firstNameValue) {
 		sendKeysToElement(driver, UserRegisterPageUI.FIRSTNAME_TEXTBOX, firstNameValue);
 	}
@@ -34,6 +36,7 @@ public class UserRegisterPageObject extends BasePage {
 		sendKeysToElement(driver, UserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPasswordValue);
 	}
 
+	@Step("Click on Register button")
 	public void clickOnRegisterButton() {
 		clickOnElement(driver, UserRegisterPageUI.REGISTER_BUTTON);
 	}
@@ -58,6 +61,7 @@ public class UserRegisterPageObject extends BasePage {
 		return getElementText(driver, UserRegisterPageUI.CONFIRM_PASSWORD_ERROR_MESSAGE);
 	}
 
+	@Step("Verify registration success message is displayed")
 	public String getRegisterSuccessMessage() {
 		return getElementText(driver, UserRegisterPageUI.REGISTER_SUCCESS_MESSAGE);
 	}
