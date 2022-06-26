@@ -16,6 +16,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -28,6 +29,7 @@ public class BaseTest {
 		log = LogFactory.getLog(getClass());
 	}
 	
+	@BeforeSuite
 	public void initBeforeSuite() {
 		deleteAllureReport();
 	}

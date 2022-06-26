@@ -15,25 +15,29 @@ public class UserRegisterPageObject extends BasePage {
 		this.driver = driver;
 	}
 
-	@Step("Enter {0} into First Name text box")
-	public void inputIntoFirstNameTextbox(String firstNameValue) {
-		sendKeysToElement(driver, UserRegisterPageUI.FIRSTNAME_TEXTBOX, firstNameValue);
+	@Step("Enter '{0}' into First Name text box")
+	public void inputIntoFirstNameTextbox(String firstName) {
+		sendKeysToElement(driver, UserRegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
 	}
 
-	public void inputIntoLastNameTextbox(String lastNameValue) {
-		sendKeysToElement(driver, UserRegisterPageUI.LASTNAME_TEXTBOX, lastNameValue);
+	@Step("Enter '{0}' into Last Name text box")
+	public void inputIntoLastNameTextbox(String lastName) {
+		sendKeysToElement(driver, UserRegisterPageUI.LASTNAME_TEXTBOX, lastName);
 	}
 
-	public void inputIntoEmailTextbox(String emailValue) {
-		sendKeysToElement(driver, UserRegisterPageUI.EMAIL_TEXTBOX, emailValue);
+	@Step("Enter '{0}' into Email text box")
+	public void inputIntoEmailTextbox(String email) {
+		sendKeysToElement(driver, UserRegisterPageUI.EMAIL_TEXTBOX, email);
 	}
 
-	public void inputIntoPasswordTextbox(String passwordValue) {
-		sendKeysToElement(driver, UserRegisterPageUI.PASSWORD_TEXTBOX, passwordValue);
+	@Step("Enter '{0}' into Password text box")
+	public void inputIntoPasswordTextbox(String password) {
+		sendKeysToElement(driver, UserRegisterPageUI.PASSWORD_TEXTBOX, password);
 	}
 
-	public void inputIntoConfirmPasswordTextbox(String confirmPasswordValue) {
-		sendKeysToElement(driver, UserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPasswordValue);
+	@Step("Enter '{0}' into Confirm Password text box")
+	public void inputIntoConfirmPasswordTextbox(String confirmPassword) {
+		sendKeysToElement(driver, UserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
 	}
 
 	@Step("Click on Register button")

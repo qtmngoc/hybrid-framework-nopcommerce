@@ -1,7 +1,5 @@
 package reportConfig.nopCommerce;
 
-import java.io.File;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +8,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import commons.nopCommerce.BaseTest;
-import commons.nopCommerce.GlobalConstants;
 import io.qameta.allure.Attachment;
 
 public class AllureTestListener implements ITestListener {

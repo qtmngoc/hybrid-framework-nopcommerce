@@ -15,12 +15,14 @@ public class UserLoginPageObject extends BasePage {
 		this.driver = driver;
 	}
 
-	public void inputIntoEmailTextbox(String emailValue) {
-		sendKeysToElement(driver, UserLoginPageUI.EMAIL_TEXTBOX, emailValue);
+	@Step("Enter '{0}' into Email text box")
+	public void inputIntoEmailTextbox(String email) {
+		sendKeysToElement(driver, UserLoginPageUI.EMAIL_TEXTBOX, email);
 	}
 
-	public void inputIntoPasswordTextbox(String passwordValue) {
-		sendKeysToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, passwordValue);
+	@Step("Enter '{0}' into Password text box")
+	public void inputIntoPasswordTextbox(String password) {
+		sendKeysToElement(driver, UserLoginPageUI.PASSWORD_TEXTBOX, password);
 	}
 
 	@Step("Click on Login button")
