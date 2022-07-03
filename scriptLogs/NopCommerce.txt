@@ -1,0 +1,30 @@
+[2022-07-03 15:29:05,473] Pre-condition - Step 00: Open NopCommerce Home page
+[2022-07-03 15:29:11,886] Register - Step 01: Navigate to Register page
+[2022-07-03 15:29:12,500] Register - Step 02: Select Gender radio button
+[2022-07-03 15:29:12,799] Register - Step 03: Enter 'Pattern' into First Name text box
+[2022-07-03 15:29:12,877] Register - Step 04: Enter 'Object' into Last Name text box
+[2022-07-03 15:29:12,970] Register - Step 05: Select Date Of Birth
+[2022-07-03 15:29:13,891] Register - Step 06: Enter 'patternobject.level19.3345@mail.com' into Email text box
+[2022-07-03 15:29:13,980] Register - Step 07: Enter 'Automation FC' into Company Name text box
+[2022-07-03 15:29:14,042] Register - Step 08: Select Newsletter checkbox
+[2022-07-03 15:29:14,091] Register - Step 09: Enter '030722' into Password text box
+[2022-07-03 15:29:14,172] Register - Step 10: Enter '030722' into Confirm Password text box
+[2022-07-03 15:29:14,243] Register - Step 11: Click on Register button
+[2022-07-03 15:29:15,109] Register - Step 12: Verify registration success message is displayed
+[2022-07-03 15:29:15,153] Register - Step 13: Navigate to Home page by Log out
+[2022-07-03 15:29:15,983] Login - Step 01: Navigate to Login page
+[2022-07-03 15:29:16,477] Login - Step 02: Enter 'patternobject.level19.3345@mail.com' into Email text box
+[2022-07-03 15:29:16,580] Login - Step 03: Enter '030722' into Password text box
+[2022-07-03 15:29:16,644] Login - Step 04: Click on Login button
+[2022-07-03 15:29:17,376] Login - Step 05: Verify My Account link is displayed
+[2022-07-03 15:29:17,452] My account - Step 01: Navigate to My Account page
+[2022-07-03 15:29:18,009] My account - Step 02: Verify Customer Info page is displayed
+[2022-07-03 15:29:18,081] My account - Step 03: Verify Gender radio button is selected
+[2022-07-03 15:29:18,113] My account - Step 04: Verify First Name value is correct
+[2022-07-03 15:29:18,166] My account - Step 05: Verify Last Name value is correct
+[2022-07-03 15:29:18,212] My account - Step 06: Verify Date Of Birth value is correct
+[2022-07-03 15:29:18,402] My account - Step 07: Verify Email value is correct
+[2022-07-03 15:29:18,461] My account - Step 08: Verify Company Name value is correct
+[2022-07-03 15:29:18,518] My account - Step 09: Verify Newsletter checkbox is selected
+[2022-07-03 15:29:18,562] OS name = windows 10
+[2022-07-03 15:29:18,562] Driver instance name = firefoxdriver: firefox on windows (c2adeeba-e019-4106-b5c4-1730d8707a84)

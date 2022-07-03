@@ -20,6 +20,14 @@ public class BasePageUI {
 	public static final String STORES_LINK = "xpath= //p[contains(text(),'Stores')]";
 	public static final String SALES_SUMMARY_LINK = "xpath= //p[contains(text(),'Sales summary')]";
 	
-	public static final String UPLOAD_FILE = "//input[@type='file']";
+	public static final String UPLOAD_FILE = "xpath= //input[@type='file']";
+	
+	// Pattern Object
+	public static final String DYNAMIC_LINK_BY_TEXT = "xpath= //a[text()='%s']";
+	public static final String DYNAMIC_RADIO_BY_LABEL_TEXT = "xpath= //label[text()='%s']/preceding-sibling::input";
+	public static final String DYNAMIC_TEXTBOX_BY_ID = "xpath= //input[@id='%s']";
+	public static final String DYNAMIC_DROPDOWN_BY_NAME = "xpath= //select[@name='%s']";
+	public static final String DYNAMIC_CHECKBOX_BY_ID = "xpath= //input[@id='%s']";
+	public static final String DYNAMIC_BUTTON_BY_TEXT = "xpath= //button[text()='%s']";
 	
 }

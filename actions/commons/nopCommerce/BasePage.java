@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -74,6 +75,17 @@ public class BasePage {
 	public void refreshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
+	
+	public Set<Cookie> getCookies(WebDriver driver) {
+		return driver.manage().getCookies();
+	}
+	
+	public void setCookies(WebDriver driver, Set<Cookie> cookies) {
+		for (Cookie cookie : cookies) {
+			driver.manage().addCookie(cookie);
+		}
+		sleepInSecond(2);
+	}
 
 	public Alert waitForAlertPresent(WebDriver driver) {
 		return explicitWait(driver, longTimeout).until(ExpectedConditions.alertIsPresent());
@@ -91,8 +103,8 @@ public class BasePage {
 		return waitForAlertPresent(driver).getText();
 	}
 
-	public void sendKeysToAlert(WebDriver driver, String textValue) {
-		waitForAlertPresent(driver).sendKeys(textValue);
+	public void sendKeysToAlert(WebDriver driver, String value) {
+		waitForAlertPresent(driver).sendKeys(value);
 	}
 
 	public Set<String> getAllWindowIDs(WebDriver driver) {
@@ -166,28 +178,28 @@ public class BasePage {
 	}
 
 	public void clickOnElement(WebDriver driver, String dynamicXpath, String... dynamicValues) {
-		waitForElementClickable(driver, getDynamicXpath(dynamicXpath, dynamicValues)).click();
+		waitForElementClickable(driver, dynamicXpath, dynamicValues).click();
 	}
 
-	public void sendKeysToElement(WebDriver driver, String locatorType, String textValue) {
+	public void sendKeysToElement(WebDriver driver, String locatorType, String value) {
 		WebElement element = waitForElementVisible(driver, locatorType);
 		element.clear();
-		element.sendKeys(textValue);
+		element.sendKeys(value);
 	}
 
-	public void sendKeysToElement(WebDriver driver, String dynamicXpath, String textValue, String... dynamicValues) {
-		WebElement element = waitForElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues));
+	public void sendKeysToElement(WebDriver driver, String dynamicXpath, String value, String... dynamicValues) {
+		WebElement element = waitForElementVisible(driver, dynamicXpath, dynamicValues);
 		element.clear();
-		element.sendKeys(textValue);
+		element.sendKeys(value);
 	}
 
-	public void selectOptionInDefaultDropdown(WebDriver driver, String locatorType, String textOption) {
+	public void selectOptionFromDefaultDropdown(WebDriver driver, String locatorType, String textOption) {
 		Select select = new Select(waitForElementClickable(driver, locatorType));
 		select.selectByVisibleText(textOption);
 	}
 
-	public void selectOptionInDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
-		Select select = new Select(waitForElementClickable(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
+	public void selectOptionFromDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
+		Select select = new Select(waitForElementClickable(driver, dynamicXpath, dynamicValues));
 		select.selectByVisibleText(textOption);
 	}
 
@@ -197,7 +209,7 @@ public class BasePage {
 	}
 
 	public String getSelectedOptionTextInDefaultDropdown(WebDriver driver, String dynamicXpath, String... dynamicValues) {
-		Select select = new Select(waitForElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
+		Select select = new Select(waitForElementVisible(driver, dynamicXpath, dynamicValues));
 		return select.getFirstSelectedOption().getText();
 	}
 
@@ -206,7 +218,7 @@ public class BasePage {
 		return select.isMultiple();
 	}
 
-	public void selectOptionInCustomDropdown(WebDriver driver, String parentLocatorType, String childLocatorType, String expectedTextOption) {
+	public void selectOptionFromCustomDropdown(WebDriver driver, String parentLocatorType, String childLocatorType, String expectedTextOption) {
 		clickOnElement(driver, parentLocatorType);
 		sleepInSecond(1);
 		List<WebElement> allOptions = explicitWait(driver, longTimeout).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByLocator(childLocatorType)));
@@ -225,7 +237,7 @@ public class BasePage {
 	}
 
 	public String getElementAttribute(WebDriver driver, String dynamicXpath, String attributeName, String... dynamicValues) {
-		return waitForElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)).getAttribute(attributeName);
+		return waitForElementVisible(driver, dynamicXpath, dynamicValues).getAttribute(attributeName);
 	}
 
 	public String getElementText(WebDriver driver, String locatorType) {
@@ -233,7 +245,7 @@ public class BasePage {
 	}
 
 	public String getElementText(WebDriver driver, String dynamicXpath, String... dynamicValues) {
-		return waitForElementVisible(driver, getDynamicXpath(dynamicXpath, dynamicValues)).getText();
+		return waitForElementVisible(driver, dynamicXpath, dynamicValues).getText();
 	}
 
 	public String getElementCssValue(WebDriver driver, String locatorType, String propertyName) {
@@ -322,6 +334,10 @@ public class BasePage {
 
 	public boolean isElementSelected(WebDriver driver, String locatorType) {
 		return waitForElementVisible(driver, locatorType).isSelected();
+	}
+	
+	public boolean isElementSelected(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return waitForElementVisible(driver, dynamicXpath, dynamicValues).isSelected();
 	}
 
 	public void switchToFrameIframe(WebDriver driver, String locatorType) {
@@ -437,6 +453,12 @@ public class BasePage {
 		return element;
 	}
 	
+	public String getElementValueByJS(WebDriver driver, String xpathLocator) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		xpathLocator = xpathLocator.replace("xpath= ", "");
+		return (String) jsExecutor.executeScript("return $(document.evaluate(\"" + xpathLocator + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).val()");
+	}
+	
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
 		String filePath = GlobalConstants.UPLOAD_FILES;
 		
@@ -486,6 +508,7 @@ public class BasePage {
 		return explicitWait(driver, longTimeout).until(ExpectedConditions.elementToBeClickable(getByLocator(getDynamicXpath(dynamicXpath, dynamicValues))));
 	}
 
+	// -----------------------------------------------------------------------------------------------------------------
 	// Level 07: Switch Page
 	public UserCustomerInfoPageObject openUserCustomerInfoPage(WebDriver driver) {
 		clickOnElement(driver, BasePageUI.CUSTOMER_INFO_LINK);
@@ -570,6 +593,48 @@ public class BasePage {
 		clickOnElement(driver, BasePageUI.DYNAMIC_MY_ACCOUNT_PAGES, pageName);
 	}
 	
+	// Level 19: Pattern Object
+	
+	public void clickOnLinkByText(WebDriver driver, String linkText) {
+		clickOnElement(driver, BasePageUI.DYNAMIC_LINK_BY_TEXT, linkText);
+	}
+	
+	public void selectRadioButtonByLabelText(WebDriver driver, String labelText) {
+		checkCheckboxOrRadio(driver, BasePageUI.DYNAMIC_RADIO_BY_LABEL_TEXT, labelText);
+	}
+	
+	public void inputIntoTextboxById(WebDriver driver, String idAttribute, String value) {
+		sendKeysToElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, value, idAttribute);
+	}
+	
+	public void selectDropdownByName(WebDriver driver, String nameAttribute, String value) {
+		selectOptionFromDefaultDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, value, nameAttribute);
+	}
+	
+	public void selectCheckboxById(WebDriver driver, String idAttribute) {
+		checkCheckboxOrRadio(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_ID, idAttribute);
+	}
+	
+	public void clickOnButtonByText(WebDriver driver, String buttonText) {
+		clickOnElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, buttonText);
+	}
+	
+	public boolean isRadioButtonSelectedByLabelText(WebDriver driver, String labelText) {
+		return isElementSelected(driver, BasePageUI.DYNAMIC_RADIO_BY_LABEL_TEXT, labelText);
+	}
+	
+	public String getTextboxValueById(WebDriver driver, String idAttribute) {
+		return getElementAttribute(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, "value", idAttribute);
+	}
+	
+	public String getDropdownValueByName(WebDriver driver, String nameAttribute) {
+		return getElementAttribute(driver, BasePageUI.DYNAMIC_DROPDOWN_BY_NAME, "value", nameAttribute);
+	}
+	
+	public boolean isCheckboxSelectedById(WebDriver driver, String idAttribute) {
+		return isElementSelected(driver, BasePageUI.DYNAMIC_CHECKBOX_BY_ID, idAttribute);
+	}
+
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;
 	private long shortTimeout = GlobalConstants.SHORT_TIMEOUT;
 

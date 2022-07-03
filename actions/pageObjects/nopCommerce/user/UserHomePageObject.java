@@ -43,5 +43,10 @@ public class UserHomePageObject extends BasePage {
 		clickOnElement(driver, UserHomePageUI.MY_ACCOUNT_LINK);		
 		return PageGeneratorManager.getUserCustomerInfoPage(driver);
 	}
+
+	public UserSearchPageObject clickOnSearchLink() {
+		clickOnElement(driver, UserHomePageUI.SEARCH_LINK);		
+		return PageGeneratorManager.getUserSearchPage(driver);
+	}
 	
 }

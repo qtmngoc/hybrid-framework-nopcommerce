@@ -5,18 +5,18 @@
 
 	<listeners>
 		<listener class-name="commons.nopCommerce.MethodListener" />
-		<!-- <listener class-name="reportConfig.nopCommerce.ReportNGListener" /> -->
-		<!-- <listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
-		<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
+		<listener class-name="reportConfig.nopCommerce.ReportNGListener" />
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
 		<!-- <listener class-name="reportConfig.nopCommerce.ExtentTestListenerV5" /> -->
-		<listener class-name="reportConfig.nopCommerce.AllureTestListener" />
-
+		<!-- <listener class-name="reportConfig.nopCommerce.AllureTestListener" /> -->
 	</listeners>
 
 	<test name="Run on Firefox">
 		<parameter name="browser" value="Firefox" />
 		<classes>
-			<class name="com.nopcommerce.user.Level_15_Allure_Report_Screenshot" />
+			<!-- <class name="com.nopcommerce.common.Common_01_Register_End_User" /> -->
+			<class name="com.nopcommerce.user.Level_19_Pattern_Object" />
 		</classes>
 	</test>
 

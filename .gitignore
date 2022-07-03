@@ -1,2 +1,6 @@
 /bin/
 /test-output/
+/allure-results/
+/reportNGImages/
+/scriptLogs/
+/extentReportV5/

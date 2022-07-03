@@ -1,7 +1,5 @@
 package com.nopcommerce.user;
 
-import java.lang.reflect.Method;
-
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -11,61 +9,75 @@ import org.testng.annotations.Test;
 
 import commons.nopCommerce.BaseTest;
 import commons.nopCommerce.PageGeneratorManager;
-import io.qameta.allure.Description;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Story;
 import pageObjects.nopCommerce.user.UserCustomerInfoPageObject;
 import pageObjects.nopCommerce.user.UserHomePageObject;
 import pageObjects.nopCommerce.user.UserLoginPageObject;
 import pageObjects.nopCommerce.user.UserRegisterPageObject;
 
-public class Level_15_Allure_Report_Screenshot extends BaseTest {
-
+public class Level_14_ReportNG_Screenshot extends BaseTest {
+	
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
 		userHomePage = PageGeneratorManager.getUserHomePage(driver);
 
-		firstName = "Allure Report";
+		firstName = "ReportNG";
 		lastName = "Screenshot";
-		email = "allurereport.level15." + generateFakeNumber() + "@mail.com";
-		password = "210622";
+		email = "reportngscreenshot.level15." + generateFakeNumber() + "@mail.com";
+		password = "160622";
 	}
 
-	@Description("User_01_Register")
-	@Story("Register to system")
-	@Severity(SeverityLevel.NORMAL)
 	@Test
-	public void User_01_Register(Method method) {
+	public void User_01_Register() {
+		log.info("Register - Step 01: Navigate to Register page");
 		userRegisterPage = userHomePage.clickOnRegisterLink();
 
+		log.info("Register - Step 02: Enter '" + firstName + "' into First Name text box");
 		userRegisterPage.inputIntoFirstNameTextbox(firstName);
+		
+		log.info("Register - Step 03: Enter '" + lastName + "' into Last Name text box");
 		userRegisterPage.inputIntoLastNameTextbox(lastName);
+		
+		log.info("Register - Step 04: Enter '" + email + "' into Email text box");
 		userRegisterPage.inputIntoEmailTextbox(email);
+		
+		log.info("Register - Step 05: Enter '" + password + "' into Password text box");
 		userRegisterPage.inputIntoPasswordTextbox(password);
+		
+		log.info("Register - Step 06: Enter '" + password + "' into Confirm Password text box");
 		userRegisterPage.inputIntoConfirmPasswordTextbox(password);
-
+		
+		log.info("Register - Step 07: Click on Register button");
 		userRegisterPage.clickOnRegisterButton();
-		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
+		
+		log.info("Register - Step 08: Verify registration success message is displayed");
+		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed...");
 	}
 	
-	@Description("User_02_Login")
-	@Story("Login to system")
-	@Severity(SeverityLevel.NORMAL)
 	@Test
-	public void User_02_Login(Method method) {
+	public void User_02_Login() {
 		userHomePage = userRegisterPage.clickOnLogoutLink();
+		
+		log.info("Login - Step 01: Navigate to Login page");
 		userLoginPage = userHomePage.clickOnLoginLink();
-
+		
+		log.info("Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);
+		
+		log.info("Login - Step 03: Enter '" + password + "' into Password text box");
 		userLoginPage.inputIntoPasswordTextbox(password);
 
+		log.info("Login - Step 04: Click on Login button");
 		userHomePage = userLoginPage.clickOnLoginButton();
+		
+		log.info("Login - Step 05: Verify My Account link is displayed");
 		Assert.assertFalse(userHomePage.isMyAccountLinkDisplayed());
-
+		
+		log.info("Login - Step 06: Navigate to My Account page");
 		userCustomerInfoPage = userHomePage.clickOnMyAccountLink();
+		
+		log.info("Login - Step 07: Verify Customer Info page is displayed");
 		Assert.assertFalse(userCustomerInfoPage.isCustomerInfoHeaderDisplayed());
 	}
 
@@ -80,5 +92,5 @@ public class Level_15_Allure_Report_Screenshot extends BaseTest {
 	private UserLoginPageObject userLoginPage;
 	private UserCustomerInfoPageObject userCustomerInfoPage;
 	private String firstName, lastName, email, password;
-
+	
 }

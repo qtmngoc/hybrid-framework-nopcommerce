@@ -71,7 +71,7 @@ public class HomePageObject extends BasePage{
 
 	public void selectOptionInDropdownByRowNumberAndColumnName(String rowNumber, String columnName, String value) {
 		String columnIndex = String.valueOf(getListElementsSize(driver, HomePageUI.COLUMN_INDEX_BY_NAME, columnName) + 1);
-		selectOptionInDefaultDropdown(driver, HomePageUI.DROPDOWN_BY_COLUMN_AND_ROW_INDEX, value, rowNumber, columnIndex);
+		selectOptionFromDefaultDropdown(driver, HomePageUI.DROPDOWN_BY_COLUMN_AND_ROW_INDEX, value, rowNumber, columnIndex);
 	}
 
 	public void clickOnLoadButton() {

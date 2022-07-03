@@ -43,7 +43,6 @@ public class AllureTestListener implements ITestListener {
 	@Override
 	public void onFinish(ITestContext arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

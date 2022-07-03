@@ -39,16 +39,19 @@ public class ReportNGListener implements ITestListener {
 		Object testClass = result.getInstance();
 		WebDriver webDriver = ((BaseTest) testClass).getDriverInstance();
 
-		String screenshotPath = captureScreenshot(webDriver, result.getName());
-		Reporter.getCurrentTestResult();
-
 		// Image file
-		// Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotPath + "\">" + "<img src=\"file:///" + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
+		/*
+		String screenshotImagePath = captureScreenshot(webDriver, result.getName());
+		Reporter.getCurrentTestResult();
+		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotImagePath + "\">" + "<img src=\"file:///" + screenshotImagePath + "\" " + "height='100' width='150'/> " + "</a></br>");
+		Reporter.setCurrentTestResult(null);
+		*/
 
 		// Base 64
-		Reporter.log("<br><a href=\"data:image/png;base64," + screenshotPath + "\">" + "<img src=\"data:image/png;base64," + screenshotPath + "\" " + "height='100' width='150'/> " + "</a></br>");
-
-		Reporter.setCurrentTestResult(null);
+		String screenshotBase64Path = captureScreenshotBase64(webDriver, result.getName());
+		Reporter.getCurrentTestResult();
+		Reporter.log("<br><a href=\"data:image/png;base64," + screenshotBase64Path + "\">" + "<img src=\"data:image/png;base64," + screenshotBase64Path + "\" " + "height='100' width='150'/> " + "</a></br>");
+		Reporter.setCurrentTestResult(null);	
 	}
 
 	public String captureScreenshot(WebDriver driver, String screenshotName) {

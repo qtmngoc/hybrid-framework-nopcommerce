@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -64,7 +65,18 @@ public class BasePage {
 	public void refreshCurrentPage(WebDriver driver) {
 		driver.navigate().refresh();
 	}
-
+	
+	public Set<Cookie> getCookies(WebDriver driver) {
+		return driver.manage().getCookies();
+	}
+	
+	public void setCookies(WebDriver driver, Set<Cookie> cookies) {
+		for (Cookie cookie : cookies) {
+			driver.manage().addCookie(cookie);
+		}
+		sleepInSecond(2);
+	}
+	
 	public Alert waitForAlertPresent(WebDriver driver) {
 		return explicitWait(driver, longTimeout).until(ExpectedConditions.alertIsPresent());
 	}
@@ -81,8 +93,8 @@ public class BasePage {
 		return waitForAlertPresent(driver).getText();
 	}
 
-	public void sendKeysToAlert(WebDriver driver, String textValue) {
-		waitForAlertPresent(driver).sendKeys(textValue);
+	public void sendKeysToAlert(WebDriver driver, String value) {
+		waitForAlertPresent(driver).sendKeys(value);
 	}
 
 	public Set<String> getAllWindowIDs(WebDriver driver) {
@@ -142,24 +154,24 @@ public class BasePage {
 		getElement(driver, getDynamicXpath(dynamicXpath, dynamicValues)).click();
 	}
 	
-	public void sendKeysToElement(WebDriver driver, String xpathLocator, String textValue) {
+	public void sendKeysToElement(WebDriver driver, String xpathLocator, String value) {
 		WebElement element = getElement(driver, xpathLocator);
 		element.clear();
-		element.sendKeys(textValue);
+		element.sendKeys(value);
 	}
 
-	public void sendKeysToElement(WebDriver driver, String dynamicXpath, String textValue, String... dynamicValues) {
+	public void sendKeysToElement(WebDriver driver, String dynamicXpath, String value, String... dynamicValues) {
 		WebElement element = getElement(driver, getDynamicXpath(dynamicXpath, dynamicValues));
 		element.clear();
-		element.sendKeys(textValue);
+		element.sendKeys(value);
 	}
 	
-	public void selectOptionInDefaultDropdown(WebDriver driver, String xpathLocator, String textOption) {
+	public void selectOptionFromDefaultDropdown(WebDriver driver, String xpathLocator, String textOption) {
 		Select select = new Select(getElement(driver, xpathLocator));
 		select.selectByVisibleText(textOption);
 	}
 
-	public void selectOptionInDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
+	public void selectOptionFromDefaultDropdown(WebDriver driver, String dynamicXpath, String textOption, String... dynamicValues) {
 		Select select = new Select(getElement(driver, getDynamicXpath(dynamicXpath, dynamicValues)));
 		select.selectByVisibleText(textOption);
 	}
@@ -179,7 +191,7 @@ public class BasePage {
 		return select.isMultiple();
 	}
 
-	public void selectOptionInCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator, String expectedTextOption) {
+	public void selectOptionFromCustomDropdown(WebDriver driver, String parentXpathLocator, String childXpathLocator, String expectedTextOption) {
 		clickOnElement(driver, parentXpathLocator);
 		sleepInSecond(1);
 		List<WebElement> allOptions = new WebDriverWait(driver, longTimeout).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childXpathLocator)));
@@ -292,9 +304,13 @@ public class BasePage {
 	public boolean isElementEnabled(WebDriver driver, String xpathLocator) {
 		return getElement(driver, xpathLocator).isEnabled();
 	}
-
+	
 	public boolean isElementSelected(WebDriver driver, String xpathLocator) {
 		return getElement(driver, xpathLocator).isSelected();
+	}
+
+	public boolean isElementSelected(WebDriver driver, String dynamicXpath, String... dynamicValues) {
+		return getElement(driver, getDynamicXpath(dynamicXpath, dynamicValues)).isSelected();
 	}
 
 	public void switchToFrameIframe(WebDriver driver, String xpathLocator) {
@@ -408,6 +424,11 @@ public class BasePage {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		WebElement element = (WebElement) jsExecutor.executeScript("return arguments[0].shadowRoot;", getElement(driver, xpathLocator));
 		return element;
+	}
+	
+	public String getElementValueByJS(WebDriver driver, String xpathLocator) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		return (String) jsExecutor.executeScript("return $(document.evaluate(\"" + xpathLocator + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).val()");
 	}
 	
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {

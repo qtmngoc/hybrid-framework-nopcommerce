@@ -44,7 +44,7 @@ public class AdminCustomersPageObject extends BasePage {
 
 	public void selectOptionInActionsDropdownByText(String visibleText) {
 		waitForElementClickable(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
-		selectOptionInDefaultDropdown(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
+		selectOptionFromDefaultDropdown(driver, AdminCustomersPageUI.ACTIONS_DROPDOWN, visibleText);
 	}
 
 	public void accepAlert() {
