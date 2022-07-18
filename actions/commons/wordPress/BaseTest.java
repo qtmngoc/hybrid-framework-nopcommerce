@@ -1,4 +1,4 @@
-package commons.nopCommerce;
+package commons.wordPress;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +22,8 @@ import org.testng.annotations.BeforeSuite;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseTest {
-
-	private WebDriver driver;	
+	
+	private WebDriver driver;
 	protected final Log log;
 	
 	@BeforeSuite
@@ -78,10 +78,53 @@ public class BaseTest {
 		return driver;
 	}
 	
+	protected WebDriver getBrowserDriver(String browserName, String appUrl) {
+		BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
+
+		switch (browser) {
+		case FIREFOX:
+			WebDriverManager.firefoxdriver().arch64().setup();
+			driver = new FirefoxDriver();
+			break;
+		case CHROME:
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver();
+			break;
+		case EDGE:
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
+			break;
+		case IE:
+			WebDriverManager.iedriver().arch32().setup();
+			driver = new InternetExplorerDriver();
+			break;
+		case OPERA:
+			WebDriverManager.operadriver().setup();
+			driver = new OperaDriver();
+			break;
+		case SAFARI:
+			driver = new SafariDriver();
+			break;
+		case H_CHROME:
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("headless");
+			options.addArguments("window-size=1920x1080");
+			driver = new ChromeDriver(options);
+			break;
+		default:
+			throw new RuntimeException("Invalid browser name");
+		}
+
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+		driver.get(appUrl);
+		return driver;
+	}
+	
 	public WebDriver getDriverInstance() {
 		return this.driver;
 	}
-
+	
 	protected int generateFakeNumber() {
 		Random rand = new Random();
 		return rand.nextInt(9999);
@@ -144,7 +187,7 @@ public class BaseTest {
 			System.out.println(e.getMessage());
 		}
 	}
-	
+
 	protected void closeBrowserAndDriver() {
 		String cmd = "";
 		try {
@@ -205,5 +248,5 @@ public class BaseTest {
 			}
 		}
 	}
-
+	
 }
