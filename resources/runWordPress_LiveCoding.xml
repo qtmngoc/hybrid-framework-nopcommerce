@@ -4,11 +4,11 @@
 <suite name="WordPress - Admin">
 
 	<listeners>
-		<listener class-name="commons.wordPress.MethodListener" />
-		<listener class-name="reportConfig.wordPress.ReportNGListener" />
-		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-		<!-- <listener class-name="reportConfig.wordPress.ExtentTestListenerV5" /> -->
+		<!-- <listener class-name="commons.wordPress.MethodListener" /> -->
+		<!-- <listener class-name="reportConfig.wordPress.ReportNGListener" /> -->
+		<!-- <listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
+		<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
+		<listener class-name="reportConfig.wordPress.ExtentTestListenerV5" />
 		<!-- <listener class-name="reportConfig.wordPress.AllureTestListener" /> -->
 	</listeners>
 
@@ -18,15 +18,14 @@
 	<test name="Run on Firefox">
 		<parameter name="browser" value="Firefox" />
 		
-		<packages>
+		<!-- <packages>
 			<package name="com.wordpress.admin" />
-		</packages>
+		</packages> -->
 		
 		<classes>
-			<class name="com.wordpress.admin.Post_01_Create_Read_Update_Delete_Search" />
+			<class name="com.wordpress.Live_Coding_02_Category" />
 		</classes>
 		
-
 	</test>
 
 	<!--	

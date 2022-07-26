@@ -116,6 +116,7 @@ public class BaseTest {
 			throw new RuntimeException("Invalid browser name");
 		}
 
+		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.get(appUrl);
 		return driver;
@@ -127,7 +128,7 @@ public class BaseTest {
 	
 	protected int generateFakeNumber() {
 		Random rand = new Random();
-		return rand.nextInt(9999);
+		return rand.nextInt(99999);
 	}
 	
 	protected boolean verifyTrue(boolean condition) {

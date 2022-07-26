@@ -1,4 +1,4 @@
-package com.liveguru.user;
+package com.liveguru;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

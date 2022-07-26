@@ -16,7 +16,7 @@ public class GlobalConstants {
 	public static final String USER_PAGE_URL = "https://automationfc.wordpress.com/";
 	public static final String ADMIN_PAGE_URL = "https://automationfc.wordpress.com/wp-admin/";
 	
-	public static final long SHORT_TIMEOUT = 5;
+	public static final long SHORT_TIMEOUT = 3;
 	public static final long LONG_TIMEOUT = 20;
 	
 }

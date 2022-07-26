@@ -1,6 +1,6 @@
 package reportConfig.wordPress;
 
-import static reportConfig.nopCommerce.ExtentTestManagerV5.getTest;
+import static reportConfig.wordPress.ExtentTestManagerV5.getTest;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +11,7 @@ import org.testng.ITestResult;
 
 import com.aventstack.extentreports.Status;
 
-import commons.nopCommerce.BaseTest;
+import commons.wordPress.BaseTest;
 
 public class ExtentTestListenerV5 extends BaseTest implements ITestListener {
 	private static String getTestMethodName(ITestResult iTestResult) {
@@ -30,11 +30,12 @@ public class ExtentTestListenerV5 extends BaseTest implements ITestListener {
 
 	@Override
 	public void onTestStart(ITestResult iTestResult) {
+		
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult iTestResult) {
-		getTest().log(Status.PASS, "Test passed");
+
 	}
 
 	@Override

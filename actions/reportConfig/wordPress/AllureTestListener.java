@@ -7,7 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import commons.nopCommerce.BaseTest;
+import commons.wordPress.BaseTest;
 import io.qameta.allure.Attachment;
 
 public class AllureTestListener implements ITestListener {

@@ -4,13 +4,13 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import commons.nopCommerce.GlobalConstants;
+import commons.wordPress.GlobalConstants;
 
 public class ExtentManagerV5 {
 	public static final ExtentReports extentReports = new ExtentReports();
 
 	public synchronized static ExtentReports createExtentReports() {
-		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.PROJECT_PATH + "/extentReportV5/wordPress/ExtentReport.html");
+		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.PROJECT_PATH + "/extentReportV5/wordPress/WordPress.html");
 		reporter.config().setReportName("WordPress HTML Report");
 		reporter.config().setDocumentTitle("WordPress HTML Report");
 		reporter.config().setTimelineEnabled(true);
@@ -21,6 +21,7 @@ public class ExtentManagerV5 {
 		extentReports.setSystemInfo("Company", "Automation FC");
 		extentReports.setSystemInfo("Project", "WordPress");
 		extentReports.setSystemInfo("Team", "Ngoc Ngoc");
+		extentReports.setSystemInfo("Browser", "Firefox");
 		extentReports.setSystemInfo("JDK version", GlobalConstants.JAVA_VERSION);
 		return extentReports;
 	}

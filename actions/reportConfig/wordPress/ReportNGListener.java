@@ -14,9 +14,9 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import commons.nopCommerce.BaseTest;
+import commons.wordPress.BaseTest;
 
-import commons.nopCommerce.GlobalConstants;
+import commons.wordPress.GlobalConstants;
 
 public class ReportNGListener implements ITestListener {
 

@@ -1,14 +1,13 @@
-package pageObjects.wordPress.admin;
+package pageObjects.wordPress;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.wordPress.BasePage;
 
-public class AdminLoginPO extends BasePage {
-	
+public class UserPostDetailPO extends BasePage {
 	WebDriver driver;
 	
-	public AdminLoginPO(WebDriver driver) {
+	public UserPostDetailPO(WebDriver driver) {
 		this.driver = driver;
 	}
 }
