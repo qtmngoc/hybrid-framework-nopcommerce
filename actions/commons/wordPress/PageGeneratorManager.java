@@ -9,6 +9,7 @@ import pageObjects.wordPress.AdminPostAllPO;
 import pageObjects.wordPress.AdminPostNewPO;
 import pageObjects.wordPress.UserHomePO;
 import pageObjects.wordPress.UserPostDetailPO;
+import pageObjects.wordPress.UserSearchPO;
 
 public class PageGeneratorManager {
 	
@@ -39,5 +40,11 @@ public class PageGeneratorManager {
 	public static UserPostDetailPO getUserPostDetailPage(WebDriver driver) {
 		return new UserPostDetailPO(driver);
 	}
+	
+	public static UserSearchPO getUserSearchPage(WebDriver driver) {
+		return new UserSearchPO(driver);
+	}
+	
+	
 	
 }

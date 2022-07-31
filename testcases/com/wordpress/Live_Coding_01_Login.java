@@ -20,7 +20,7 @@ public class Live_Coding_01_Login extends BaseTest {
 	
 	@Parameters({ "browser", "adminUrl" })
 	@BeforeClass
-	public void beforeClass(String browserName, String adminUrl) {
+	public void beforeClass(String browserName, String adminUrl) {		
 		driver = getBrowserDriver(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 	}
@@ -107,8 +107,8 @@ public class Live_Coding_01_Login extends BaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	String username = "automationeditor";
-	String password = "automationfc";
+	static String username = "automationeditor";
+	static String password = "automationfc";
 	String nonExistentUsername = "ngocngoc.230722";
 	String incorrectPassword = "230722";
 	

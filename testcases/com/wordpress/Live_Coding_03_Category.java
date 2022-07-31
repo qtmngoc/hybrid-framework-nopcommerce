@@ -17,7 +17,7 @@ import pageObjects.wordPress.AdminDashboardPO;
 import pageObjects.wordPress.AdminLoginPO;
 import reportConfig.wordPress.ExtentTestManagerV5;
 
-public class Live_Coding_02_Category extends BaseTest {
+public class Live_Coding_03_Category extends BaseTest {
 	
 	@Parameters({ "browser", "adminUrl" })
 	@BeforeClass
@@ -25,7 +25,7 @@ public class Live_Coding_02_Category extends BaseTest {
 		driver = getBrowserDriver(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, username, password);
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, Live_Coding_01_Login.username, Live_Coding_01_Login.password);
 		
 		adminCategoryPage = adminDashboardPage.clickOnPostsCategoriesMenuLink();
 	}
@@ -49,35 +49,9 @@ public class Live_Coding_02_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on Add button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 	}
-
-	@Test
-	public void Category_02_Create_New_Child_Category(Method method) {
-		ExtentTestManagerV5.startTest(method.getName(), "Create new child category");
-
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on Add New Category button to open dialog.");
-		adminCategoryPage.clickOnAddNewCategoryButton();
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter '" + childCatName + "' into Name textbox.");
-		adminCategoryPage.inputIntoCategoryNameTextbox(childCatName);
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter '" + childCatDesc + "' into Description textbox.");
-		adminCategoryPage.inputIntoCategoryDescriptionTextarea(childCatDesc);
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Click on Top level Category to disable.");
-		adminCategoryPage.clickOnTopLevelToggle();
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter '" + parentCatName + "' into Search textbox.");
-		adminCategoryPage.inputIntoDialogSearchTextbox(parentCatName);
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Select '" + parentCatName + "' category.");
-		adminCategoryPage.checkParentCategoryRadio(parentCatName);
-		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Add button.");
-		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
-	}
 	
 	@Test
-	public void Category_03_Search_Category(Method method) {
+	public void Category_02_Search_Category(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Search newly created categories");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Enter '" + parentCatName + "' into Search textbox.");
@@ -100,7 +74,7 @@ public class Live_Coding_02_Category extends BaseTest {
 	}
 	
 	@Test
-	public void Category_04_Edit_Child_Category(Method method) {
+	public void Category_03_Edit_Child_Category(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Edit child category");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Scroll down to '" + childCatName + "' category.");
@@ -112,27 +86,30 @@ public class Live_Coding_02_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter '" + editChildCatName + "' into Name textbox.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(editChildCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Click on Top level Category to enable.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter '" + childCatDesc + "' into Description textbox.");
+		adminCategoryPage.inputIntoCategoryDescriptionTextarea(childCatDesc);
+		
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on Top level Category to enable.");
 		adminCategoryPage.clickOnTopLevelToggle();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Verify Top level Category toggle is enabled.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Verify Top level Category toggle is enabled.");
 		verifyTrue(adminCategoryPage.isParentCategoryMessageDisplayed());
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on Update button.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Update button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter '" + editChildCatName + "' into Search textbox.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter '" + editChildCatName + "' into Search textbox.");
 		adminCategoryPage.inputIntoSearchTextbox(editChildCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify '" + editChildCatName + "' category is displayed.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Verify '" + editChildCatName + "' category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(editChildCatName));
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Close Search result.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Close Search result.");
 		adminCategoryPage.clickOnCloseIcon();
 	}
 	
 	@Test
-	public void Category_05_Edit_Parent_Category(Method method) {
+	public void Category_04_Edit_Parent_Category(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Edit parent category");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Scroll down to '" + parentCatName + "' category.");
@@ -164,7 +141,7 @@ public class Live_Coding_02_Category extends BaseTest {
 	}
 	
 	@Test
-	public void Category_06_Delete_Category(Method method) {
+	public void Category_05_Delete_Category(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Delete categories");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Scroll down to '" + editChildCatName + "' category.");
@@ -215,15 +192,13 @@ public class Live_Coding_02_Category extends BaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	int randomNumber = generateFakeNumber();
-	String username = "automationeditor";
-	String password = "automationfc";
-	String parentCatName = "Parent " + randomNumber;
-	String parentCatDesc = "test parent category " + randomNumber;
-	String childCatName = "Child " + randomNumber;
-	String childCatDesc = "test child category " + randomNumber;
-	String editParentCatName = "Parent to Child " + randomNumber;
-	String editChildCatName = "Child to Parent " + randomNumber;
+	int randomNumber3 = Live_Coding_02_Post.randomNumber;
+	String parentCatName = "Parent " + randomNumber3;
+	String parentCatDesc = "test parent category " + randomNumber3;
+	String childCatName = Live_Coding_02_Post.editCategory;
+	String childCatDesc = "test child category " + randomNumber3;
+	String editParentCatName = "Parent to Child " + randomNumber3;
+	String editChildCatName = "Child to Parent " + randomNumber3;
 	
 	WebDriver driver;
 	AdminLoginPO adminLoginPage;

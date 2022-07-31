@@ -23,7 +23,7 @@
 		</packages> -->
 		
 		<classes>
-			<class name="com.wordpress.Live_Coding_02_Category" />
+			<class name="com.wordpress.Live_Coding_02_Post" />
 		</classes>
 		
 	</test>

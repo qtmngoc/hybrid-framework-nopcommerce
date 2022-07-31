@@ -19,7 +19,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pageObjects.wordPress.AdminDashboardPO;
-import pageUIs.wordPress.AdminLoginPUI;
+import pageObjects.wordPress.UserHomePO;
+import pageUIs.wordPress.BasePUI;
 
 public class BasePage {
 
@@ -169,6 +170,11 @@ public class BasePage {
 		WebElement element = waitForElementVisible(driver, dynamicXpath, dynamicValues);
 		element.clear();
 		element.sendKeys(value);
+	}
+	
+	public void clearElementValueByDeleteKey(WebDriver driver, String xpathLocator) {
+		WebElement element = waitForElementVisible(driver, xpathLocator);
+		element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
 	}
 
 	public void selectOptionFromDefaultDropdown(WebDriver driver, String xpathLocator, String textOption) {
@@ -346,12 +352,12 @@ public class BasePage {
 		action.dragAndDrop(waitForElementVisible(driver, sourceXpathLocator), waitForElementVisible(driver, targetXpathLocator)).perform();
 	}
 
-	public void sendKeypressToElement(WebDriver driver, String xpathLocator, Keys key) {
+	public void pressKeyOnElement(WebDriver driver, String xpathLocator, Keys key) {
 		Actions action = new Actions(driver);
 		action.sendKeys(waitForElementVisible(driver, xpathLocator), key).perform();
 	}
 	
-	public void sendKeypressToElement(WebDriver driver, String dynamicXpath, Keys key, String... dynamicValues) {
+	public void pressKeyOnElement(WebDriver driver, String dynamicXpath, Keys key, String... dynamicValues) {
 		Actions action = new Actions(driver);
 		action.sendKeys(waitForElementVisible(driver, dynamicXpath, dynamicValues), key).perform();
 	}
@@ -449,7 +455,7 @@ public class BasePage {
 		return (String) jsExecutor.executeScript("return $(document.evaluate(\"" + xpathLocator + "\", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue).val()");
 	}
 	
-	/*public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
 		String filePath = GlobalConstants.UPLOAD_FILES;
 		
 		String fullFileName = "";
@@ -457,8 +463,8 @@ public class BasePage {
 			fullFileName = fullFileName + filePath + file + "\n";
 		}
 		fullFileName = fullFileName.trim();
-		getElement(driver, BasePageUI.UPLOAD_FILE).sendKeys(fullFileName);
-	}*/
+		getElement(driver, BasePUI.UPLOAD_FILE).sendKeys(fullFileName);
+	}
 
 	public WebElement waitForElementVisible(WebDriver driver, String xpathLocator) {
 		return setExplicitWait(driver, longTimeout).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(xpathLocator)));
@@ -505,11 +511,21 @@ public class BasePage {
 	// ---------------------------------------------------------------------------------------------------------------------
 	// Live Coding
 	public AdminDashboardPO loginToSystem(WebDriver driver, String username, String password) {
-		sendKeysToElement(driver, AdminLoginPUI.USERNAME_TEXTBOX, username);
-		clickOnElement(driver, AdminLoginPUI.CONTINUE_BUTTON);
-		sendKeysToElement(driver, AdminLoginPUI.PASSWORD_TEXTBOX, password);
-		clickOnElement(driver, AdminLoginPUI.LOGIN_BUTTON);
+		sendKeysToElement(driver, BasePUI.USERNAME_TEXTBOX, username);
+		clickOnElement(driver, BasePUI.CONTINUE_BUTTON);
+		sendKeysToElement(driver, BasePUI.PASSWORD_TEXTBOX, password);
+		clickOnElement(driver, BasePUI.LOGIN_BUTTON);
 		return PageGeneratorManager.getAdminDashboardPage(driver);
+	}
+	
+	public AdminDashboardPO openAdminSite(WebDriver driver, String adminUrl) {
+		openPageUrl(driver, adminUrl);
+		return PageGeneratorManager.getAdminDashboardPage(driver);
+	}
+	
+	public UserHomePO openUserSite(WebDriver driver, String userUrl) {
+		openPageUrl(driver, userUrl);
+		return PageGeneratorManager.getUserHomePage(driver);
 	}
 
 	private long longTimeout = GlobalConstants.LONG_TIMEOUT;

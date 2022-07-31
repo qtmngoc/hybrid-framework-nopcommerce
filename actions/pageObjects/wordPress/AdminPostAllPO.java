@@ -19,17 +19,25 @@ public class AdminPostAllPO extends BasePage{
 	}
 
 	public void inputIntoSearchTextbox(String postTitle) {
-		//sendKeysToElement(driver, admin, value);
+		sendKeysToElement(driver, AdminPostAllPUI.SEARCH_TEXTBOX, postTitle);
 	}
 
 	public void clickOnSearchPostsButton() {
-		// TODO Auto-generated method stub
-		
+		clickOnElement(driver, AdminPostAllPUI.SEARCH_POSTS_BUTTON);
 	}
 
-	public boolean isSearchResultTableDisplayed(String columnName, String value) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isPostInfoResultTableDisplayed(String columnName, String infoValue) {
+		return isElementDisplayed(driver, AdminPostAllPUI.POST_INFO_TEXT_BY_COLUMN_NAME, columnName, infoValue);
+	}
+
+	public AdminPostNewPO clickOnPostTitleLink(String title, String postTitle) {
+		clickOnElement(driver, AdminPostAllPUI.POST_INFO_TEXT_BY_COLUMN_NAME, title, postTitle);
+		return PageGeneratorManager.getAdminPostNewPage(driver);
+	}
+
+	public boolean isSearchResultTitleDisplayed(String postTitle) {
+		return isElementDisplayed(driver, AdminPostAllPUI.SEARCH_RESULTS_TEXT_BY_POST_TITLE, postTitle);
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 package pageObjects.wordPress;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import commons.wordPress.BasePage;
@@ -13,25 +14,118 @@ public class AdminPostNewPO extends BasePage{
 		this.driver = driver;
 	}
 
+	public void clickOnPublishOrUpdateButton() {
+		clickOnElement(driver, AdminPostNewPUI.PUBLISH_OR_UPDATE_BUTTON);
+	}
+	
+	public void clickOnPrePublishButton() {
+		clickOnElement(driver, AdminPostNewPUI.PRE_PUBLISH_BUTTON);
+	}
+	
+	public void clickOnWordpressLogo() {
+		clickOnElement(driver, AdminPostNewPUI.WORDPRESS_LOGO);
+	}
+	
+	public void clickOnPostSidebar() {
+		clickOnElement(driver, AdminPostNewPUI.POST_SIDEBAR);
+	}
+	
+	public void clickOnPanelByText(String panelName) {
+		clickOnElement(driver, AdminPostNewPUI.PANEL_BY_TEXT, panelName);
+	}
+	
+	public void clickOnSetFeaturedImageMenu() {
+		clickOnElement(driver, AdminPostNewPUI.SET_FEATURED_IMAGE_MENU);
+	}
+	
+	public void clickOnSetMediaLibraryItem() {
+		clickOnElement(driver, AdminPostNewPUI.MEDIA_LIBRARY_ITEM);
+	}
+	
+	public void clickOnUploadFilesTab() {
+		clickOnElement(driver, AdminPostNewPUI.UPLOAD_FILE_TAB);
+	}
+	
+	public void clickOnSetImageButton() {
+		clickOnElement(driver, AdminPostNewPUI.SET_FEATURED_IMAGE_BUTTON);
+	}
+	
+	public void clickOnAddNewCategoryForm() {
+		clickOnElement(driver, AdminPostNewPUI.ADD_NEW_CATEGORY_FORM);
+	}
+	
+	public void clickOnAddNewCategoryButton() {
+		clickOnElement(driver, AdminPostNewPUI.ADD_NEW_CATEGORY_BUTTON);
+	}
+	
+	public void clickOnReplaceImageMenu() {
+		clickOnElement(driver, AdminPostNewPUI.REPLACE_IMAGE_MENU);
+	}
+	
+	public void clickOnDeleteImageButton() {
+		clickOnElement(driver, AdminPostNewPUI.DELETE_IMAGE_BUTTON);
+	}
+
+	public void clickOnRemoveTagButton(String postTag) {
+		clickOnElement(driver, AdminPostNewPUI.REMOVE_TAG_BUTTON, postTag);
+	}
+	
+	public AdminPostAllPO clickOnAllPostsLink() {
+		clickOnElement(driver, AdminPostNewPUI.ALL_POSTS_LINK);
+		return PageGeneratorManager.getAdminPostAllPage(driver);
+	}
+	
+	public void checkCheckboxByLabel(String labelText) {
+		checkCheckboxOrRadio(driver, AdminPostNewPUI.CHECKBOX_BY_LABEL, labelText);
+	}
+	
+	public void uncheckCheckboxByLabel(String labelText) {
+		uncheckCheckbox(driver, AdminPostNewPUI.CHECKBOX_BY_LABEL, labelText);
+	}
+	
+	public String getImageNameUploaded() {
+		waitForElementVisible(driver, AdminPostNewPUI.DELETE_IMAGE_BUTTON);
+		return getElementText(driver, AdminPostNewPUI.FILE_NAME_UPLOADED_TEXT);
+	}
+	
 	public void inputIntoPostTitle(String postTitle) {
 		sendKeysToElement(driver, AdminPostNewPUI.TITLE_TEXTBOX, postTitle);
 	}
 	
 	public void inputIntoPostBody(String postBody) {
 		clickOnElement(driver, AdminPostNewPUI.BODY_BUTTON);
-		sendKeysToElement(driver, AdminPostNewPUI.BODY_TEXTBOX, postBody);
-	}
-
-	public void clickOnPublishButton(String postBody) {
-		clickOnElement(driver, AdminPostNewPUI.PUBLISH_BUTTON);
+		sendKeysToElement(driver, AdminPostNewPUI.BODY_TEXTAREA, postBody);
 	}
 	
-	public void clickOnPrePublishButton(String postBody) {
-		clickOnElement(driver, AdminPostNewPUI.PRE_PUBLISH_BUTTON);
+	public void inputIntoEditPostBody(String editBody) {
+		clickOnElement(driver, AdminPostNewPUI.BODY_TEXTAREA);
+		clearElementValueByDeleteKey(driver, AdminPostNewPUI.BODY_TEXTAREA);
+		sendKeysToElement(driver, AdminPostNewPUI.BODY_TEXTAREA, editBody);
+	}
+	
+	public void inputIntoSearchCategoryTextbox(String categoryName) {
+		sendKeysToElement(driver, AdminPostNewPUI.SEARCH_CATEGORY_TEXTBOX, categoryName);
+	}
+	
+	public void inputIntoAddNewTagTextbox(String tagName) {
+		sendKeysToElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, tagName);
+		pressKeyOnElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, Keys.ENTER);
+	}
+	
+	public void inputIntoNewCategoryTextbox(String categoryName) {
+		sendKeysToElement(driver, AdminPostNewPUI.NEW_CATEGORY_TEXTBOX, categoryName);
+	}
+	
+	public void inputIntoSearchImageTextbox(String imageName) {
+		sendKeysToElement(driver, AdminPostNewPUI.SEARCH_IMAGE_TEXTBOX, imageName);
 	}
 
-	public boolean isPostPublishedMessageDisplayed(String postPublishedMessage) {
-		return isElementDisplayed(driver, AdminPostNewPUI.PUBLISHED_MESSAGE, postPublishedMessage);
+	public boolean isPostPublishedOrUpdatedMessageDisplayed(String postPublishedMessage) {
+		return isElementDisplayed(driver, AdminPostNewPUI.PUBLISHED_OR_UPDATED_MESSAGE, postPublishedMessage);
+	}
+	
+	public boolean isImageUploaded(String imageUploadedName) {
+		return isElementDisplayed(driver, AdminPostNewPUI.FILE_NAME_UPLOADED_IMAGE, imageUploadedName);
 	}
 
 	public AdminPostAllPO openAllPostsPage(String allPostsUrl) {
@@ -39,13 +133,12 @@ public class AdminPostNewPO extends BasePage{
 		return PageGeneratorManager.getAdminPostAllPage(driver);
 	}
 
-	public void clickOnWordpressButton() {
-		clickOnElement(driver, AdminPostNewPUI.WORDPRESS_BUTTON);
+	public void selectItemFromParentCategoryDropdown(String categoryItem) {
+		selectOptionFromDefaultDropdown(driver, AdminPostNewPUI.PARENT_CATEGORY_DROPDOWN, categoryItem);
 	}
 
-	public AdminPostAllPO clickOnAllPostsLink() {
-		clickOnElement(driver, AdminPostNewPUI.ALL_POSTS_LINK);
-		return PageGeneratorManager.getAdminPostAllPage(driver);
+	public void selectPostImage(String postImage) {
+		clickOnElement(driver, AdminPostNewPUI.IMAGE_CHECKBOX, postImage);
 	}
 
 }
