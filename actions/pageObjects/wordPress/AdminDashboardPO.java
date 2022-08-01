@@ -23,9 +23,15 @@ public class AdminDashboardPO extends BasePage{
 	}
 
 	public AdminCategoryPO clickOnPostsCategoriesMenuLink() {
-		clickOnElement(driver, AdminDashboardPUI.POST_MENU);
+		sleepInSecond(3);
+		mouseHoverOnElement(driver, AdminDashboardPUI.POST_MENU);
 		clickOnElement(driver, AdminDashboardPUI.CATEGORY_LINK);
 		return PageGeneratorManager.getAdminCategoryPage(driver);
+	}
+	
+	public AdminPageAllPO clickOnPageMenuLink() {
+		clickOnElement(driver, AdminDashboardPUI.PAGE_LINK);
+		return PageGeneratorManager.getAdminPageAllPage(driver);
 	}
 
 }

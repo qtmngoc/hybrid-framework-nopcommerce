@@ -28,6 +28,7 @@ public class AdminCategoryPO extends BasePage{
 
 	public void inputIntoSearchTextbox(String categoryName) {
 		sendKeysToElement(driver, AdminCategoryPUI.SEARCH_TEXTBOX, categoryName);
+		sleepInSecond(1);
 	}
 	
 	public void clickOnEllipsisMenu(String categoryName, String menuItem) {
@@ -46,9 +47,8 @@ public class AdminCategoryPO extends BasePage{
 		waitForElementUndisplayed(driver, AdminCategoryPUI.DIALOG_ADD_OR_UPDATE_OR_OK_BUTTON);
 	}
 
-	public void clickOnCloseIcon() {
+	public void clickOnCloseSearchIcon() {
 		clickOnElement(driver, AdminCategoryPUI.CLOSE_ICON);
-		//sendKeysToElement(driver, AdminCategoryPUI.SEARCH_TEXTBOX, "");
 	}
 	
 	public void clickOnTopLevelToggle() {

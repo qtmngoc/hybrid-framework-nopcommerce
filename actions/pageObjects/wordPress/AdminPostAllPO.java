@@ -35,9 +35,33 @@ public class AdminPostAllPO extends BasePage{
 		return PageGeneratorManager.getAdminPostNewPage(driver);
 	}
 
-	public boolean isSearchResultTitleDisplayed(String postTitle) {
+	public boolean isSearchResultsTitleDisplayed(String postTitle) {
 		return isElementDisplayed(driver, AdminPostAllPUI.SEARCH_RESULTS_TEXT_BY_POST_TITLE, postTitle);
 		
+	}
+
+	public void checkPostTitleCheckbox(String postTitle) {
+		checkCheckboxOrRadio(driver, AdminPostAllPUI.ROW_CHECKBOX_BY_POST_TITLE, postTitle);
+	}
+
+	public void selectItemFromBulkActionsDropdown(String itemValue) {
+		selectOptionFromDefaultDropdown(driver, AdminPostAllPUI.BULK_ACTIONS_DROPDOWN, itemValue);
+	}
+
+	public void clickOnApplyButton() {
+		clickOnElement(driver, AdminPostAllPUI.APPLY_BUTTON);
+	}
+
+	public boolean isDeletePostMessageDisplayed(String message) {
+		return isElementDisplayed(driver, AdminPostAllPUI.MOVE_TO_TRASH_MESSAGE, message);
+	}
+
+	public boolean isNoPostsFoundMessageDisplayed() {
+		return isElementDisplayed(driver, AdminPostAllPUI.NO_POST_FOUND_MESSAGE);
+	}
+
+	public String getSearchResultsTitle() {
+		return getElementText(driver, AdminPostAllPUI.SEARCH_RESULTS_TITLE);
 	}
 
 }

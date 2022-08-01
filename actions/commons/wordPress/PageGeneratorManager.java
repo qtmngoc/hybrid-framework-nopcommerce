@@ -5,9 +5,12 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.wordPress.AdminCategoryPO;
 import pageObjects.wordPress.AdminDashboardPO;
 import pageObjects.wordPress.AdminLoginPO;
+import pageObjects.wordPress.AdminPageAllPO;
+import pageObjects.wordPress.AdminPageNewPO;
 import pageObjects.wordPress.AdminPostAllPO;
 import pageObjects.wordPress.AdminPostNewPO;
 import pageObjects.wordPress.UserHomePO;
+import pageObjects.wordPress.UserPageDetailPO;
 import pageObjects.wordPress.UserPostDetailPO;
 import pageObjects.wordPress.UserSearchPO;
 
@@ -29,6 +32,14 @@ public class PageGeneratorManager {
 		return new AdminPostNewPO(driver);
 	}
 	
+	public static AdminPageAllPO getAdminPageAllPage(WebDriver driver) {
+		return new AdminPageAllPO(driver);
+	}
+	
+	public static AdminPageNewPO getAdminPageNewPage(WebDriver driver) {
+		return new AdminPageNewPO(driver);
+	}
+	
 	public static AdminCategoryPO getAdminCategoryPage(WebDriver driver) {
 		return new AdminCategoryPO(driver);
 	}
@@ -41,10 +52,12 @@ public class PageGeneratorManager {
 		return new UserPostDetailPO(driver);
 	}
 	
+	public static UserPageDetailPO getUserPageDetailPage(WebDriver driver) {
+		return new UserPageDetailPO(driver);
+	}
+	
 	public static UserSearchPO getUserSearchPage(WebDriver driver) {
 		return new UserSearchPO(driver);
 	}
-	
-	
 	
 }

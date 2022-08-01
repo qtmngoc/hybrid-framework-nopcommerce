@@ -13,12 +13,12 @@ public class UserSearchPO extends BasePage{
 		this.driver = driver;
 	}
 
-	public boolean isSearchResultTitleDisplayed(String postTitle) {
+	public boolean isSearchResultsTitleDisplayed(String postTitle) {
 		return isElementDisplayed(driver, UserSearchPUI.SEARCH_RESULTS_TEXT_BY_POST_TITLE, postTitle);
 	}
 
-	public boolean isOnePostMessageDisplayed() {
-		return isElementDisplayed(driver, UserSearchPUI.ONE_POST_MESSAGE);
+	public boolean isOnePostMessageDisplayed(String message) {
+		return isElementDisplayed(driver, UserSearchPUI.ONE_POST_MESSAGE, message);
 	}
 	
 	public boolean isPostTitleDisplayed(String postTitle) {
@@ -45,6 +45,10 @@ public class UserSearchPO extends BasePage{
 	public UserPostDetailPO clickOnPostTitleLink(String postTitle) {
 		clickOnElement(driver, UserSearchPUI.POST_TITLE_TEXT, postTitle);
 		return PageGeneratorManager.getUserPostDetailPage(driver);
+	}
+
+	public boolean isSearchResultsMessageDisplayed() {
+		return isElementDisplayed(driver, UserSearchPUI.SEARCH_RESULTS_MESSAGE);
 	}
 
 }
