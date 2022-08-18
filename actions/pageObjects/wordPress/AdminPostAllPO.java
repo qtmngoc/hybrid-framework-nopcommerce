@@ -64,4 +64,9 @@ public class AdminPostAllPO extends BasePage{
 		return getElementText(driver, AdminPostAllPUI.SEARCH_RESULTS_TITLE);
 	}
 
+	public Object getNoPostsFoundMessage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

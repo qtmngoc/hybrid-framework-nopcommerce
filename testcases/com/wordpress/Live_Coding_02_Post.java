@@ -71,19 +71,19 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostNewPage.clickOnPanelByText("Featured image");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Open 'Set featured image' menu and click on 'Media Library' item.");
-		adminPostNewPage.clickOnSetFeaturedImageMenu();
-		adminPostNewPage.clickOnSetMediaLibraryItem();
+		adminPostNewPage.clickOnImageMenu("Set featured image");
+		adminPostNewPage.clickOnMediaLibraryItem();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Switch to 'Upload files' tab and upload image.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Switch to 'Upload files' tab and upload \"" + postImage + "\".");
 		adminPostNewPage.clickOnUploadFilesTab();
 		adminPostNewPage.uploadMultipleFiles(driver, postImage);
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Get image name after uploaded.");
-		imageUploadedName = adminPostNewPage.getImageNameUploaded();
+		uploadedImageName = adminPostNewPage.getUploadedImageName();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Click on 'Set featured image' button and verify image is uploaded.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Click on 'Set featured image' button and verify \"" + uploadedImageName + "\" is uploaded.");
 		adminPostNewPage.clickOnSetImageButton();
-		verifyTrue(adminPostNewPage.isImageUploaded(imageUploadedName));
+		verifyTrue(adminPostNewPage.isImageUploaded(uploadedImageName));
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on 'Publish' and 'Pre-publish' button.");
 		adminPostNewPage.clickOnPublishOrUpdateButton();
@@ -94,8 +94,8 @@ public class Live_Coding_02_Post extends BaseTest {
 	}
 	
 	@Test
-	public void Post_02_Search_Post(Method method) {
-		ExtentTestManagerV5.startTest(method.getName(), "Search for newly created post at Admin site and User site");
+	public void Post_02_Search_And_View_Post(Method method) {
+		ExtentTestManagerV5.startTest(method.getName(), "Search and view newly created post at Admin and User sites");
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on Wordpress logo and navigate to Admin ALL POSTS page.");
 		adminPostNewPage.clickOnWordpressLogo();
@@ -106,18 +106,13 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostAllPage.clickOnSearchPostsButton();
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Verify 'Search results' title contains \"" + postTitle + "\".");
-		//verifyTrue(adminPostAllPage.isSearchResultsTitleDisplayed(postTitle));
 		verifyEquals(adminPostAllPage.getSearchResultsTitle(), "Search results for: " + postTitle);
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Verify post Title, Author, Category, Tag are displayed.");
-		//verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Title", postTitle));
-		//verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Author", authorName));
-		//verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Categories", postCategory));
-		//verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Tags", postTag));
-		verifyEquals(adminPostAllPage.getPostInfoRowByColumnTitle("Title"), postTitle);
-		verifyEquals(adminPostAllPage.isPostInfoResultTableDisplayed("Author"), authorName);
-		verifyEquals(adminPostAllPage.isPostInfoResultTableDisplayed("Categories"), postCategory);
-		verifyEquals(adminPostAllPage.isPostInfoResultTableDisplayed("Tags"), postTag);
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Title", postTitle));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Author", authorName));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Categories", postCategory));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Tags", postTag));
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Open User HOME page.");
 		userHomePage = adminPostAllPage.openUserSite(driver, this.userUrl);
@@ -131,41 +126,36 @@ public class Live_Coding_02_Post extends BaseTest {
 		userSearchPage = userHomePage.clickOnSearchButton();
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify 'Search Results' title contains \"" + postTitle + "\".");
-		verifyTrue(userSearchPage.isSearchResultsTitleDisplayed(postTitle));
+		verifyEquals(userSearchPage.getSearchResultsTitle(), "Search Results for: " + postTitle);
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Verify '1 Post' is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify post Title, Image, Category, Published Date are displayed.");
-		verifyTrue(userSearchPage.isPostTitleDisplayed(postTitle));
-		verifyTrue(userSearchPage.isPostImageDisplayed(postTitle, imageUploadedName));
+		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(postTitle));
+		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(postTitle, uploadedImageName));
 		verifyTrue(userSearchPage.isPostCategoryDisplayed(postTitle, postCategory));
-		verifyTrue(userSearchPage.isPostPublishedDateDisplayed(postTitle, publishedDate));
-	}
-	
-	@Test
-	public void Post_03_View_Post(Method method) {
-		ExtentTestManagerV5.startTest(method.getName(), "View newly created post at User site");
+		verifyTrue(userSearchPage.isPostOrPublishedDateDisplayed(postTitle, publishedDate));
 
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Navigate to User HOME page");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Navigate to User HOME page");
 		userHomePage = userSearchPage.clickOnHomePageLink();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Verify post Title, Image, Category, Published Date are displayed.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify post Title, Image, Category, Published Date are displayed.");
 		verifyTrue(userHomePage.isPostTitleDisplayed(postTitle));
-		verifyTrue(userHomePage.isPostImageDisplayed(postTitle, imageUploadedName));
+		verifyTrue(userHomePage.isPostImageDisplayed(postTitle, uploadedImageName));
 		verifyTrue(userHomePage.isPostCategoryDisplayed(postTitle, postCategory));
 		verifyTrue(userHomePage.isPostPublishedDateDisplayed(postTitle, publishedDate));
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Navigate to User POST DETAILS page");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Navigate to User POST DETAILS page");
 		userPostDetailPage = userHomePage.clickOnPostTitleLink(postTitle);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Verify post Title, Image, Category, Published Date are displayed.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Verify post Title, Image, Category, Published Date are displayed.");
 		verifyTrue(userPostDetailPage.isPostTitleDisplayed(postTitle));
-		verifyTrue(userPostDetailPage.isPostImageDisplayed(imageUploadedName));
+		verifyTrue(userPostDetailPage.isPostImageDisplayed(uploadedImageName));
 		verifyTrue(userPostDetailPage.isPostCategoryDisplayed(postCategory));
 		verifyTrue(userPostDetailPage.isPostPublishedDateDisplayed(publishedDate));
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Verify post Body, Author, Tag, Comment textarea are displayed.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Verify post Body, Author, Tag, Comment textarea are displayed.");
 		verifyTrue(userPostDetailPage.isPostBodyDisplayed(postBody));
 		verifyTrue(userPostDetailPage.isPostAuthorDisplayed(authorName));
 		verifyTrue(userPostDetailPage.isPostTagDisplayed(postTag));
@@ -173,7 +163,7 @@ public class Live_Coding_02_Post extends BaseTest {
 	}
 	
 	@Test
-	public void Post_04_Edit_Post(Method method) {
+	public void Post_03_Edit_Post(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Edit post at Admin site");
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Open Admin DASHBOARD page and navigate to Admin ALL POSTS page.");
@@ -184,7 +174,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostAllPage.inputIntoSearchTextbox(postTitle);		
 		adminPostAllPage.clickOnSearchPostsButton();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on \"" + postTitle + "\" link and navigate to Admin EDIT POST page.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on \"" + postTitle + "\" link to navigate to Admin EDIT POST page.");
 		adminPostNewPage = adminPostAllPage.clickOnPostTitleLink("Title", postTitle);
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editTitle + "\" into 'Post Title'.");
@@ -213,10 +203,10 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostNewPage.clickOnPanelByText("Featured image");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Open 'Replace Image' menu and click on 'Media Library' item.");
-		adminPostNewPage.clickOnReplaceImageMenu();
-		adminPostNewPage.clickOnSetMediaLibraryItem();
+		adminPostNewPage.clickOnImageMenu("Replace Image");
+		adminPostNewPage.clickOnMediaLibraryItem();
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Select \"" + postImage + "\" and click on 'Delete permanently'.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Select \"" + uploadedImageName + "\" and click on 'Delete permanently' button.");
 		adminPostNewPage.clickOnDeleteImageButton();
 		adminPostNewPage.accepAlert(driver);
 		
@@ -224,7 +214,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostNewPage.inputIntoSearchImageTextbox(editImage);
 		adminPostNewPage.selectPostImage(editImage);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on 'Set featured image' button and verify image is uploaded.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on 'Set featured image' button and verify \"" + editImage + ".jpg\" is uploaded.");
 		adminPostNewPage.clickOnSetImageButton();
 		verifyTrue(adminPostNewPage.isImageUploaded(editImage));
 		
@@ -240,8 +230,8 @@ public class Live_Coding_02_Post extends BaseTest {
 	}
 	
 	@Test
-	public void Post_05_Search_And_View_Post_After_Edit(Method method) {
-		ExtentTestManagerV5.startTest(method.getName(), "Search and view after editing post at Admin site and User site");
+	public void Post_04_Search_And_View_Post_After_Edit(Method method) {
+		ExtentTestManagerV5.startTest(method.getName(), "Search and view after editing post at Admin and User sites");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on Wordpress logo and navigate to Admin ALL POSTS page.");
 		adminPostNewPage.clickOnWordpressLogo();
@@ -252,7 +242,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostAllPage.clickOnSearchPostsButton();
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Verify 'Search results' title contains \"" + editTitle + "\".");
-		verifyTrue(adminPostAllPage.isSearchResultsTitleDisplayed(editTitle));
+		verifyEquals(adminPostAllPage.getSearchResultsTitle(), "Search results for: " + editTitle);
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Verify post Title, Author, Category, Tag are displayed.");
 		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed("Title", editTitle));
@@ -271,16 +261,16 @@ public class Live_Coding_02_Post extends BaseTest {
 		userSearchPage = userHomePage.clickOnSearchButton();
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify 'Search Results' title contains \"" + editTitle + "\".");
-		verifyTrue(userSearchPage.isSearchResultsTitleDisplayed(editTitle));
-
+		verifyEquals(userSearchPage.getSearchResultsTitle(), "Search Results for: " + editTitle);
+		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Verify '1 Post' is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify post Title, Image, Category, Published Date are displayed.");
-		verifyTrue(userSearchPage.isPostTitleDisplayed(editTitle));
-		verifyTrue(userSearchPage.isPostImageDisplayed(editTitle, editImage));
+		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(editTitle));
+		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(editTitle, editImage));
 		verifyTrue(userSearchPage.isPostCategoryDisplayed(editTitle, editCategory));
-		verifyTrue(userSearchPage.isPostPublishedDateDisplayed(editTitle, publishedDate));
+		verifyTrue(userSearchPage.isPostOrPublishedDateDisplayed(editTitle, publishedDate));
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Navigate to User POST DETAILS page");
 		userPostDetailPage = userSearchPage.clickOnPostTitleLink(editTitle);
@@ -301,7 +291,7 @@ public class Live_Coding_02_Post extends BaseTest {
 	}
 	
 	@Test
-	public void Post_06_Delete_Post(Method method) {
+	public void Post_05_Delete_Post(Method method) {
 		ExtentTestManagerV5.startTest(method.getName(), "Delete post at Admin site");
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Open Admin DASHBOARD page and navigate to Admin ALL POSTS page.");
@@ -346,7 +336,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	String adminUrl, userUrl, imageUploadedName;
+	String adminUrl, userUrl, uploadedImageName;
 	static int randomNumber2 = generateFakeNumber();
 	String authorName = "Automation FC";
 	String postTitle = "[Annie]_New-post-title_" + randomNumber2;

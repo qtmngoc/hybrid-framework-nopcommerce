@@ -18,13 +18,13 @@
 	<test name="Run on Firefox">
 		<parameter name="browser" value="Firefox" />
 		
-		<!-- <packages>
+		<packages>
 			<package name="com.wordpress" />
-		</packages> -->
+		</packages>
 		
-		<classes>
-			<class name="com.wordpress.Live_Coding_02_Post" />
-		</classes>
+		<!-- <classes>
+			<class name="com.wordpress.Live_Coding_04_Page" />
+		</classes> -->
 		
 	</test>
 

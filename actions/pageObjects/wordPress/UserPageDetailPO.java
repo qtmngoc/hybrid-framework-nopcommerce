@@ -3,7 +3,8 @@ package pageObjects.wordPress;
 import org.openqa.selenium.WebDriver;
 
 import commons.wordPress.BasePage;
-import pageUIs.wordPress.UserPostDetailPUI;
+import commons.wordPress.PageGeneratorManager;
+import pageUIs.wordPress.UserPageDetailPUI;
 
 public class UserPageDetailPO extends BasePage {
 	WebDriver driver;
@@ -12,39 +13,29 @@ public class UserPageDetailPO extends BasePage {
 		this.driver = driver;
 	}
 
-	public boolean isPostTitleDisplayed(String postTitle) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_TITLE_TEXT, postTitle);
-	}
-
-	public boolean isPostImageDisplayed(String imageUploadedName) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_IMAGE, imageUploadedName);
-	}
-
-	public boolean isPostCategoryDisplayed(String postCategory) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_CATEGORY_TEXT, postCategory);
-	}
-
-	public boolean isPostPublishedDateDisplayed(String publishedDate) {
-		return isElementDisplayed(driver, UserPostDetailPUI.PUBLISHED_DATE_TEXT, publishedDate);
-	}
-
-	public boolean isPostBodyDisplayed(String postBody) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_BODY_TEXT, postBody);
-	}
-
-	public boolean isPostAuthorDisplayed(String authorName) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_AUTHOR_TEXT, authorName);
-	}
-
-	public boolean isPostTagDisplayed(String postTag) {
-		return isElementDisplayed(driver, UserPostDetailPUI.POST_TAG_TEXT, postTag);
-	}
-
 	public boolean isCommentTextareaDisplayed() {
-		return isElementDisplayed(driver, UserPostDetailPUI.COMMENT_TEXTAREA);
+		return isElementDisplayed(driver, UserPageDetailPUI.COMMENT_TEXTAREA);
 	}
 
 	public boolean isCommentTextareaUndisplayed() {
-		return isElementUndisplayed(driver, UserPostDetailPUI.COMMENT_TEXTAREA);
+		return isElementUndisplayed(driver, UserPageDetailPUI.COMMENT_TEXTAREA);
 	}
+
+	public boolean isPageTitleDisplayed(String pageTitle) {
+		return isElementDisplayed(driver, UserPageDetailPUI.PAGE_TITLE, pageTitle);
+	}
+
+	public boolean isPageImageDisplayed(String pageTitle, String uploadedImageName) {
+		return isElementDisplayed(driver, UserPageDetailPUI.PAGE_IMAGE, pageTitle, uploadedImageName);
+	}
+
+	public boolean isPageBodyDisplayed(String pageBody) {
+		return isElementDisplayed(driver, UserPageDetailPUI.PAGE_BODY, pageBody);
+	}
+	
+	public UserHomePO clickOnHomePageLink() {
+		clickOnElement(driver, UserPageDetailPUI.HOME_PAGE_LINK);
+		return PageGeneratorManager.getUserHomePage(driver);
+	}
+	
 }

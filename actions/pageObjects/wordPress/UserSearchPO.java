@@ -21,11 +21,11 @@ public class UserSearchPO extends BasePage{
 		return isElementDisplayed(driver, UserSearchPUI.ONE_POST_MESSAGE, message);
 	}
 	
-	public boolean isPostTitleDisplayed(String postTitle) {
-		return isElementDisplayed(driver, UserSearchPUI.POST_TITLE_TEXT, postTitle);
+	public boolean isPostOrPageTitleDisplayed(String postTitle) {
+		return isElementDisplayed(driver, UserSearchPUI.POST_OR_PAGE_TITLE_TEXT, postTitle);
 	}
 
-	public boolean isPostImageDisplayed(String postTitle, String imageUploadedName) {
+	public boolean isPostOrPageImageDisplayed(String postTitle, String imageUploadedName) {
 		return isElementDisplayed(driver, UserSearchPUI.POST_IMAGE_BY_POST_TITLE, postTitle, imageUploadedName);
 	}
 
@@ -33,7 +33,7 @@ public class UserSearchPO extends BasePage{
 		return isElementDisplayed(driver, UserSearchPUI.POST_CATEGORY_TEXT_BY_POST_TITLE, postTitle, categoryName);
 	}
 
-	public boolean isPostPublishedDateDisplayed(String postTitle, String publishedDate) {
+	public boolean isPostOrPublishedDateDisplayed(String postTitle, String publishedDate) {
 		return isElementDisplayed(driver, UserSearchPUI.POST_PUBLISHED_DATE_TEXT_BY_POST_TITLE, postTitle, publishedDate);
 	}
 
@@ -43,12 +43,34 @@ public class UserSearchPO extends BasePage{
 	}
 
 	public UserPostDetailPO clickOnPostTitleLink(String postTitle) {
-		clickOnElement(driver, UserSearchPUI.POST_TITLE_TEXT, postTitle);
+		clickOnElement(driver, UserSearchPUI.POST_OR_PAGE_TITLE_TEXT, postTitle);
 		return PageGeneratorManager.getUserPostDetailPage(driver);
 	}
 
 	public boolean isSearchResultsMessageDisplayed() {
 		return isElementDisplayed(driver, UserSearchPUI.SEARCH_RESULTS_MESSAGE);
 	}
+
+	public String getSearchResultsTitle() {
+		return getElementText(driver, UserSearchPUI.SEARCH_RESULTS_TITLE);
+	}
+
+	public UserPageDetailPO clickOnPageTitleLink(String pageTitle) {
+		clickOnElement(driver, UserSearchPUI.POST_OR_PAGE_TITLE_TEXT, pageTitle);
+		return PageGeneratorManager.getUserPageDetailPage(driver);
+	}
+
+	public void clickOnSearchToggle() {
+		clickOnElement(driver, UserSearchPUI.SEARCH_TOGGLE);
+	}
+
+	public void inputIntoSearchTextbox(String postTitle) {
+		sendKeysToElement(driver, UserSearchPUI.SEARCH_TEXTBOX, postTitle);
+	}
+
+	public void clickOnSearchButton() {
+		clickOnElement(driver, UserSearchPUI.SEARCH_BUTTON);
+	}
+
 
 }

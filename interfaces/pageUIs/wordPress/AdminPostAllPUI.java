@@ -12,6 +12,6 @@ public class AdminPostAllPUI {
 	public static final String POST_INFO_TEXT_BY_COLUMN_NAME = "//table//td[@data-colname='%s']//a[text()='%s']";
 	public static final String SEARCH_TEXTBOX = "//input[@id='post-search-input']";
 	public static final String SEARCH_RESULTS_TEXT_BY_POST_TITLE = "//span[@class='subtitle']/strong[text()='%s']";
-	public static final String SEARCH_RESULTS_TITLE = "//span[@class='subtitle']";
+	public static final String SEARCH_RESULTS_TITLE = "//span[contains(text(), 'Search results')]";
 	
 }

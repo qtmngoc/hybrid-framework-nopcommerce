@@ -34,11 +34,7 @@ public class AdminPostNewPO extends BasePage{
 		clickOnElement(driver, AdminPostNewPUI.PANEL_BY_TEXT, panelName);
 	}
 	
-	public void clickOnSetFeaturedImageMenu() {
-		clickOnElement(driver, AdminPostNewPUI.SET_FEATURED_IMAGE_MENU);
-	}
-	
-	public void clickOnSetMediaLibraryItem() {
+	public void clickOnMediaLibraryItem() {
 		clickOnElement(driver, AdminPostNewPUI.MEDIA_LIBRARY_ITEM);
 	}
 	
@@ -58,8 +54,8 @@ public class AdminPostNewPO extends BasePage{
 		clickOnElement(driver, AdminPostNewPUI.ADD_NEW_CATEGORY_BUTTON);
 	}
 	
-	public void clickOnReplaceImageMenu() {
-		clickOnElement(driver, AdminPostNewPUI.REPLACE_IMAGE_MENU);
+	public void clickOnImageMenu(String textValue) {
+		clickOnElement(driver, AdminPostNewPUI.IMAGE_MENU, textValue);
 	}
 	
 	public void clickOnDeleteImageButton() {
@@ -83,9 +79,9 @@ public class AdminPostNewPO extends BasePage{
 		uncheckCheckbox(driver, AdminPostNewPUI.CHECKBOX_BY_LABEL, labelText);
 	}
 	
-	public String getImageNameUploaded() {
+	public String getUploadedImageName() {
 		waitForElementVisible(driver, AdminPostNewPUI.DELETE_IMAGE_BUTTON);
-		return getElementText(driver, AdminPostNewPUI.FILE_NAME_UPLOADED_TEXT);
+		return getElementText(driver, AdminPostNewPUI.UPLOADED_IMAGE_NAME);
 	}
 	
 	public void inputIntoPostTitle(String postTitle) {
@@ -124,8 +120,8 @@ public class AdminPostNewPO extends BasePage{
 		return isElementDisplayed(driver, AdminPostNewPUI.PUBLISHED_OR_UPDATED_MESSAGE, postPublishedMessage);
 	}
 	
-	public boolean isImageUploaded(String imageUploadedName) {
-		return isElementDisplayed(driver, AdminPostNewPUI.FILE_NAME_UPLOADED_IMAGE, imageUploadedName);
+	public boolean isImageUploaded(String uploadedImageName) {
+		return isElementDisplayed(driver, AdminPostNewPUI.UPLOADED_IMAGE, uploadedImageName);
 	}
 
 	public AdminPostAllPO openAllPostsPage(String allPostsUrl) {

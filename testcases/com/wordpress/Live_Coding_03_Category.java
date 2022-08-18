@@ -106,7 +106,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Enter \"" + childCatName + "\" into 'Search' textbox.");
 		adminCategoryPage.inputIntoSearchTextbox(childCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Edit'.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(childCatName, "Edit");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + editChildCatName + "\" into 'New Category Name' textbox.");
@@ -132,7 +132,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Enter \"" + parentCatName + "\" into 'Search' textbox.");
 		adminCategoryPage.inputIntoSearchTextbox(parentCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Edit'.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(parentCatName, "Edit");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + editParentCatName + "\" into 'New Category Name' textbox.");
@@ -181,7 +181,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Enter \"" + editChildCatName + "\" into 'Search' textbox.");
 		adminCategoryPage.inputIntoSearchTextbox(editChildCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Delete'.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Open 'Ellipsis' menu and click on 'Delete' item.");
 		adminCategoryPage.clickOnEllipsisMenu(editChildCatName, "Delete");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Verify confirm delete message contains \"" + editChildCatName + "\".");
@@ -199,7 +199,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + editParentCatName + "\" into 'Search' textbox.");
 		adminCategoryPage.inputIntoSearchTextbox(editParentCatName);
 		
-		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Open 'Ellipsis' menu and click on 'Delete'.");
+		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Open 'Ellipsis' menu and click on 'Delete' item.");
 		adminCategoryPage.clickOnEllipsisMenu(editParentCatName, "Delete");
 		
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Verify confirm delete message contains \"" + editParentCatName + "\".");
