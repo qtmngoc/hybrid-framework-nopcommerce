@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="WordPress - Admin">
+<suite name="WordPress">
 
 	<listeners>
-		<!-- <listener class-name="commons.wordPress.MethodListener" /> -->
-		<!-- <listener class-name="reportConfig.wordPress.ReportNGListener" /> -->
-		<!-- <listener class-name="org.uncommons.reportng.HTMLReporter" /> -->
-		<!-- <listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> -->
 		<listener class-name="reportConfig.wordPress.ExtentTestListenerV5" />
-		<!-- <listener class-name="reportConfig.wordPress.AllureTestListener" /> -->
 	</listeners>
 
 	<parameter name="adminUrl" value="https://automationfc.wordpress.com/wp-admin/" />
 	<parameter name="userUrl" value="https://automationfc.wordpress.com/" />
 
 	<test name="Run on Firefox">
-		<parameter name="browser" value="Firefox" />
-		
+		<parameter name="browser" value="Firefox" />	
 		<packages>
 			<package name="com.wordpress" />
 		</packages>
-		
-		<!-- <classes>
-			<class name="com.wordpress.Live_Coding_04_Page" />
-		</classes> -->
-		
 	</test>
 
 	<!--	

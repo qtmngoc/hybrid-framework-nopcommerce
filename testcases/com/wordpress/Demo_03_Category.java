@@ -17,7 +17,7 @@ import pageObjects.wordPress.AdminDashboardPO;
 import pageObjects.wordPress.AdminLoginPO;
 import reportConfig.wordPress.ExtentTestManagerV5;
 
-public class Live_Coding_03_Category extends BaseTest {
+public class Demo_03_Category extends BaseTest {
 	
 	@Parameters({ "browser", "adminUrl" })
 	@BeforeClass
@@ -25,7 +25,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		driver = getBrowserDriver(browserName, adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Live_Coding_01_Login.username, Live_Coding_01_Login.password);
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
 		
 		adminCategoryPage = adminDashboardPage.clickOnPostsCategoriesMenuLink();
 	}
@@ -220,7 +220,7 @@ public class Live_Coding_03_Category extends BaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	int randomNumber3 = Live_Coding_02_Post.randomNumber2;
+	int randomNumber3 = Demo_01_Login.randomNumber1;
 	String parentCatName = "Parent " + randomNumber3;
 	String parentCatDesc = "test parent category " + randomNumber3;
 	String childCatName = "Child " + randomNumber3;

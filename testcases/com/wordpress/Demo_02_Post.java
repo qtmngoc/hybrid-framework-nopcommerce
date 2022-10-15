@@ -21,7 +21,7 @@ import pageObjects.wordPress.UserPostDetailPO;
 import pageObjects.wordPress.UserSearchPO;
 import reportConfig.wordPress.ExtentTestManagerV5;
 
-public class Live_Coding_02_Post extends BaseTest {
+public class Demo_02_Post extends BaseTest {
 	
 	@Parameters({ "browser", "adminUrl", "userUrl" })
 	@BeforeClass
@@ -32,7 +32,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		driver = getBrowserDriver(browserName, this.adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Live_Coding_01_Login.username, Live_Coding_01_Login.password);
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
 		
 		adminPostAllPage = adminDashboardPage.clickOnPostMenu();
 	}
@@ -66,6 +66,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Expand 'Tags' panel and enter \"" + postTag + "\" into 'Add New Tag' textbox.");
 		adminPostNewPage.clickOnPanelByText("Tags");
 		adminPostNewPage.inputIntoAddNewTagTextbox(postTag);
+		verifyTrue(adminPostNewPage.isRemoveTagButtonDisplayed(postTag));
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Expand 'Featured image' panel.");
 		adminPostNewPage.clickOnPanelByText("Featured image");
@@ -198,6 +199,7 @@ public class Live_Coding_02_Post extends BaseTest {
 		adminPostNewPage.clickOnPanelByText("Tags");
 		adminPostNewPage.clickOnRemoveTagButton(postTag);
 		adminPostNewPage.inputIntoAddNewTagTextbox(editTag);
+		verifyTrue(adminPostNewPage.isRemoveTagButtonDisplayed(editTag));
 
 		ExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Expand 'Featured image' panel.");
 		adminPostNewPage.clickOnPanelByText("Featured image");
@@ -337,10 +339,10 @@ public class Live_Coding_02_Post extends BaseTest {
 	}
 	
 	String adminUrl, userUrl, uploadedImageName;
-	static int randomNumber2 = generateFakeNumber();
+	int randomNumber2 = Demo_01_Login.randomNumber1;
 	String authorName = "Automation FC";
 	String postTitle = "[Annie]_New-post-title_" + randomNumber2;
-	String postBody = "Live Coding: post body " + randomNumber2;
+	String postBody = "Coding Demo: post body " + randomNumber2;
 	String postCategory = "Annie_new-category-2022";
 	String postTag = "annie_tag_" + randomNumber2; 
 	String postImage = "annie_sunflower.jpg";

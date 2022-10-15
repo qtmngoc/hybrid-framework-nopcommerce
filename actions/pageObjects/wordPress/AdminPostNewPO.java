@@ -1,6 +1,5 @@
 package pageObjects.wordPress;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 import commons.wordPress.BasePage;
@@ -104,8 +103,8 @@ public class AdminPostNewPO extends BasePage{
 	}
 	
 	public void inputIntoAddNewTagTextbox(String tagName) {
-		sendKeysToElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, tagName);
-		pressKeyOnElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, Keys.ENTER);
+		sendKeysToElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, tagName + ",");
+		// pressKeyOnElement(driver, AdminPostNewPUI.ADD_NEW_TAG_TEXTBOX, Keys.ENTER);
 	}
 	
 	public void inputIntoNewCategoryTextbox(String categoryName) {
@@ -135,6 +134,10 @@ public class AdminPostNewPO extends BasePage{
 
 	public void selectPostImage(String postImage) {
 		clickOnElement(driver, AdminPostNewPUI.IMAGE_CHECKBOX, postImage);
+	}
+
+	public boolean isRemoveTagButtonDisplayed(String postTag) {
+		return isElementDisplayed(driver, AdminPostNewPUI.REMOVE_TAG_BUTTON, postTag);
 	}
 
 }

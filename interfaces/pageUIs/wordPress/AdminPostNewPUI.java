@@ -31,6 +31,5 @@ public class AdminPostNewPUI {
 	public static final String TITLE_TEXTBOX = "//h1[@aria-label='Add title']";
 	public static final String POST_SIDEBAR = "//button[@data-label='Post']";
 	
-	
 }
 

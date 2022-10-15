@@ -10,7 +10,7 @@ public class ExtentManagerV5 {
 	public static final ExtentReports extentReports = new ExtentReports();
 
 	public synchronized static ExtentReports createExtentReports() {
-		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.PROJECT_PATH + "/extentReportV5/wordPress/WordPress.html");
+		ExtentSparkReporter reporter = new ExtentSparkReporter(GlobalConstants.PROJECT_PATH + "/extentReportV5/wordPress/WordPress_Demo.html");
 		reporter.config().setReportName("WordPress HTML Report");
 		reporter.config().setDocumentTitle("WordPress HTML Report");
 		reporter.config().setTimelineEnabled(true);

@@ -14,9 +14,13 @@ import com.aventstack.extentreports.Status;
 import commons.wordPress.BaseTest;
 
 public class ExtentTestListenerV5 extends BaseTest implements ITestListener {
-	private static String getTestMethodName(ITestResult iTestResult) {
-		return iTestResult.getMethod().getConstructorOrMethod().getName();
+	private static String getTestName(ITestResult iTestResult) {
+		 return iTestResult.getTestName() != null ? iTestResult.getTestName() : iTestResult.getMethod().getConstructorOrMethod().getName();
 	}
+	
+	public String getTestDescription(ITestResult iTestResult) {
+        return iTestResult.getMethod().getDescription() != null ? iTestResult.getMethod().getDescription() : getTestName(iTestResult);
+    }
 
 	@Override
 	public void onStart(ITestContext iTestContext) {
@@ -35,7 +39,7 @@ public class ExtentTestListenerV5 extends BaseTest implements ITestListener {
 
 	@Override
 	public void onTestSuccess(ITestResult iTestResult) {
-
+		//getTest().log(Status.PASS, "Test passed");
 	}
 
 	@Override
@@ -44,15 +48,17 @@ public class ExtentTestListenerV5 extends BaseTest implements ITestListener {
 		WebDriver driver = ((BaseTest) testClass).getDriverInstance();
 		String base64Screenshot = "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 		getTest().log(Status.FAIL, "Test Failed", getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
+		//getTest().log(Status.FAIL, getTestDescription(iTestResult), getTest().addScreenCaptureFromBase64String(base64Screenshot).getModel().getMedia().get(0));
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult iTestResult) {
 		getTest().log(Status.SKIP, "Test Skipped");
+		//getTest().log(Status.SKIP, getTestName(iTestResult) + " test is skipped.");
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-		getTest().log(Status.FAIL, "Test Failed with percentage" + getTestMethodName(iTestResult));
+		getTest().log(Status.FAIL, "Test Failed with percentage" + getTestName(iTestResult));
 	}
 }

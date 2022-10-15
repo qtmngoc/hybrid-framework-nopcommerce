@@ -21,7 +21,7 @@ import pageObjects.wordPress.UserPageDetailPO;
 import pageObjects.wordPress.UserSearchPO;
 import reportConfig.wordPress.ExtentTestManagerV5;
 
-public class Live_Coding_04_Page extends BaseTest {
+public class Demo_04_Page extends BaseTest {
 	
 	@Parameters({ "browser", "adminUrl", "userUrl" })
 	@BeforeClass
@@ -32,7 +32,7 @@ public class Live_Coding_04_Page extends BaseTest {
 		driver = getBrowserDriver(browserName, this.adminUrl);
 		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
 		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Live_Coding_01_Login.username, Live_Coding_01_Login.password);
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
 		
 		adminPageAllPage = adminDashboardPage.clickOnPageMenuLink();
 	}
@@ -343,9 +343,9 @@ public class Live_Coding_04_Page extends BaseTest {
 	}
 	
 	String adminUrl, userUrl, uploadedImageName;
-	int randomNumber4 = Live_Coding_02_Post.randomNumber2;
+	int randomNumber4 = Demo_01_Login.randomNumber1;
 	String pageTitle = "[Annie]_New-page-title_" + randomNumber4;
-	String pageBody = "Live Coding: page body " + randomNumber4;
+	String pageBody = "Coding Demo: page body " + randomNumber4;
 	String pageImage = "annie_catdog.jpg";
 	String publishedDate = getCurrentDate();
 	String editTitle = "[Annie]_Edit-page-title_" + randomNumber4;
