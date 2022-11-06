@@ -2,10 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
 <suite name="Facebook">
-
-	<listeners>
-		<listener class-name="commons.facebook.MethodListener" />
-	</listeners>
 	
 	<parameter name="url" value="https://www.facebook.com/" />
 

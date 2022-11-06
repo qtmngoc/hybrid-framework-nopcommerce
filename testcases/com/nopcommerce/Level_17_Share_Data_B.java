@@ -1,0 +1,124 @@
+package com.nopcommerce;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import commons.nopCommerce.NcBaseTest;
+import commons.nopCommerce.NcPageGeneratorManager;
+import pageObjects.nopCommerce.NcUserHomePO;
+import pageObjects.nopCommerce.NcUserRegisterPO;
+import pageObjects.nopCommerce.NcUserSearchPO;
+
+public class Level_17_Share_Data_B extends NcBaseTest {
+
+	@Parameters("browser")
+	@BeforeClass
+	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName);
+		userHomePage = NcPageGeneratorManager.getUserHomePage(driver);
+
+		firstName = "Share";
+		lastName = "Data";
+		email = "sharedata.level16." + generateFakeNumber() + "@mail.com";
+		password = "290622";
+		nonexistentValue = "Macbook Pro 2050";
+		relativeProductName = "Lenovo";
+		absoluteProductName = "ThinkPad X1 Carbon";
+		
+		log.info("Pre-condition - Step 01: Navigate to Register page");
+		userRegisterPage = userHomePage.clickOnRegisterLink();
+
+		log.info("Pre-condition - Step 02: Enter '" + firstName + "' into First Name text box");
+		userRegisterPage.inputIntoFirstNameTextbox(firstName);
+		
+		log.info("Pre-condition - Step 03: Enter '" + lastName + "' into Last Name text box");
+		userRegisterPage.inputIntoLastNameTextbox(lastName);
+		
+		log.info("Pre-condition - Step 04: Enter '" + email + "' into Email text box");
+		userRegisterPage.inputIntoEmailTextbox(email);
+		
+		log.info("Pre-condition - Step 05: Enter '" + password + "' into Password text box");
+		userRegisterPage.inputIntoPasswordTextbox(password);
+		
+		log.info("Pre-condition - Step 06: Enter '" + password + "' into Confirm Password text box");
+		userRegisterPage.inputIntoConfirmPasswordTextbox(password);
+		
+		log.info("Pre-condition - Step 07: Click on Register button");
+		userRegisterPage.clickOnRegisterButton();
+		
+		log.info("Pre-condition - Step 08: Verify registration success message is displayed");
+		verifyEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
+
+		log.info("Pre-condition - Step 09: Navigate to Search page");
+		userSearchPage = userHomePage.clickOnSearchLink();
+
+		log.info("Pre-condition - Step 10: Verify Search header is displayed");
+		verifyTrue(userSearchPage.isSearchHeaderDisplayed());
+	}
+
+	@Test
+	public void Search_01_Empty_Value() {
+		log.info("Search - Step 01: Enter empty value into Search text box");
+		userSearchPage.inputIntoSearchTextbox("");
+
+		log.info("Search - Step 02: Click on Search button");
+		userSearchPage.clickOnSearchButton();
+		
+		log.info("Search - Step 03: Verify warning message is displayed");
+		verifyEquals(userSearchPage.getWarningMessage(), "Search term minimum length is 3 characters");
+	}
+
+	@Test
+	public void Search_02_Nonexistent_Value() {
+		log.info("Search - Step 01: Enter '" + nonexistentValue + "' into Search text box");
+		userSearchPage.inputIntoSearchTextbox(nonexistentValue);
+				
+		log.info("Search - Step 02: Click on Search button");
+		userSearchPage.clickOnSearchButton();
+		
+		log.info("Search - Step 03: Verify no result message is displayed");
+		verifyEquals(userSearchPage.getNoResultMessage(), "No products were found that matched your criteria.");
+	}
+
+	@Test
+	public void Search_03_Relative_Product_Name() {
+		log.info("Search - Step 01: Enter '" + relativeProductName + "' into Search text box");
+		userSearchPage.inputIntoSearchTextbox(relativeProductName);
+
+		log.info("Search - Step 02: Click on Search button");
+		userSearchPage.clickOnSearchButton();
+		
+		log.info("Search - Step 03: Verify realtive Product Name is displayed");
+		for (WebElement name : userSearchPage.getRelativeProductNameResults()) {
+			verifyTrue(name.getText().toLowerCase().contains(relativeProductName.toLowerCase()));
+		}
+	}
+
+	@Test
+	public void Search_04_Absolute_Product_Name() {
+		log.info("Search - Step 01: Enter '" + absoluteProductName + "' into Search text box");
+		userSearchPage.inputIntoSearchTextbox(absoluteProductName);
+
+		log.info("Search - Step 02: Click on Search button");
+		userSearchPage.clickOnSearchButton();
+		
+		log.info("Search - Step 03: Verify absolute Product Name is displayed");
+		verifyTrue(userSearchPage.getAbsoluteProductNameResult().getText().toLowerCase().contains(absoluteProductName.toLowerCase()));
+	}
+
+	@AfterClass
+	public void afterClass() {
+		driver.quit();
+	}
+
+	private WebDriver driver;
+	private NcUserHomePO userHomePage;
+	private NcUserRegisterPO userRegisterPage;
+	private NcUserSearchPO userSearchPage;
+	private String firstName, lastName, email, password, nonexistentValue, relativeProductName, absoluteProductName;
+
+}

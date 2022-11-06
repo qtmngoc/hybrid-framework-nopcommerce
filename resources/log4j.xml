@@ -30,8 +30,8 @@
 		</layout>
 	</appender>
 
-	<!-- <appender name="testng" class="commons.nopCommerce.TestNGAppender"> -->
-	<appender name="testng" class="commons.wordPress.TestNGAppender">
+	<!-- <appender name="testng" class="commons.nopCommerce.NcTestNGAppender"> -->
+	<appender name="testng" class="commons.wordPress.WpTestNGAppender">
 		<param name="Threshold" value="INFO" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="[%d] %m%n" />
@@ -46,7 +46,7 @@
 		<appender-ref ref="testng" />
 	</category> -->
 
-	<!-- <category name="com.nopcommerce.user"> -->
+	<!-- <category name="com.nopcommerce"> -->
 	<category name="com.wordpress">
 		<priority value="all" />
 		<appender-ref ref="console" />

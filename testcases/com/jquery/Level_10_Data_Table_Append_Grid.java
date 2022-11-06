@@ -6,17 +6,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.jQuery.BaseTest;
-import pageObjects.jQuery.dataTable.HomePageObject;
-import pageObjects.jQuery.dataTable.PageGeneratorManager;
+import commons.jQuery.JqBaseTest;
+import pageObjects.jQuery.dataTable.JqHomePageObject;
+import pageObjects.jQuery.dataTable.JqPageGeneratorManager;
 
-public class Level_10_Data_Table_Append_Grid extends BaseTest {
+public class Level_10_Data_Table_Append_Grid extends JqBaseTest {
 
 	@Parameters({ "browser", "appendGrid_url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = JqPageGeneratorManager.getHomePage(driver);
 	}
 
 	@Test
@@ -69,5 +69,5 @@ public class Level_10_Data_Table_Append_Grid extends BaseTest {
 	}
 
 	private WebDriver driver;
-	HomePageObject homePage;
+	JqHomePageObject homePage;
 }

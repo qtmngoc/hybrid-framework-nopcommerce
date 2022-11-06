@@ -6,18 +6,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.facebook.BaseTest;
-import commons.facebook.PageGeneratorManager;
-import pageObjects.facebook.LoginPageObject;
+import commons.facebook.FbBaseTest;
+import commons.facebook.FbPageGeneratorManager;
+import pageObjects.facebook.FbLoginPageObject;
 
-public class Level_13_Element_Undisplayed extends BaseTest {
+public class Level_13_Element_Undisplayed extends FbBaseTest {
 	
 	@Parameters({ "browser", "url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
 
-		loginPage = PageGeneratorManager.getLoginPage(driver);
+		loginPage = FbPageGeneratorManager.getLoginPage(driver);
 	}
 	
 	@Test
@@ -51,6 +51,6 @@ public class Level_13_Element_Undisplayed extends BaseTest {
 	}
 
 	private WebDriver driver;
-	private LoginPageObject loginPage;
+	private FbLoginPageObject loginPage;
 	
 }

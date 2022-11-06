@@ -7,17 +7,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.liveGuru.BaseTest;
-import commons.liveGuru.GlobalConstants;
-import commons.liveGuru.PageGeneratorManager;
-import pageObjects.liveGuru.admin.AdminCustomersPageObject;
-import pageObjects.liveGuru.admin.AdminLoginPageObject;
-import pageObjects.liveGuru.user.UserHomePageObject;
-import pageObjects.liveGuru.user.UserLoginPageObject;
-import pageObjects.liveGuru.user.UserMyDashboardPageObject;
-import pageObjects.liveGuru.user.UserRegisterPageObject;
+import commons.liveGuru.LgBaseTest;
+import commons.liveGuru.LgGlobalConstants;
+import commons.liveGuru.LgPageGeneratorManager;
+import pageObjects.liveGuru.LgAdminCustomersPageObject;
+import pageObjects.liveGuru.LgAdminLoginPageObject;
+import pageObjects.liveGuru.LgUserHomePageObject;
+import pageObjects.liveGuru.LgUserLoginPageObject;
+import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserRegisterPageObject;
 
-public class Level_10_Data_Table extends BaseTest {
+public class Level_10_Data_Table extends LgBaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
@@ -35,7 +35,7 @@ public class Level_10_Data_Table extends BaseTest {
 	
 	@Test
 	public void Role_01_User_Register() {
-		userHomePage = PageGeneratorManager.getUserHomePage(driver);
+		userHomePage = LgPageGeneratorManager.getUserHomePage(driver);
 		
 		userLoginPage = userHomePage.clickOnMyAccountLink();
 		
@@ -55,9 +55,9 @@ public class Level_10_Data_Table extends BaseTest {
 	
 	@Test
 	public void Role_02_Admin_Search_For_Existing_User() {
-		userHomePage.openPageUrl(driver, GlobalConstants.ADMIN_PAGE_URL);
+		userHomePage.openPageUrl(driver, LgGlobalConstants.ADMIN_PAGE_URL);
 		
-		adminLoginPage = PageGeneratorManager.getAdminLoginPage(driver);
+		adminLoginPage = LgPageGeneratorManager.getAdminLoginPage(driver);
 		adminLoginPage.inputIntoUserNameTextbox(adminUserName);
 		adminLoginPage.inputIntoPasswordTextbox(adminPassword);
 		
@@ -77,9 +77,9 @@ public class Level_10_Data_Table extends BaseTest {
 		adminCustomersPage.accepAlert();
 		
 		adminLoginPage = adminCustomersPage.clickOnLogoutLink();		
-		adminLoginPage.openPageUrl(driver, GlobalConstants.USER_PAGE_URL);
+		adminLoginPage.openPageUrl(driver, LgGlobalConstants.USER_PAGE_URL);
 		
-		userHomePage = PageGeneratorManager.getUserHomePage(driver);
+		userHomePage = LgPageGeneratorManager.getUserHomePage(driver);
 		
 		userLoginPage = userHomePage.clickOnMyAccountLink();
 		userLoginPage.inputIntoEmailTextbox(userEmail);
@@ -94,12 +94,12 @@ public class Level_10_Data_Table extends BaseTest {
 	}
 	
 	private WebDriver driver;
-	private UserHomePageObject userHomePage;
-	private UserLoginPageObject userLoginPage;
-	private UserRegisterPageObject userRegisterPage;
-	private UserMyDashboardPageObject userMyDashboardPage;
-	private AdminLoginPageObject adminLoginPage;
-	private AdminCustomersPageObject adminCustomersPage;
+	private LgUserHomePageObject userHomePage;
+	private LgUserLoginPageObject userLoginPage;
+	private LgUserRegisterPageObject userRegisterPage;
+	private LgUserMyDashboardPageObject userMyDashboardPage;
+	private LgAdminLoginPageObject adminLoginPage;
+	private LgAdminCustomersPageObject adminCustomersPage;
 	private String firstName, lastName, fullName, userEmail, userPassword, adminUserName, adminPassword;
 	private int fakeNumber;
 }

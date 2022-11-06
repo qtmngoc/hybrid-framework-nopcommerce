@@ -7,19 +7,19 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.liveGuru.BaseTest;
-import commons.liveGuru.PageGeneratorManager;
-import pageObjects.liveGuru.user.UserHomePageObject;
-import pageObjects.liveGuru.user.UserLoginPageObject;
-import pageObjects.liveGuru.user.UserMyDashboardPageObject;
-import pageObjects.liveGuru.user.UserRegisterPageObject;
+import commons.liveGuru.LgBaseTest;
+import commons.liveGuru.LgPageGeneratorManager;
+import pageObjects.liveGuru.LgUserHomePageObject;
+import pageObjects.liveGuru.LgUserLoginPageObject;
+import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserRegisterPageObject;
 
-public class Level_06_Page_Generater_Manager extends BaseTest {
+public class Level_06_Page_Generater_Manager extends LgBaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
 		driver = getBrowserDriver(browserName);
-		homePage = PageGeneratorManager.getUserHomePage(driver);
+		homePage = LgPageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Page";
 		lastName = "Generator";
@@ -63,9 +63,9 @@ public class Level_06_Page_Generater_Manager extends BaseTest {
 	}
 
 	private WebDriver driver;
-	private UserHomePageObject homePage;
-	private UserLoginPageObject loginPage;
-	private UserRegisterPageObject registerPage;
-	private UserMyDashboardPageObject myDashboardPage;
+	private LgUserHomePageObject homePage;
+	private LgUserLoginPageObject loginPage;
+	private LgUserRegisterPageObject registerPage;
+	private LgUserMyDashboardPageObject myDashboardPage;
 	private String firstName, lastName, email, password;
 }

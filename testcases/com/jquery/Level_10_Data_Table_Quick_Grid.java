@@ -7,17 +7,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.jQuery.BaseTest;
-import pageObjects.jQuery.dataTable.HomePageObject;
-import pageObjects.jQuery.dataTable.PageGeneratorManager;
+import commons.jQuery.JqBaseTest;
+import pageObjects.jQuery.dataTable.JqHomePageObject;
+import pageObjects.jQuery.dataTable.JqPageGeneratorManager;
 
-public class Level_10_Data_Table_Quick_Grid extends BaseTest {
+public class Level_10_Data_Table_Quick_Grid extends JqBaseTest {
 
 	@Parameters({ "browser", "quickgrid_url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = JqPageGeneratorManager.getHomePage(driver);
 	}
 
 	@Test
@@ -36,10 +36,10 @@ public class Level_10_Data_Table_Quick_Grid extends BaseTest {
 	public void Table_02_Input_Into_Header() {
 		homePage.refreshCurrentPage(driver);
 		
-		homePage.inputIntoHeaderTextboxByLabel("Females", "46989");
-		homePage.inputIntoHeaderTextboxByLabel("Country", "Hungary");
-		homePage.inputIntoHeaderTextboxByLabel("Males", "49454");
-		homePage.inputIntoHeaderTextboxByLabel("Total", "96444");
+		homePage.inputIntoHeaderTextboxByLabel("Females", "317651");
+		homePage.inputIntoHeaderTextboxByLabel("Country", "Mozambique");
+		homePage.inputIntoHeaderTextboxByLabel("Males", "316154");
+		homePage.inputIntoHeaderTextboxByLabel("Total", "633808");
 		homePage.sleepInSecond(1);
 		
 		homePage.inputIntoHeaderTextboxByLabel("Females", "384187");
@@ -63,5 +63,5 @@ public class Level_10_Data_Table_Quick_Grid extends BaseTest {
 	}
 
 	private WebDriver driver;
-	HomePageObject homePage;
+	JqHomePageObject homePage;
 }

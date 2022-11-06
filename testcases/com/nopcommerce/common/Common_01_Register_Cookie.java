@@ -7,18 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
-import commons.nopCommerce.BaseTest;
-import commons.nopCommerce.PageGeneratorManager;
-import pageObjects.nopCommerce.user.UserHomePageObject;
-import pageObjects.nopCommerce.user.UserRegisterPageObject;
+import commons.nopCommerce.NcBaseTest;
+import commons.nopCommerce.NcPageGeneratorManager;
+import pageObjects.nopCommerce.NcUserHomePO;
+import pageObjects.nopCommerce.NcUserRegisterPO;
 
-public class Common_01_Register_Cookie extends BaseTest {
+public class Common_01_Register_Cookie extends NcBaseTest {
 
 	@Parameters("browser")
 	@BeforeTest(description = "Create new user for all classes test")
 	public void Register(String browserName) {
 		driver = getBrowserDriver(browserName);
-		userHomePage = PageGeneratorManager.getUserHomePage(driver);
+		userHomePage = NcPageGeneratorManager.getUserHomePage(driver);
 
 		firstName = "Automation";
 		lastName = "Tester";
@@ -56,8 +56,8 @@ public class Common_01_Register_Cookie extends BaseTest {
 	}
 
 	private WebDriver driver;
-	private UserHomePageObject userHomePage;
-	private UserRegisterPageObject userRegisterPage;
+	private NcUserHomePO userHomePage;
+	private NcUserRegisterPO userRegisterPage;
 	private String firstName, lastName, email, password;
 	public static Set<Cookie> loggedCookies;
 

@@ -3,10 +3,13 @@
 
 <suite name="LiveGuru">
 
+	<parameter name="adminUrl" value="http://live.techpanda.org/index.php/backendlogin" />
+	<parameter name="userUrl" value="http://live.techpanda.org/" />
+
 	<test name="Run on Chrome">
 		<parameter name="browser" value="Chrome" />
 		<classes>
-			<class name="com.liveguru.user.Level_10_Data_Table" />
+			<class name="com.liveguru.Level_07_Page_Navigation" />
 		</classes>
 	</test>
 

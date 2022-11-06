@@ -7,17 +7,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.jQuery.BaseTest;
-import pageObjects.jQuery.uploadFiles.HomePageObject;
-import pageObjects.jQuery.uploadFiles.PageGeneratorManager;
+import commons.jQuery.JqBaseTest;
+import pageObjects.jQuery.uploadFiles.JqHomePageObject;
+import pageObjects.jQuery.uploadFiles.JqPageGeneratorManager;
 
-public class Level_11_Upload_Files extends BaseTest {
+public class Level_11_Upload_Files extends JqBaseTest {
 	
 	@Parameters({ "browser", "upload_url" })
 	@BeforeClass
 	public void beforeClass(String browserName, String appUrl) {
 		driver = getBrowserDriver(browserName, appUrl);
-		homePage = PageGeneratorManager.getHomePage(driver);
+		homePage = JqPageGeneratorManager.getHomePage(driver);
 	}
 
 	@Test
@@ -61,10 +61,10 @@ public class Level_11_Upload_Files extends BaseTest {
 	}
 
 	private WebDriver driver;
-	HomePageObject homePage;
-	String cakeFileName = "Cake.jpg";
-	String catDogFileName = "CatDog.jpg";
-	String fruitFileName = "Fruit.jpg";
-	String sunflowerFileName = "Sunflower.jpg";
+	JqHomePageObject homePage;
+	String cakeFileName = "annie_cake.jpg";
+	String catDogFileName = "annie_catdog.jpg";
+	String fruitFileName = "annie_fruit.jpg";
+	String sunflowerFileName = "annie_sunflower.jpg";
 	String[] multipleFileNames = { cakeFileName, catDogFileName, fruitFileName, sunflowerFileName };
 }
