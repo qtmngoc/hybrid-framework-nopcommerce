@@ -23,8 +23,7 @@ public class WpAdminDashboardPO extends WpBasePage{
 	}
 
 	public WpAdminCategoryPO clickOnPostsCategoriesMenuLink() {
-		sleepInSecond(3);
-		mouseHoverOnElement(driver, WpAdminDashboardPUI.POST_MENU);
+		clickOnElement(driver, WpAdminDashboardPUI.POST_MENU);
 		clickOnElement(driver, WpAdminDashboardPUI.CATEGORY_LINK);
 		return WpPageGeneratorManager.getAdminCategoryPage(driver);
 	}

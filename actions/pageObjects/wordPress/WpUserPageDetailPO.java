@@ -13,11 +13,11 @@ public class WpUserPageDetailPO extends WpBasePage {
 		this.driver = driver;
 	}
 
-	public boolean isCommentTextareaDisplayed() {
+	public boolean isPageCommentTextareaDisplayed() {
 		return isElementDisplayed(driver, WpUserPageDetailPUI.COMMENT_TEXTAREA);
 	}
 
-	public boolean isCommentTextareaUndisplayed() {
+	public boolean isPageCommentTextareaUndisplayed() {
 		return isElementUndisplayed(driver, WpUserPageDetailPUI.COMMENT_TEXTAREA);
 	}
 

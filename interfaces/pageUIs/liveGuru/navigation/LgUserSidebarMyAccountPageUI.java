@@ -7,6 +7,6 @@ public class LgUserSidebarMyAccountPageUI {
 	public static final String RECURRING_PROFILES_LINK = "//a[string()='Recurring Profiles']";
 	public static final String NEWSLETTER_SUBSCRIPTION_LINK = "//a[string()='Newsletter Subscriptions']";
 	
-	public static final String DYNAMIC_SIDEBAR_LINK = "//a[string()='%s']";
+	public static final String DYNAMIC_SIDEBAR_LINK = "//div[contains(@class, 'sidebar')]//a[string()='%s']";
 	
 }

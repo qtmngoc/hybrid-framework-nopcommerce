@@ -1,6 +1,6 @@
 package pageUIs.liveGuru;
 
-public class LgUserMyDashboardPageUI {
+public class LgUserMyAccountDashboardPageUI {
 	
 	public static final String MY_DASHBOARD_HEADER = "//h1[text()='My Dashboard']";	
 	public static final String REGISTER_SUCCESS_MESSAGE = "//li[@class='success-msg']";	

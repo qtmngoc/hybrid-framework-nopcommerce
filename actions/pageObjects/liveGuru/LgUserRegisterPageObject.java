@@ -38,10 +38,10 @@ public class LgUserRegisterPageObject extends LgBasePage {
 		sendKeysToElement(driver, LgUserRegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, passwordValue);
 	}
 
-	public LgUserMyDashboardPageObject clickOnRegisterButton() {
+	public LgUserMyAccountDashboardPageObject clickOnRegisterButton() {
 		waitForElementClickable(driver, LgUserRegisterPageUI.REGISTER_BUTTON);
 		clickOnElement(driver, LgUserRegisterPageUI.REGISTER_BUTTON);
-		return LgPageGeneratorManager.getUserMyDashboardPage(driver);
+		return LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
 	}
 	
 }

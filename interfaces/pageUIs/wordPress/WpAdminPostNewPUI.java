@@ -30,6 +30,7 @@ public class WpAdminPostNewPUI {
 	public static final String SEARCH_IMAGE_TEXTBOX = "//input[@id='media-search-input']";
 	public static final String TITLE_TEXTBOX = "//h1[@aria-label='Add title']";
 	public static final String POST_SIDEBAR = "//button[@data-label='Post']";
+	public static final String POST_NOW_LIVE_MESSAGE = "//div[contains(@class, 'postpublish-header')]";
 	
 }
 

@@ -14,7 +14,7 @@ import pageObjects.liveGuru.LgAdminCustomersPageObject;
 import pageObjects.liveGuru.LgAdminLoginPageObject;
 import pageObjects.liveGuru.LgUserHomePageObject;
 import pageObjects.liveGuru.LgUserLoginPageObject;
-import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserMyAccountDashboardPageObject;
 import pageObjects.liveGuru.LgUserRegisterPageObject;
 
 public class Level_10_Data_Table extends LgBaseTest {
@@ -97,7 +97,7 @@ public class Level_10_Data_Table extends LgBaseTest {
 	private LgUserHomePageObject userHomePage;
 	private LgUserLoginPageObject userLoginPage;
 	private LgUserRegisterPageObject userRegisterPage;
-	private LgUserMyDashboardPageObject userMyDashboardPage;
+	private LgUserMyAccountDashboardPageObject userMyDashboardPage;
 	private LgAdminLoginPageObject adminLoginPage;
 	private LgAdminCustomersPageObject adminCustomersPage;
 	private String firstName, lastName, fullName, userEmail, userPassword, adminUserName, adminPassword;

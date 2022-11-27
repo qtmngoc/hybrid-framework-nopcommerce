@@ -33,7 +33,7 @@ public class WpUserSearchPO extends WpBasePage{
 		return isElementDisplayed(driver, WpUserSearchPUI.POST_CATEGORY_TEXT_BY_POST_TITLE, postTitle, categoryName);
 	}
 
-	public boolean isPostOrPublishedDateDisplayed(String postTitle, String publishedDate) {
+	public boolean isPostOrPagePublishedDateDisplayed(String postTitle, String publishedDate) {
 		return isElementDisplayed(driver, WpUserSearchPUI.POST_PUBLISHED_DATE_TEXT_BY_POST_TITLE, postTitle, publishedDate);
 	}
 
@@ -49,10 +49,6 @@ public class WpUserSearchPO extends WpBasePage{
 
 	public boolean isSearchResultsMessageDisplayed() {
 		return isElementDisplayed(driver, WpUserSearchPUI.SEARCH_RESULTS_MESSAGE);
-	}
-
-	public String getSearchResultsTitle() {
-		return getElementText(driver, WpUserSearchPUI.SEARCH_RESULTS_TITLE);
 	}
 
 	public WpUserPageDetailPO clickOnPageTitleLink(String pageTitle) {
@@ -71,6 +67,5 @@ public class WpUserSearchPO extends WpBasePage{
 	public void clickOnSearchButton() {
 		clickOnElement(driver, WpUserSearchPUI.SEARCH_BUTTON);
 	}
-
 
 }

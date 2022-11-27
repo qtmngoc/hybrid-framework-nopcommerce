@@ -141,4 +141,8 @@ public class WpAdminPostNewPO extends WpBasePage{
 		return isElementDisplayed(driver, WpAdminPostNewPUI.REMOVE_TAG_BUTTON, postTag);
 	}
 
+	public String getPostNowLiveMessage() {
+		return getElementText(driver, WpAdminPostNewPUI.POST_NOW_LIVE_MESSAGE);
+	}
+
 }

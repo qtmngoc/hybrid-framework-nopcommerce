@@ -40,22 +40,22 @@ public class Demo_04_Page extends WpBaseTest {
 	
 	@Test
 	public void Page_01_Create_New_Page(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Create new page at Admin site");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Create a new page on Admin site");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Navigate to Admin ADD NEW PAGE page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on 'Pages' menu and 'Add new page' button to go to Admin ADD NEW PAGE page.");
 		adminPageNewPage = adminPageAllPage.clickOnAddNewPageButton();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Blank page' button.");
 		adminPageNewPage.switchToPagePatternIframe();
 		adminPageNewPage.clickOnBlankPageButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + pageTitle + "\" into 'Page Title'.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + pageTitle + "\" into page Title.");
 		adminPageNewPage.inputIntoPageTitle(pageTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + pageBody + "\" into 'Page Body'.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + pageBody + "\" into page Body.");
 		adminPageNewPage.inputIntoPageBody(pageBody);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Open 'Page' setting sidebar.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Open 'Page' settings sidebar.");
 		adminPageNewPage.clickOnPageSidebar();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Expand 'Featured image' panel.");
@@ -64,36 +64,32 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Open 'Set featured image' menu and click on 'Media Library' item.");
 		adminPageNewPage.clickOnImageMenu("Set featured image");
 		adminPageNewPage.clickOnMediaLibraryItem();
-		adminPageNewPage.switchToDefaultContent(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Upload \"" + pageImage + "\" and get image name after uploaded.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Upload \"" + pageImage + "\" and get image name after uploading.");
+		adminPageNewPage.switchToDefaultContent(driver);
 		adminPageNewPage.uploadPageImage(pageImage);
 		uploadedImageName = adminPageNewPage.getUploadedImageName("title");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Click on 'Insert' button and verify \"" + uploadedImageName + "\" is uploaded.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Click on 'Insert' button.");
 		adminPageNewPage.clickOnInsertButton();
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify \"" + uploadedImageName + "\" is uploaded.");
 		adminPageNewPage.switchToPagePatternIframe();
 		verifyTrue(adminPageNewPage.isImageUploaded(uploadedImageName));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Expand 'Discussion' panel and select 'Allow comments' checkbox.");
-		adminPageNewPage.clickOnPanelByText("Discussion");
-		adminPageNewPage.checkAllowCommentsCheckbox();
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Click on 'Publish' and 'Pre-publish' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Click on 'Publish' and 'Pre-publish' buttons.");
 		adminPageNewPage.clickOnPublishOrUpdateButton();
 		adminPageNewPage.clickOnPrePublishButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'Page published.' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'Page published.' and '" + pageTitle + " is now live.' messages are displayed.");
 		verifyTrue(adminPageNewPage.isPagePublishedOrUpdatedMessageDisplayed("Page published."));
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Verify '" + pageTitle + " is now live.' message is displayed.");
 		verifyEquals(adminPageNewPage.getPageNowLiveMessage(), pageTitle + " is now live.");
 		publishedDate = adminPageNewPage.getCurrentDate();
 	}
 	
 	@Test
 	public void Page_02_Search_And_View_Page(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Search and view newly created page at Admin and User sites");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Search and view newly created page on Admin and User sites");
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on Wordpress logo and navigate to Admin ALL PAGES page.");
 		adminPageNewPage.clickOnWordpressLogo();
@@ -135,16 +131,13 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Navigate to User SEARCH page.");
 		userSearchPage = userHomePage.clickOnSearchButton();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Verify 'Search Results' title contains \"" + pageTitle + "\".");
-		verifyEquals(userSearchPage.getSearchResultsTitle(), "Search Results for: " + pageTitle);
-
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify '1 Post' is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Verify page Title, Image, Published Date are displayed.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(pageTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(pageTitle, uploadedImageName));
-		verifyTrue(userSearchPage.isPostOrPublishedDateDisplayed(pageTitle, publishedDate));
+		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(pageTitle, publishedDate));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Navigate to User PAGE DETAILS page.");
 		userPageDetailPage = userSearchPage.clickOnPageTitleLink(pageTitle);
@@ -153,12 +146,12 @@ public class Demo_04_Page extends WpBaseTest {
 		verifyTrue(userPageDetailPage.isPageTitleDisplayed(pageTitle));
 		verifyTrue(userPageDetailPage.isPageImageDisplayed(pageTitle, uploadedImageName));
 		verifyTrue(userPageDetailPage.isPageBodyDisplayed(pageBody));
-		verifyTrue(userPageDetailPage.isCommentTextareaDisplayed());
+		verifyTrue(userPageDetailPage.isPageCommentTextareaDisplayed());
 	}
 	
 	@Test
 	public void Page_03_Edit_Page(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Edit page at Admin site");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Edit page on Admin site");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Open Admin DASHBOARD page and navigate to Admin ALL PAGES page.");
 		adminDashboardPage = userPageDetailPage.openAdminSite(driver, adminUrl);	
@@ -171,14 +164,14 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on \"" + pageTitle + "\" link to navigate to Admin EDIT PAGE page.");
 		adminPageAllPage.clickOnPageTitleLink(pageTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editTitle + "\" into 'Page Title'.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editTitle + "\" into page Title.");
 		adminPageNewPage.switchToPagePatternIframe();
 		adminPageNewPage.inputIntoPageTitle(editTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editBody + "\" into 'Page Body'.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editBody + "\" into page Body.");
 		adminPageNewPage.inputIntoEditPageBody(editBody);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Open 'Page' setting sidebar.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Open 'Page' settings sidebar.");
 		adminPageNewPage.clickOnPageSidebar();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Expand 'Featured image' panel.");
@@ -206,20 +199,20 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify \"" + editImage + ".jpg\" is uploaded.");
 		verifyTrue(adminPageNewPage.isImageUploaded(editImage));
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Expand 'Discussion' panel and deselect 'Allow comments' checkbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Expand 'Discussion' panel and deselect 'Allow comments' checkbox.");
 		adminPageNewPage.clickOnPanelByText("Discussion");
 		adminPageNewPage.uncheckAllowCommentsCheckbox();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Click on 'Update' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on 'Update' button.");
 		adminPageNewPage.clickOnPublishOrUpdateButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'Page updated.' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Verify 'Page updated.' message is displayed.");
 		verifyTrue(adminPageNewPage.isPagePublishedOrUpdatedMessageDisplayed("Page updated."));
 	}
 	
 	@Test
 	public void Page_04_Search_And_View_Page_After_Edit(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Search and view after editing page at Admin and User sites");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Search and view after editing page on Admin and User sites");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on Wordpress logo and navigate to Admin ALL PAGES page.");
 		adminPageNewPage.clickOnWordpressLogo();
@@ -261,7 +254,7 @@ public class Demo_04_Page extends WpBaseTest {
 		verifyTrue(userPageDetailPage.isPageBodyDisplayed(editBody));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Verify Comment textarea is undisplayed.");
-		verifyTrue(userPageDetailPage.isCommentTextareaUndisplayed());
+		verifyTrue(userPageDetailPage.isPageCommentTextareaUndisplayed());
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Navigate to User HOME page.");
 		userHomePage = userPageDetailPage.clickOnHomePageLink();
@@ -273,21 +266,18 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Navigate to User SEARCH page.");
 		userSearchPage = userHomePage.clickOnSearchButton();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Verify 'Search Results' title contains \"" + editTitle + "\".");
-		verifyEquals(userSearchPage.getSearchResultsTitle(), "Search Results for: " + editTitle);
-
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 16: Verify '1 Post' is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 17: Verify page Title, Image, Published Date are displayed.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(editTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(editTitle, editImage));
-		verifyTrue(userSearchPage.isPostOrPublishedDateDisplayed(editTitle, publishedDate));
+		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(editTitle, publishedDate));
 	}
 	
 	@Test
 	public void Page_05_Delete_Post(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Delete post at Admin site");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Delete post on Admin site");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Switch to Admin ALL PAGES tab.");
 		userSearchPage.switchToWindowByID(driver, driver.getWindowHandle());

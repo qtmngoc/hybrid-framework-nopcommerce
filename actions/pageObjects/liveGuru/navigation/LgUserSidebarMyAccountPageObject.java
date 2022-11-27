@@ -2,19 +2,19 @@ package pageObjects.liveGuru.navigation;
 
 import org.openqa.selenium.WebDriver;
 
-import commons.liveGuru.LgBasePage;
 import commons.liveGuru.LgPageGeneratorManager;
 import pageObjects.liveGuru.LgUserAccountInformationPageObject;
-import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserMyAccountDashboardPageObject;
 import pageObjects.liveGuru.LgUserNewsletterSubscriptionPageObject;
 import pageObjects.liveGuru.LgUserRecurringProfilesPageObject;
 import pageUIs.liveGuru.navigation.LgUserSidebarMyAccountPageUI;
 
-public class LgUserSidebarMyAccountPageObject extends LgBasePage {
+public class LgUserSidebarMyAccountPageObject extends LgUserFooterContainerPageObject {
 
 	WebDriver driver;
 
 	public LgUserSidebarMyAccountPageObject(WebDriver driver) {
+		super(driver);
 		this.driver = driver;
 	}
 	
@@ -23,10 +23,10 @@ public class LgUserSidebarMyAccountPageObject extends LgBasePage {
 		clickOnElement(driver, LgUserSidebarMyAccountPageUI.DYNAMIC_SIDEBAR_LINK, pageTitle);
 	}
 	
-	public LgUserMyDashboardPageObject openAccountDashboardPage() {
+	public LgUserMyAccountDashboardPageObject openAccountDashboardPage() {
 		waitForElementClickable(driver, LgUserSidebarMyAccountPageUI.ACCOUNT_DASHBOARD_LINK);
 		clickOnElement(driver, LgUserSidebarMyAccountPageUI.ACCOUNT_DASHBOARD_LINK);
-		return LgPageGeneratorManager.getUserMyDashboardPage(driver);
+		return LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
 	}
 	
 	public LgUserAccountInformationPageObject openAccountInformationPage() {

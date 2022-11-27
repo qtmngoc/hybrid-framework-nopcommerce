@@ -52,15 +52,15 @@ public class WpAdminPostAllPO extends WpBasePage{
 	}
 
 	public boolean isDeletePostMessageDisplayed(String message) {
-		return isElementDisplayed(driver, WpAdminPostAllPUI.MOVE_TO_TRASH_MESSAGE, message);
+		return isElementDisplayed(driver, WpAdminPostAllPUI.DELETE_POST_MESSAGE, message);
 	}
 
-	public boolean isNoPostsFoundMessageDisplayed() {
-		return isElementDisplayed(driver, WpAdminPostAllPUI.NO_POST_FOUND_MESSAGE);
+	public boolean isNoPostsFoundMessageDisplayed(String message) {
+		return isElementDisplayed(driver, WpAdminPostAllPUI.NO_POST_FOUND_MESSAGE, message);
 	}
 
-	public String getSearchResultsTitle() {
-		return getElementText(driver, WpAdminPostAllPUI.SEARCH_RESULTS_TITLE);
+	public void clickOnTrashTab() {
+		clickOnElement(driver, WpAdminPostAllPUI.TRASH_TAB);
 	}
 
 }

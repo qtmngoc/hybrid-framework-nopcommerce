@@ -422,6 +422,10 @@ public class WpBasePage {
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
 	
+	protected void scrollToTopPageByJS(WebDriver driver) {
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+	}
+	
 	protected void scrollDownByJS(WebDriver driver, int pixel) {
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, " + pixel + ")");
 	}

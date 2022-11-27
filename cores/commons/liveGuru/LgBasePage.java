@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import pageObjects.liveGuru.navigation.LgUserFooterContainerPageObject;
 import pageUIs.liveGuru.LgBasePageUI;
 
 public class LgBasePage {
@@ -499,6 +500,11 @@ public class LgBasePage {
 
 	protected void waitForElementClickable(WebDriver driver, String dynamicXpath, String... dynamicValues) {
 		setExplicitWait(driver, longTimeout).until(ExpectedConditions.elementToBeClickable(getByXpath(getDynamicXpath(dynamicXpath, dynamicValues))));
+	}
+	
+	// ---------------------------------------------------------------------------------------------------------
+	public LgUserFooterContainerPageObject getUserFooterContainerPage(WebDriver driver) {
+		return new LgUserFooterContainerPageObject(driver);
 	}
 	
 	private long longTimeout = LgGlobalConstants.LONG_TIMEOUT;

@@ -21,7 +21,7 @@ public class WpExtentManagerV5 {
 		extentReports.setSystemInfo("Company", "Automation FC");
 		extentReports.setSystemInfo("Project", "WordPress");
 		extentReports.setSystemInfo("Team", "Ngoc Ngoc");
-		//extentReports.setSystemInfo("Browser", "Firefox");
+		extentReports.setSystemInfo("Browser", "Chrome");
 		extentReports.setSystemInfo("JDK version", WpGlobalConstants.JAVA_VERSION);
 		return extentReports;
 	}

@@ -30,10 +30,10 @@ public class LgUserLoginPageObject extends LgBasePage {
 		sendKeysToElement(driver, LgUserLoginPageUI.PASSWORD_TEXTBOX, passwordValue);
 	}
 
-	public LgUserMyDashboardPageObject clickOnLoginButton() {
+	public LgUserMyAccountDashboardPageObject clickOnLoginButton() {
 		waitForElementClickable(driver, LgUserLoginPageUI.LOGIN_BUTTON);
 		clickOnElement(driver, LgUserLoginPageUI.LOGIN_BUTTON);
-		return LgPageGeneratorManager.getUserMyDashboardPage(driver);
+		return LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
 	}
 	
 	public String getLoginUnsuccessMessage() {

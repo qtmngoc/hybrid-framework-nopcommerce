@@ -40,11 +40,11 @@ public class WpUserPostDetailPO extends WpBasePage {
 		return isElementDisplayed(driver, WpUserPostDetailPUI.POST_TAG_TEXT, postTag);
 	}
 
-	public boolean isCommentTextareaDisplayed() {
+	public boolean isPostCommentTextareaDisplayed() {
 		return isElementDisplayed(driver, WpUserPostDetailPUI.COMMENT_TEXTAREA);
 	}
 
-	public boolean isCommentTextareaUndisplayed() {
+	public boolean isPostCommentTextareaUndisplayed() {
 		return isElementUndisplayed(driver, WpUserPostDetailPUI.COMMENT_TEXTAREA);
 	}
 }

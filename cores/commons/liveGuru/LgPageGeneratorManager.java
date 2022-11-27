@@ -5,12 +5,15 @@ import org.openqa.selenium.WebDriver;
 import pageObjects.liveGuru.LgAdminCustomersPageObject;
 import pageObjects.liveGuru.LgAdminLoginPageObject;
 import pageObjects.liveGuru.LgUserAccountInformationPageObject;
+import pageObjects.liveGuru.LgUserContactUsPageObject;
 import pageObjects.liveGuru.LgUserHomePageObject;
 import pageObjects.liveGuru.LgUserLoginPageObject;
-import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserMyAccountDashboardPageObject;
 import pageObjects.liveGuru.LgUserNewsletterSubscriptionPageObject;
+import pageObjects.liveGuru.LgUserPrivacyPolicyPageObject;
 import pageObjects.liveGuru.LgUserRecurringProfilesPageObject;
 import pageObjects.liveGuru.LgUserRegisterPageObject;
+import pageObjects.liveGuru.LgUserSearchTermsPageObject;
 
 public class LgPageGeneratorManager {
 	
@@ -26,8 +29,8 @@ public class LgPageGeneratorManager {
 		return new LgUserRegisterPageObject(driver);
 	}
 	
-	public static LgUserMyDashboardPageObject getUserMyDashboardPage(WebDriver driver) {
-		return new LgUserMyDashboardPageObject(driver);
+	public static LgUserMyAccountDashboardPageObject getUserMyAccountDashboardPage(WebDriver driver) {
+		return new LgUserMyAccountDashboardPageObject(driver);
 	}
 
 	public static LgUserAccountInformationPageObject getUserAccountInformationPage(WebDriver driver) {
@@ -40,6 +43,18 @@ public class LgPageGeneratorManager {
 
 	public static LgUserNewsletterSubscriptionPageObject getUserNewsletterSubscriptionPage(WebDriver driver) {
 		return new LgUserNewsletterSubscriptionPageObject(driver);
+	}
+	
+	public static LgUserContactUsPageObject getUserContactUsPage(WebDriver driver) {
+		return new LgUserContactUsPageObject(driver);
+	}
+	
+	public static LgUserPrivacyPolicyPageObject getUserPrivacyPolicyPage(WebDriver driver) {
+		return new LgUserPrivacyPolicyPageObject(driver);
+	}
+	
+	public static LgUserSearchTermsPageObject getUserSearchTermsPage(WebDriver driver) {
+		return new LgUserSearchTermsPageObject(driver);
 	}
 	
 	public static LgAdminLoginPageObject getAdminLoginPage(WebDriver driver) {

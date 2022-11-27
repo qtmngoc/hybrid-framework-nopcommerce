@@ -9,11 +9,14 @@ import org.testng.annotations.Test;
 import commons.liveGuru.LgBaseTest;
 import commons.liveGuru.LgPageGeneratorManager;
 import pageObjects.liveGuru.LgUserAccountInformationPageObject;
+import pageObjects.liveGuru.LgUserContactUsPageObject;
 import pageObjects.liveGuru.LgUserHomePageObject;
-import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserMyAccountDashboardPageObject;
 import pageObjects.liveGuru.LgUserNewsletterSubscriptionPageObject;
+import pageObjects.liveGuru.LgUserPrivacyPolicyPageObject;
 import pageObjects.liveGuru.LgUserRecurringProfilesPageObject;
 import pageObjects.liveGuru.LgUserRegisterPageObject;
+import pageObjects.liveGuru.LgUserSearchTermsPageObject;
 
 public class Level_07_Page_Navigation extends LgBaseTest {
 	
@@ -35,16 +38,16 @@ public class Level_07_Page_Navigation extends LgBaseTest {
 		registerPage.inputIntoPasswordTextbox(password);
 		registerPage.inputIntoConfirmPasswordTextbox(password);
 
-		myDashboardPage = registerPage.clickOnRegisterButton();
-		verifyTrue(myDashboardPage.isRegisterSuccessMessageDisplayed());
-		verifyTrue(myDashboardPage.isContactInformationDisplayed(firstName + " " + lastName));
-		verifyTrue(myDashboardPage.isContactInformationDisplayed(email));
+		myAccountDashboardPage = registerPage.clickOnRegisterButton();
+		verifyTrue(myAccountDashboardPage.isRegisterSuccessMessageDisplayed());
+		verifyTrue(myAccountDashboardPage.isContactInformationDisplayed(firstName + " " + lastName));
+		verifyTrue(myAccountDashboardPage.isContactInformationDisplayed(email));
 	}
 	
 	@Test
 	public void Switch_02_My_Account_Sidebar() {
 		// Account Dashboard -> Newsletter Subscription
-		newsletterSubscriptionPage = myDashboardPage.openNewsletterSubscriptionPage();
+		newsletterSubscriptionPage = myAccountDashboardPage.openNewsletterSubscriptionPage();
 		verifyTrue(newsletterSubscriptionPage.isNewsletterSubscriptionHeaderDisplayed());
 		
 		// Newsletter Subscription -> Account Information
@@ -54,17 +57,14 @@ public class Level_07_Page_Navigation extends LgBaseTest {
 		// Account Information -> Recurring Profiles
 		recurringProfilesPage = accountInformationPage.openRecurringProfilesPage();
 		verifyTrue(recurringProfilesPage.isRecurringProfilesHeaderDisplayed());
-	}
-	
-	@Test
-	public void Switch_03_My_Account_Sidebar() {
+
 		// Recurring Profiles -> Account Dashboard
 		recurringProfilesPage.openMyAccountSidebarPageByTitle("Account Dashboard");
-		myDashboardPage = LgPageGeneratorManager.getUserMyDashboardPage(driver);
-		verifyTrue(myDashboardPage.isMyDashboardHeaderDisplayed());
+		myAccountDashboardPage = LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
+		verifyTrue(myAccountDashboardPage.isMyDashboardHeaderDisplayed());
 		
 		// Account Dashboard -> Account Information
-		myDashboardPage.openMyAccountSidebarPageByTitle("Account Information");
+		myAccountDashboardPage.openMyAccountSidebarPageByTitle("Account Information");
 		accountInformationPage = LgPageGeneratorManager.getUserAccountInformationPage(driver);
 		verifyTrue(accountInformationPage.isAccountInformationHeaderDisplayed());
 		
@@ -75,8 +75,39 @@ public class Level_07_Page_Navigation extends LgBaseTest {
 	}
 	
 	@Test
-	public void Switch_04_Footer() {
+	public void Switch_03_Footer() {
+		// Newsletter Subscription (sidebar) -> Privacy Policy (footer)
+		newsletterSubscriptionPage.getUserFooterContainerPage(driver).openFooterPageByTitle("Privacy Policy");
+		privacyPolicyPage = LgPageGeneratorManager.getUserPrivacyPolicyPage(driver);
+		verifyTrue(privacyPolicyPage.isPrivacyPolicyHeaderDisplayed());
 		
+		// Privacy Policy -> My Account
+		privacyPolicyPage.openFooterPageByTitle("My Account");
+		myAccountDashboardPage = LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
+		verifyTrue(myAccountDashboardPage.isMyDashboardHeaderDisplayed());
+		
+		// My Account (footer / sidebar) -> Recurring Profiles (sidebar)
+		myAccountDashboardPage.openMyAccountSidebarPageByTitle("Recurring Profiles");
+		recurringProfilesPage = LgPageGeneratorManager.getUserRecurringProfilesPage(driver);
+		verifyTrue(recurringProfilesPage.isRecurringProfilesHeaderDisplayed());
+		
+		// Recurring Profiles (sidebar) -> Contact Us (footer) 
+		recurringProfilesPage.openFooterPageByTitle("Contact Us");
+		contactUsPage = LgPageGeneratorManager.getUserContactUsPage(driver);
+		verifyTrue(contactUsPage.isContactUsHeaderDisplayed());
+		
+		// Contact Us -> My Account
+		contactUsPage.openFooterPageByTitle("My Account");
+		myAccountDashboardPage = LgPageGeneratorManager.getUserMyAccountDashboardPage(driver);
+		verifyTrue(myAccountDashboardPage.isMyDashboardHeaderDisplayed());
+		
+		// My Account -> Search Terms
+		myAccountDashboardPage.openFooterPageByTitle("Search Terms");
+		searchTermsPage = LgPageGeneratorManager.getUserSearchTermsPage(driver);
+		verifyTrue(searchTermsPage.isSearchTermsHeaderDisplayed());
+		
+		// Search Terms (footer) -> Account Information (sidebar): FAIL
+		// searchTermsPage.openAccountInformationPage();
 	}
 
 	@AfterClass(alwaysRun = true)
@@ -92,8 +123,11 @@ public class Level_07_Page_Navigation extends LgBaseTest {
 	private WebDriver driver;
 	private LgUserHomePageObject homePage;
 	private LgUserRegisterPageObject registerPage;
-	private LgUserMyDashboardPageObject myDashboardPage;
+	private LgUserContactUsPageObject contactUsPage;
+	private LgUserSearchTermsPageObject searchTermsPage;
+	private LgUserPrivacyPolicyPageObject privacyPolicyPage;
 	private LgUserRecurringProfilesPageObject recurringProfilesPage;
+	private LgUserMyAccountDashboardPageObject myAccountDashboardPage;
 	private LgUserAccountInformationPageObject accountInformationPage;
 	private LgUserNewsletterSubscriptionPageObject newsletterSubscriptionPage;
 	

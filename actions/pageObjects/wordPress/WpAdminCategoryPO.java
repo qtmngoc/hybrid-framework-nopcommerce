@@ -63,7 +63,7 @@ public class WpAdminCategoryPO extends WpBasePage{
 		return isElementSelected(driver, WpAdminCategoryPUI.DIALOG_PARENT_TOGGLE);
 	}
 
-	public boolean isCategoryDisplayed(String categoryName) {
+	public boolean isCategoryDisplayedByScrollDown(String categoryName) {
 		long timeout = 1;
 		setImplicitWait(driver, timeout);
 		while(true) {
@@ -76,6 +76,11 @@ public class WpAdminCategoryPO extends WpBasePage{
 			}
 		}
 		setImplicitWait(driver, WpGlobalConstants.LONG_TIMEOUT);
+		//scrollToTopPageByJS(driver);
+		return isElementDisplayed(driver, WpAdminCategoryPUI.CATEGORY_ITEM, categoryName);
+	}
+	
+	public boolean isCategoryDisplayed(String categoryName) {
 		return isElementDisplayed(driver, WpAdminCategoryPUI.CATEGORY_ITEM, categoryName);
 	}
 

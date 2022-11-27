@@ -29,21 +29,22 @@ public class Demo_01_Login extends WpBaseTest {
 
 	@Test
 	public void Login_01_Empty_Username(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with empty username");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with empty username on Admin site");
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Enter empty value into 'Email Address or Username' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Open Admin LOGIN page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter an empty value into 'Email Address or Username' textbox.");
 		adminLoginPage.inputIntoUsernameTextbox("");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Continue' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on 'Continue' button.");
 		adminLoginPage.clickOnContinueButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Verify 'Please enter a username or email address.' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Verify 'Please enter a username or email address.' message is displayed.");
 		verifyEquals(adminLoginPage.getLoginErrorMessage(), "Please enter a username or email address.");
 	}
 	
 	@Test
 	public void Login_02_Not_Existent_Username(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with non-existent username");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with non-existent username on Admin site");
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);
@@ -60,7 +61,7 @@ public class Demo_01_Login extends WpBaseTest {
 	
 	@Test
 	public void Login_03_Incorrect_Password(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with existing username and incorrect password");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with existing username and incorrect password on Admin site");
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);
@@ -83,7 +84,7 @@ public class Demo_01_Login extends WpBaseTest {
 	
 	@Test
 	public void Login_04_Success(Method method) {
-		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with existing username and correct password");
+		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with existing username and correct password on Admin site");
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);

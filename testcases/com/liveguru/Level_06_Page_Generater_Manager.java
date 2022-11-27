@@ -11,7 +11,7 @@ import commons.liveGuru.LgBaseTest;
 import commons.liveGuru.LgPageGeneratorManager;
 import pageObjects.liveGuru.LgUserHomePageObject;
 import pageObjects.liveGuru.LgUserLoginPageObject;
-import pageObjects.liveGuru.LgUserMyDashboardPageObject;
+import pageObjects.liveGuru.LgUserMyAccountDashboardPageObject;
 import pageObjects.liveGuru.LgUserRegisterPageObject;
 
 public class Level_06_Page_Generater_Manager extends LgBaseTest {
@@ -66,6 +66,6 @@ public class Level_06_Page_Generater_Manager extends LgBaseTest {
 	private LgUserHomePageObject homePage;
 	private LgUserLoginPageObject loginPage;
 	private LgUserRegisterPageObject registerPage;
-	private LgUserMyDashboardPageObject myDashboardPage;
+	private LgUserMyAccountDashboardPageObject myDashboardPage;
 	private String firstName, lastName, email, password;
 }
