@@ -10,20 +10,11 @@
 	<parameter name="adminUrl" value="https://automationfc.wordpress.com/wp-admin/" />
 	<parameter name="userUrl" value="https://automationfc.wordpress.com/" />
 
-<!--	<test name="Run on Chrome">
+	<test name="Run on Chrome">
 		<parameter name="browser" value="Chrome" />
 		<packages>
 			<package name="com.wordpress" />
 		</packages>
-	</test> -->
-	
-	<test name="Run on Chrome">
-		<parameter name="browser" value="Chrome" />
-		<classes>
-			<class name="com.wordpress.Demo_01_Login" />
-			<class name="com.wordpress.Demo_02_Post" />
-			<class name="com.wordpress.Demo_03_Category" />
-		</classes>
 	</test>
 
 <!--

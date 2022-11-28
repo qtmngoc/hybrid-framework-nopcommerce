@@ -28,7 +28,7 @@ public class WpAdminPageNewPUI {
 	public static final String PUBLISHED_OR_UPDATED_MESSAGE = "//div[@class='components-snackbar__content' and text()='%s']";
 	public static final String PAGE_NOW_LIVE_MESSAGE = "//div[contains(@class, 'postpublish-header')]";
 	public static final String WORDPRESS_LOGO = "//button[@aria-label='Block editor sidebar']";
-	public static final String ALL_PAGES_LINK = "//div[@aria-label='Block editor sidebar']//a[text()='View Pages']";
+	public static final String VIEW_PAGES_LINK = "//div[@aria-label='Block editor sidebar']//a[text()='View Pages']";
 
 }
 

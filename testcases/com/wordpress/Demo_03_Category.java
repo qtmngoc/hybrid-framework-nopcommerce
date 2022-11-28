@@ -40,10 +40,10 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Add New Category' button to open the dialog.");
 		adminCategoryPage.clickOnAddNewCategoryButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + parentCatName + "\" into 'New Category Name' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + parentCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(parentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + parentCatDesc + "\" into 'Description' textarea.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + parentCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(parentCatDesc);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Verify 'Top level Category' toggle is enabled.");
@@ -67,16 +67,16 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Add New Category' button to open the dialog.");
 		adminCategoryPage.clickOnAddNewCategoryButton();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + childCatName + "\" into 'New Category Name' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + childCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(childCatName);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + childCatDesc + "\" into 'Description' textarea.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + childCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(childCatDesc);
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'Top level Category' toggle to disable it.");
 		adminCategoryPage.clickOnTopLevelToggle();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Enter \"" + parentCatName + "\" into 'Search...' textbox and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Enter \"" + parentCatName + "\" into 'Search...' field and select it.");
 		adminCategoryPage.inputIntoDialogSearchTextbox(parentCatName);
 		adminCategoryPage.checkParentCategoryRadio(parentCatName);
 
@@ -94,16 +94,16 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + childCatName + "\" into 'Search...' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + childCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(childCatName);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(childCatName, "Edit");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editChildCatName + "\" into 'New Category Name' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editChildCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(editChildCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editChildCatDesc + "\" into 'Description' textarea.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editChildCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(editChildCatDesc);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on 'Top level Category' toggle to enable it.");
@@ -129,22 +129,22 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + parentCatName + "\" into 'Search...' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + parentCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(parentCatName);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(parentCatName, "Edit");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editParentCatName + "\" into 'New Category Name' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editParentCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(editParentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editParentCatDesc + "\" into 'Description' textarea.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editParentCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(editParentCatDesc);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on 'Top level Category' toggle to disable it.");
 		adminCategoryPage.clickOnTopLevelToggle();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + editChildCatName + "\" into 'Search...' textbox and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + editChildCatName + "\" into 'Search...' field and select it.");
 		adminCategoryPage.inputIntoDialogSearchTextbox(editChildCatName);
 		adminCategoryPage.checkParentCategoryRadio(editChildCatName);
 		
@@ -165,7 +165,7 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editChildCatName + "\" into 'Search...' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editChildCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(editChildCatName);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Delete' item.");
@@ -183,7 +183,7 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editParentCatName + "\" into 'Search...' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editParentCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(editParentCatName);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Open Ellipsis menu and click on 'Delete' item.");
@@ -200,6 +200,10 @@ public class Demo_03_Category extends WpBaseTest {
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Verify deleted categories are undisplayed.");
+		verifyTrue(adminCategoryPage.isCategoryUndisplayed(editChildCatName));
+		verifyTrue(adminCategoryPage.isCategoryUndisplayed(editParentCatName));
 	}
 
 	@AfterClass(alwaysRun = true)

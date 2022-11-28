@@ -60,14 +60,14 @@ public class Demo_02_Post extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Expand 'Categories' panel.");
 		adminPostNewPage.clickOnPanelByText("Categories");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + postCategory + "\" into 'Search Categories' textbox and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + postCategory + "\" into 'Search Categories' field and select it.");
 		adminPostNewPage.inputIntoSearchCategoryTextbox(postCategory);
 		adminPostNewPage.checkCheckboxByLabel(postCategory);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Expand 'Tags' panel.");
 		adminPostNewPage.clickOnPanelByText("Tags");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Enter \"" + postTag + "\" into 'Add New Tag' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Enter \"" + postTag + "\" into 'Add New Tag' field.");
 		adminPostNewPage.inputIntoAddNewTagTextbox(postTag);
 		verifyTrue(adminPostNewPage.isRemoveTagButtonDisplayed(postTag));
 
@@ -88,7 +88,7 @@ public class Demo_02_Post extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on 'Set featured image' button.");
 		adminPostNewPage.clickOnSetImageButton();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Verify \"" + uploadedImageName + "\" is uploaded.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Verify \"" + uploadedImageName + "\" post image is updated.");
 		verifyTrue(adminPostNewPage.isImageUploaded(uploadedImageName));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 16: Click on 'Publish' and 'Pre-publish' buttons.");
@@ -109,7 +109,7 @@ public class Demo_02_Post extends WpBaseTest {
 		adminPostNewPage.clickOnWordpressLogo();
 		adminPostAllPage = adminPostNewPage.clickOnAllPostsLink();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + postTitle + "\" into Search textbox and click on 'Search Posts' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + postTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox(postTitle);
 		adminPostAllPage.clickOnSearchPostsButton();
 		
@@ -129,11 +129,11 @@ public class Demo_02_Post extends WpBaseTest {
 		verifyTrue(userHomePage.isPostCategoryDisplayed(postTitle, postCategory));
 		verifyTrue(userHomePage.isPostPublishedDateDisplayed(postTitle, publishedDate));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on Search toggle and enter \"" + postTitle + "\" into Search textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click to expand 'Search' field and enter \"" + postTitle + "\".");
 		userHomePage.clickOnSearchToggle();
 		userHomePage.inputIntoSearchTextbox(postTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Search icon to go to User SEARCH page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Search button to go to User SEARCH page.");
 		userSearchPage = userHomePage.clickOnSearchButton();
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify '1 Post' title is displayed.");
@@ -154,7 +154,7 @@ public class Demo_02_Post extends WpBaseTest {
 		verifyTrue(userPostDetailsPage.isPostCategoryDisplayed(postCategory));
 		verifyTrue(userPostDetailsPage.isPostPublishedDateDisplayed(publishedDate));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify post Body, Author, Tag, and Comment textarea are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify post Body, Author, Tag, and Comment box are displayed.");
 		verifyTrue(userPostDetailsPage.isPostBodyDisplayed(postBody));
 		verifyTrue(userPostDetailsPage.isPostAuthorDisplayed(authorName));
 		verifyTrue(userPostDetailsPage.isPostTagDisplayed(postTag));
@@ -169,7 +169,7 @@ public class Demo_02_Post extends WpBaseTest {
 		adminDashboardPage = userPostDetailsPage.openAdminSite(driver, adminUrl);		
 		adminPostAllPage = adminDashboardPage.clickOnPostMenu();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + postTitle + "\" into Search textbox and click on 'Search Posts' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + postTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox(postTitle);		
 		adminPostAllPage.clickOnSearchPostsButton();
 		
@@ -189,14 +189,14 @@ public class Demo_02_Post extends WpBaseTest {
 		adminPostNewPage.clickOnPanelByText("Categories");
 		adminPostNewPage.uncheckCheckboxByLabel(postCategory);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editCategory + "\" into 'Search Categories' textbox and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editCategory + "\" into 'Search Categories' field and select it.");
 		adminPostNewPage.inputIntoSearchCategoryTextbox(editCategory);
 		adminPostNewPage.checkCheckboxByLabel(editCategory);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Expand 'Tags' panel.");
 		adminPostNewPage.clickOnPanelByText("Tags");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Clear \"" + postTag + "\" and enter \"" + editTag + "\" into 'Add New Tag' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Clear \"" + postTag + "\" and enter \"" + editTag + "\" into 'Add New Tag' field.");
 		adminPostNewPage.clickOnRemoveTagButton(postTag);
 		adminPostNewPage.inputIntoAddNewTagTextbox(editTag);
 		verifyTrue(adminPostNewPage.isRemoveTagButtonDisplayed(editTag));
@@ -212,14 +212,14 @@ public class Demo_02_Post extends WpBaseTest {
 		adminPostNewPage.clickOnDeleteImageButton();
 		adminPostNewPage.acceptAlert(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Enter \"" + editImage + "\" into 'Search' textbox and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Enter \"" + editImage + "\" into 'Search' field and select it.");
 		adminPostNewPage.inputIntoSearchImageTextbox(editImage);
 		adminPostNewPage.selectPostImage(editImage);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Click on 'Set featured image' button.");
 		adminPostNewPage.clickOnSetImageButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 16: Verify \"" + editImage + ".jpg\" is uploaded.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 16: Verify \"" + editImage + ".jpg\" post image is updated.");
 		verifyTrue(adminPostNewPage.isImageUploaded(editImage));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 17: Expand 'Discussion' panel.");
@@ -236,14 +236,14 @@ public class Demo_02_Post extends WpBaseTest {
 	}
 	
 	@Test
-	public void Post_04_Search_And_View_Post_After_Edit(Method method) {
+	public void Post_04_Search_And_View_Post_After_Editing(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Search and view after editing post on Admin and User sites");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on WordPress logo and 'All Posts' link to go to Admin ALL POSTS page.");
 		adminPostNewPage.clickOnWordpressLogo();
 		adminPostAllPage = adminPostNewPage.clickOnAllPostsLink();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editTitle + "\" into Search textbox and click on 'Search Posts' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox(editTitle);
 		adminPostAllPage.clickOnSearchPostsButton();
 		
@@ -262,11 +262,11 @@ public class Demo_02_Post extends WpBaseTest {
 		verifyTrue(userHomePage.isPostCategoryDisplayed(editTitle, editCategory));
 		verifyTrue(userHomePage.isPostPublishedDateDisplayed(editTitle, publishedDate));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on Search toggle and enter \"" + editTitle + "\" into Search textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click to expand 'Search' field and enter \"" + editTitle + "\".");
 		userHomePage.clickOnSearchToggle();
 		userHomePage.inputIntoSearchTextbox(editTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Search icon to go to User SEARCH page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Search button to go to User SEARCH page.");
 		userSearchPage = userHomePage.clickOnSearchButton();
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify '1 Post' title is displayed.");
@@ -292,7 +292,7 @@ public class Demo_02_Post extends WpBaseTest {
 		verifyTrue(userPostDetailsPage.isPostAuthorDisplayed(authorName));
 		verifyTrue(userPostDetailsPage.isPostTagDisplayed(editTag));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Verify post Comment textarea is undisplayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Verify post Comment box is undisplayed.");
 		verifyTrue(userPostDetailsPage.isPostCommentTextareaUndisplayed());
 	}
 	
@@ -304,7 +304,7 @@ public class Demo_02_Post extends WpBaseTest {
 		adminDashboardPage = userPostDetailsPage.openAdminSite(driver, adminUrl);		
 		adminPostAllPage = adminDashboardPage.clickOnPostMenu();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editTitle + "\" into Search textbox and click on 'Search Posts' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox(editTitle);		
 		adminPostAllPage.clickOnSearchPostsButton();
 		
@@ -324,7 +324,7 @@ public class Demo_02_Post extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on 'Trash' tab.");
 		adminPostAllPage.clickOnTrashTab();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editTitle + "\" into Search textbox and click on 'Search Posts' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox(editTitle);		
 		adminPostAllPage.clickOnSearchPostsButton();
 		
@@ -344,11 +344,11 @@ public class Demo_02_Post extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Open User HOME page.");
 		userHomePage = adminPostAllPage.openUserSite(driver, userUrl);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click on Search toggle and enter \"" + editTitle + "\" into Search textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Click to expand 'Search' field and enter \"" + editTitle + "\".");
 		userHomePage.clickOnSearchToggle();
 		userHomePage.inputIntoSearchTextbox(editTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Click on Search icon to go to User SEARCH page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 15: Click on Search button to go to User SEARCH page.");
 		userSearchPage = userHomePage.clickOnSearchButton();
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 16: Verify 'It seems we can't find what you’re looking for.' message is displayed.");
@@ -363,14 +363,14 @@ public class Demo_02_Post extends WpBaseTest {
 	String adminUrl, userUrl, browserName, publishedDate, uploadedImageName;
 	int randomNumber2 = Demo_01_Login.randomNumber1;
 	String authorName = "Automation FC";
-	String postTitle = "[Annie]_New-post-title_" + randomNumber2;
+	String postTitle = "[Annie]_NewPostTitle_" + randomNumber2;
 	String postBody = "Coding Demo: post body " + randomNumber2;
-	String postCategory = "Annie_new-category-2022";
+	String postCategory = "[Annie] New Category 2022";
 	String postTag = "annie_tag_" + randomNumber2; 
 	String postImage = "annie_sunflower.jpg";
-	String editTitle = "[Annie]_Edit-post-title_" + randomNumber2;
+	String editTitle = "[Annie]_EditPostTitle_" + randomNumber2;
 	String editBody = "Edit post body " + randomNumber2;
-	String editCategory = "Annie_edit-category-2022";
+	String editCategory = "[Annie] Edit Category 2022";
 	String editTag = "annie_edit_" + randomNumber2; 
 	String editImage = "annie_cake";
 	

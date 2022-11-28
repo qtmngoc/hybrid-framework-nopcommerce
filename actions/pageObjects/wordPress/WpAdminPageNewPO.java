@@ -95,8 +95,8 @@ public class WpAdminPageNewPO extends WpBasePage{
 		clickOnElement(driver, WpAdminPageNewPUI.WORDPRESS_LOGO);
 	}
 
-	public WpAdminPageAllPO clickOnAllPagesLink() {
-		clickOnElement(driver, WpAdminPageNewPUI.ALL_PAGES_LINK);
+	public WpAdminPageAllPO clickOnViewPagesLink() {
+		clickOnElement(driver, WpAdminPageNewPUI.VIEW_PAGES_LINK);
 		return WpPageGeneratorManager.getAdminPageAllPage(driver);
 	}
 

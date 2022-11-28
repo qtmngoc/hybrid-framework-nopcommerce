@@ -70,7 +70,7 @@ public class WpAdminPageAllPO extends WpBasePage{
 		return isElementDisplayed(driver, WpAdminPageAllPUI.PAGE_BODY_PREVIEW, pageBody);
 	}
 
-	public boolean isCommentPreviewDisplayed() {
+	public boolean isPageCommentPreviewDisplayed() {
 		return isElementDisplayed(driver, WpAdminPageAllPUI.COMMENT_TEXTAREA_PREVIEW);
 	}
 

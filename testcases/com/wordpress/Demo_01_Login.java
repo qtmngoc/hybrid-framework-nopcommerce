@@ -32,7 +32,7 @@ public class Demo_01_Login extends WpBaseTest {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Login with empty username on Admin site");
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Open Admin LOGIN page.");
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter an empty value into 'Email Address or Username' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter an empty value into 'Email Address or Username' field.");
 		adminLoginPage.inputIntoUsernameTextbox("");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on 'Continue' button.");
@@ -49,7 +49,7 @@ public class Demo_01_Login extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + nonExistentUsername + "\" into 'Email Address or Username' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + nonExistentUsername + "\" into 'Email Address or Username' field.");
 		adminLoginPage.inputIntoUsernameTextbox(nonExistentUsername);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on 'Continue' button.");
@@ -66,13 +66,13 @@ public class Demo_01_Login extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + username + "\" into 'Email Address or Username' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + username + "\" into 'Email Address or Username' field.");
 		adminLoginPage.inputIntoUsernameTextbox(username);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on 'Continue' button.");
 		adminLoginPage.clickOnContinueButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + incorrectPassword + "\" into 'Password' textbox.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + incorrectPassword + "\" into 'Password' field.");
 		adminLoginPage.inputIntoPasswordTextbox(incorrectPassword);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'Log In' button.");
@@ -89,13 +89,13 @@ public class Demo_01_Login extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin LOGIN page.");
 		adminLoginPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + username + "\" into 'Email Address or Username' text box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + username + "\" into 'Email Address or Username' field.");
 		adminLoginPage.inputIntoUsernameTextbox(username);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Click on 'Continue' button.");
 		adminLoginPage.clickOnContinueButton();
 				
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + password + "\" into 'Password' text box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + password + "\" into 'Password' field.");
 		adminLoginPage.inputIntoPasswordTextbox(password);
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'Log In' button.");

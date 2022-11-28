@@ -83,6 +83,10 @@ public class WpAdminCategoryPO extends WpBasePage{
 	public boolean isCategoryDisplayed(String categoryName) {
 		return isElementDisplayed(driver, WpAdminCategoryPUI.CATEGORY_ITEM, categoryName);
 	}
+	
+	public boolean isCategoryUndisplayed(String categoryName) {
+		return isElementUndisplayed(driver, WpAdminCategoryPUI.CATEGORY_ITEM, categoryName);
+	}
 
 	public boolean isParentCategoryMessageDisplayed() {
 		return isElementDisplayed(driver, WpAdminCategoryPUI.DIALOG_PARENT_MESSAGE);
