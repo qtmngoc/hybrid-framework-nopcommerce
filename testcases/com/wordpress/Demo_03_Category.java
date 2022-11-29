@@ -177,7 +177,7 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'OK' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Verify 'No results found.' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Verify 'No results found.' is displayed.");
 		verifyTrue(adminCategoryPage.isNoResultsFoundMessageDisplayed());
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Close Search icon.");
@@ -195,7 +195,7 @@ public class Demo_03_Category extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Click on 'OK' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'No results found.' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'No results found.' is displayed.");
 		verifyTrue(adminCategoryPage.isNoResultsFoundMessageDisplayed());
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Click on Close Search icon.");

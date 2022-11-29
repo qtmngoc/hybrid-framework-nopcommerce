@@ -121,6 +121,7 @@ public class Demo_04_Page extends WpBaseTest {
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Open User HOME page.");
 		userHomePage = adminPageAllPage.openUserSite(driver, userUrl);
+		userHomePage.clickOnAcceptCookiesButton();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Click to expand 'Search' field and enter \"" + pageTitle + "\".");
 		userHomePage.clickOnSearchToggle();
@@ -306,7 +307,7 @@ public class Demo_04_Page extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Verify 'Page deleted.' message is displayed.");
 		verifyTrue(adminPageAllPage.isPageTrashedOrDeletedMessageDisplayed("Page deleted."));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify 'No pages match your search for " + editTitle + ".' message is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify 'No pages match your search for " + editTitle + ".' is displayed.");
 		verifyEquals(adminPageAllPage.getNoResultsMessage(), "No pages match your search for " + editTitle + ".");
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Open User HOME page.");
