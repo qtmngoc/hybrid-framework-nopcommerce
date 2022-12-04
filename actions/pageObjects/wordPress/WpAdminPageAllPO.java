@@ -6,7 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpAdminPageAllPUI;
 
-public class WpAdminPageAllPO extends WpBasePage{
+public class WpAdminPageAllPO extends WpBasePage {
 	WebDriver driver;
 
 	public WpAdminPageAllPO(WebDriver driver) {
@@ -22,7 +22,6 @@ public class WpAdminPageAllPO extends WpBasePage{
 		clickOnElement(driver, WpAdminPageAllPUI.OPEN_SEARCH_ICON);
 	}
 	
-
 	public void clickOnCloseSearchIcon() {
 		clickOnElement(driver, WpAdminPageAllPUI.CLOSE_SEARCH_ICON);
 	}
@@ -33,14 +32,14 @@ public class WpAdminPageAllPO extends WpBasePage{
 	}
 
 	public void clickOnEllipsisMenu(String pageTitle, String menuItem) {
-		clickOnElement(driver, WpAdminPageAllPUI.ELLIPSIS_MENU, pageTitle);
+		clickOnElement(driver, WpAdminPageAllPUI.ELLIPSIS_MENU_BY_TITLE, pageTitle);
 		sleepInSecond(1);
 		clickOnElement(driver, WpAdminPageAllPUI.ELLIPSIS_MENU_ITEM, menuItem);
 		sleepInSecond(1);
 	}
 
 	public void clickOnDeleteEllipsisMenu(String pageTitle, String menuItem) {
-		clickOnElement(driver, WpAdminPageAllPUI.DELETE_ELLIPSIS_MENU, pageTitle);
+		clickOnElement(driver, WpAdminPageAllPUI.DELETE_ELLIPSIS_MENU_BY_TITLE, pageTitle);
 		sleepInSecond(1);
 		clickOnElement(driver, WpAdminPageAllPUI.ELLIPSIS_MENU_ITEM, menuItem);
 		sleepInSecond(1);
@@ -62,8 +61,8 @@ public class WpAdminPageAllPO extends WpBasePage{
 		return isElementDisplayed(driver, WpAdminPageAllPUI.PAGE_TITLE_PREVIEW, pageTitle);
 	}
 
-	public boolean isPageImagePreviewDisplayed(String pageTitle, String uploadedImageName) {
-		return isElementDisplayed(driver, WpAdminPageAllPUI.PAGE_IMAGE_PREVIEW, pageTitle, uploadedImageName);
+	public boolean isPageImagePreviewDisplayed(String uploadedImageName) {
+		return isElementDisplayed(driver, WpAdminPageAllPUI.PAGE_IMAGE_PREVIEW, uploadedImageName);
 	}
 
 	public boolean isPageBodyPreviewDisplayed(String pageBody) {
@@ -86,8 +85,9 @@ public class WpAdminPageAllPO extends WpBasePage{
 		return isElementDisplayed(driver, WpAdminPageAllPUI.PAGE_TITLE_TEXT, pageTitle);
 	}
 
-	public void clickOnPageTitleLink(String pageTitle) {
-		clickOnElement(driver, WpAdminPageAllPUI.PAGE_TITLE_TEXT, pageTitle);		
+	public WpAdminPageNewPO clickOnPageTitleLink(String pageTitle) {
+		clickOnElement(driver, WpAdminPageAllPUI.PAGE_TITLE_TEXT, pageTitle);	
+		return WpPageGeneratorManager.getAdminPageNewPage(driver);
 	}
 
 	public WpUserPageDetailPO clickOnVisitSiteButton() {

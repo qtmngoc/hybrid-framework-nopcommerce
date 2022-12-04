@@ -6,15 +6,11 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpUserSearchPUI;
 
-public class WpUserSearchPO extends WpBasePage{
+public class WpUserSearchPO extends WpBasePage {
 	WebDriver driver;
 	
 	public WpUserSearchPO(WebDriver driver) {
 		this.driver = driver;
-	}
-
-	public boolean isSearchResultsTitleDisplayed(String postTitle) {
-		return isElementDisplayed(driver, WpUserSearchPUI.SEARCH_RESULTS_TEXT_BY_POST_TITLE, postTitle);
 	}
 
 	public boolean isOnePostMessageDisplayed(String message) {
@@ -54,18 +50,6 @@ public class WpUserSearchPO extends WpBasePage{
 	public WpUserPageDetailPO clickOnPageTitleLink(String pageTitle) {
 		clickOnElement(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_TEXT, pageTitle);
 		return WpPageGeneratorManager.getUserPageDetailPage(driver);
-	}
-
-	public void clickOnSearchToggle() {
-		clickOnElement(driver, WpUserSearchPUI.SEARCH_TOGGLE);
-	}
-
-	public void inputIntoSearchTextbox(String postTitle) {
-		sendKeysToElement(driver, WpUserSearchPUI.SEARCH_TEXTBOX, postTitle);
-	}
-
-	public void clickOnSearchButton() {
-		clickOnElement(driver, WpUserSearchPUI.SEARCH_BUTTON);
 	}
 
 }

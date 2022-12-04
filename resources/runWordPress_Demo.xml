@@ -12,12 +12,19 @@
 
 	<test name="Run on Chrome">
 		<parameter name="browser" value="Chrome" />
+		<classes>
+			<class name="com.wordpress.Demo_04_Page_Default_View" />
+		</classes>
+	</test>
+	
+<!--	<test name="Run on Chrome">
+		<parameter name="browser" value="Chrome" />
 		<packages>
 			<package name="com.wordpress" />
 		</packages>
 	</test>
 
-<!--
+
 	<test name="Run on Firefox">
 		<parameter name="browser" value="Firefox" />	
 		<packages>

@@ -2,6 +2,7 @@ package pageUIs.wordPress;
 
 public class WpAdminPostNewPUI {
 
+	public static final String POST_PATTERN_IFRAME = "//iframe[@class='is-loaded']";	
 	public static final String ADD_NEW_CATEGORY_BUTTON = "//button[@type='submit' and text()='Add New Category']";
 	public static final String BODY_BUTTON = "//p[@aria-label='Add default block']";
 	public static final String DELETE_IMAGE_BUTTON = "//button[@class='button-link delete-attachment']";

@@ -35,24 +35,25 @@ public class Demo_03_Category extends WpBaseTest {
 	@Test
 	public void Category_01_Create_New_Parent_Category(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Create a new parent category on Admin site");
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Click on 'Posts' menu and 'Categories' submenu to go to Admin CATEGORY page.");
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Add New Category' button to open the dialog.");
+		int s = 0;
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Posts' menu and 'Categories' submenu to go to Admin CATEGORY page.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Add New Category' button to open the dialog.");
 		adminCategoryPage.clickOnAddNewCategoryButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + parentCatName + "\" into 'New Category Name' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + parentCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(parentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + parentCatDesc + "\" into 'Description' box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + parentCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(parentCatDesc);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Verify 'Top level Category' toggle is enabled.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'Top level Category' toggle is enabled.");
 		verifyTrue(adminCategoryPage.isParentCategoryMessageDisplayed());
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on 'Add' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Add' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Verify newly created category is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify newly created category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(parentCatName));
 
 	}
@@ -60,148 +61,152 @@ public class Demo_03_Category extends WpBaseTest {
 	@Test
 	public void Category_02_Create_New_Child_Category(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Create a new child category on Admin site");
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
+		int s = 0;
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Click on 'Add New Category' button to open the dialog.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Add New Category' button to open the dialog.");
 		adminCategoryPage.clickOnAddNewCategoryButton();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Enter \"" + childCatName + "\" into 'New Category Name' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + childCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(childCatName);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + childCatDesc + "\" into 'Description' box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + childCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(childCatDesc);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'Top level Category' toggle to disable it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Top level Category' toggle to disable it.");
 		adminCategoryPage.clickOnTopLevelToggle();
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Enter \"" + parentCatName + "\" into 'Search...' field and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + parentCatName + "\" into 'Search...' field and select it.");
 		adminCategoryPage.inputIntoDialogSearchTextbox(parentCatName);
 		adminCategoryPage.checkParentCategoryRadio(parentCatName);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on 'Add' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Add' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Verify newly created category is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify newly created category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(childCatName));
 	}
 	
 	@Test
 	public void Category_03_Edit_Child_Category(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Edit child category on Admin site");
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
+		int s = 0;
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + childCatName + "\" into 'Search...' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + childCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(childCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Edit' item.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(childCatName, "Edit");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editChildCatName + "\" into 'New Category Name' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editChildCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(editChildCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editChildCatDesc + "\" into 'Description' box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editChildCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(editChildCatDesc);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on 'Top level Category' toggle to enable it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Top level Category' toggle to enable it.");
 		adminCategoryPage.clickOnTopLevelToggle();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Verify 'Top level Category' toggle is enabled.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'Top level Category' toggle is enabled.");
 		verifyTrue(adminCategoryPage.isParentCategoryMessageDisplayed());
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Click on 'Update' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Update' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Click on Close Search icon.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify edited category is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify edited category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(editChildCatName));
 	}
 	
 	@Test
 	public void Category_04_Edit_Parent_Category(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Edit parent category on Admin site");
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
+		int s = 0;
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + parentCatName + "\" into 'Search...' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + parentCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(parentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Edit' item.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'Edit' item.");
 		adminCategoryPage.clickOnEllipsisMenu(parentCatName, "Edit");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Enter \"" + editParentCatName + "\" into 'New Category Name' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editParentCatName + "\" into 'New Category Name' field.");
 		adminCategoryPage.inputIntoCategoryNameTextbox(editParentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Enter \"" + editParentCatDesc + "\" into 'Description' box.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editParentCatDesc + "\" into 'Description' box.");
 		adminCategoryPage.inputIntoCategoryDescriptionTextarea(editParentCatDesc);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Click on 'Top level Category' toggle to disable it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Top level Category' toggle to disable it.");
 		adminCategoryPage.clickOnTopLevelToggle();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Enter \"" + editChildCatName + "\" into 'Search...' field and select it.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editChildCatName + "\" into 'Search...' field and select it.");
 		adminCategoryPage.inputIntoDialogSearchTextbox(editChildCatName);
 		adminCategoryPage.checkParentCategoryRadio(editChildCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Click on 'Update' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Update' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Click on Close Search icon.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify edited category is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify edited category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(editParentCatName));
 	}
 	
 	@Test
 	public void Category_05_Delete_Category(Method method) {
 		WpExtentTestManagerV5.startTest(method.getName() + " - " + browserName, "Delete categories on Admin site");
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 01: Refresh Admin CATEGORY page.");
+		int s = 0;
+
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Refresh Admin CATEGORY page.");
 		adminCategoryPage.refreshCurrentPage(driver);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 02: Enter \"" + editChildCatName + "\" into 'Search...' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editChildCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(editChildCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 03: Open Ellipsis menu and click on 'Delete' item.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'Delete' item.");
 		adminCategoryPage.clickOnEllipsisMenu(editChildCatName, "Delete");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 04: Verify confirm delete message contains \"" + editChildCatName + "\".");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify confirm delete message contains \"" + editChildCatName + "\".");
 		verifyTrue(adminCategoryPage.isConfirmDeleteMessageDisplayed(editChildCatName));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 05: Click on 'OK' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'OK' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 06: Verify 'No results found.' is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'No results found.' message is displayed.");
 		verifyTrue(adminCategoryPage.isNoResultsFoundMessageDisplayed());
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 07: Click on Close Search icon.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 08: Enter \"" + editParentCatName + "\" into 'Search...' field.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + editParentCatName + "\" into 'Search...' field.");
 		adminCategoryPage.inputIntoSearchTextbox(editParentCatName);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 09: Open Ellipsis menu and click on 'Delete' item.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'Delete' item.");
 		adminCategoryPage.clickOnEllipsisMenu(editParentCatName, "Delete");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 10: Verify confirm delete message contains \"" + editParentCatName + "\".");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify confirm delete message contains \"" + editParentCatName + "\".");
 		verifyTrue(adminCategoryPage.isConfirmDeleteMessageDisplayed(editParentCatName));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 11: Click on 'OK' button.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'OK' button.");
 		adminCategoryPage.clickOnAddOrUpdateOrOkButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 12: Verify 'No results found.' is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'No results found.' message is displayed.");
 		verifyTrue(adminCategoryPage.isNoResultsFoundMessageDisplayed());
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 13: Click on Close Search icon.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on Close Search icon.");
 		adminCategoryPage.clickOnCloseSearchIcon();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step 14: Verify deleted categories are undisplayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify deleted categories are undisplayed.");
 		verifyTrue(adminCategoryPage.isCategoryUndisplayed(editChildCatName));
 		verifyTrue(adminCategoryPage.isCategoryUndisplayed(editParentCatName));
 	}
@@ -211,19 +216,19 @@ public class Demo_03_Category extends WpBaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	String browserName;
-	int randomNumber3 = Demo_01_Login.randomNumber1;
-	String parentCatName = "Automation Parent " + randomNumber3;
-	String parentCatDesc = "test parent category " + randomNumber3;
-	String childCatName = "Automation Child " + randomNumber3;
-	String childCatDesc = "test child category " + randomNumber3;
-	String editParentCatName = "Automation Parent to Child " + randomNumber3;
-	String editParentCatDesc = "edit child " + randomNumber3;
-	String editChildCatName = "Automation Child to Parent " + randomNumber3;
-	String editChildCatDesc = "edit parent " + randomNumber3;
+	private String browserName;
+	private int randomNumber3 = Demo_01_Login.randomNumber1;
+	private String parentCatName = "Automation Parent " + randomNumber3;
+	private String parentCatDesc = "test parent category " + randomNumber3;
+	private String childCatName = "Automation Child " + randomNumber3;
+	private String childCatDesc = "test child category " + randomNumber3;
+	private String editParentCatName = "Automation Parent to Child " + randomNumber3;
+	private String editParentCatDesc = "edit child " + randomNumber3;
+	private String editChildCatName = "Automation Child to Parent " + randomNumber3;
+	private String editChildCatDesc = "edit parent " + randomNumber3;
 	
-	WebDriver driver;
-	WpAdminLoginPO adminLoginPage;
-	WpAdminDashboardPO adminDashboardPage;
-	WpAdminCategoryPO adminCategoryPage;
+	private WebDriver driver;
+	private WpAdminLoginPO adminLoginPage;
+	private WpAdminDashboardPO adminDashboardPage;
+	private WpAdminCategoryPO adminCategoryPage;
 }

@@ -37,33 +37,19 @@ public class WpBasePage {
 		}
 	}
 	
-	protected String getCurrentDay() {
+	protected int getCurrentDay() {
 		DateTime nowUTC = new DateTime();
-		int day = nowUTC.getDayOfMonth();
-		if (day < 10) {
-			String dayValue = "0" + day;
-			return dayValue;
-		}
-		return String.valueOf(day);
+		return nowUTC.getDayOfMonth();
 	}
 
-	protected String getCurrentMonth() {
+	protected int getCurrentMonth() {
 		DateTime now = new DateTime();
-		int month = now.getMonthOfYear();
-		if (month < 10) {
-			String monthValue = "0" + month;
-			return monthValue;
-		}
-		return String.valueOf(month);
+		return now.getMonthOfYear();
 	}
 
-	protected String getCurrentYear() {
+	protected int getCurrentYear() {
 		DateTime now = new DateTime();
-		return String.valueOf(now.getYear());
-	}
-
-	public String getCurrentDate() {
-		return getCurrentDay() + "/" + getCurrentMonth() + "/" + getCurrentYear();
+		return now.getYear();
 	}
 
 	protected WebDriverWait setExplicitWait(WebDriver driver, long timeout) {

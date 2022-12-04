@@ -6,8 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpAdminLoginPUI;
 
-public class WpAdminLoginPO extends WpBasePage {
-	
+public class WpAdminLoginPO extends WpBasePage {	
 	WebDriver driver;
 	
 	public WpAdminLoginPO(WebDriver driver) {

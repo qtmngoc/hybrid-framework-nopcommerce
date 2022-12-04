@@ -6,7 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpAdminDashboardPUI;
 
-public class WpAdminDashboardPO extends WpBasePage{
+public class WpAdminDashboardPO extends WpBasePage {
 	WebDriver driver;
 
 	public WpAdminDashboardPO(WebDriver driver) {

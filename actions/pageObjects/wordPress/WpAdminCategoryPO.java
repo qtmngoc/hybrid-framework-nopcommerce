@@ -6,7 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpGlobalConstants;
 import pageUIs.wordPress.WpAdminCategoryPUI;
 
-public class WpAdminCategoryPO extends WpBasePage{
+public class WpAdminCategoryPO extends WpBasePage {
 	WebDriver driver;
 
 	public WpAdminCategoryPO(WebDriver driver) {

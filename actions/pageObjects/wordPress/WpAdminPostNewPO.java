@@ -6,7 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpAdminPostNewPUI;
 
-public class WpAdminPostNewPO extends WpBasePage{
+public class WpAdminPostNewPO extends WpBasePage {
 	WebDriver driver;
 
 	public WpAdminPostNewPO(WebDriver driver) {
@@ -143,6 +143,18 @@ public class WpAdminPostNewPO extends WpBasePage{
 
 	public String getPostNowLiveMessage() {
 		return getElementText(driver, WpAdminPostNewPUI.POST_NOW_LIVE_MESSAGE);
+	}
+	
+	public String postPublishedDateOnAdmin() {
+		return String.valueOf(getCurrentYear()) + "-" + String.format("%02d", getCurrentMonth()) + "-" + String.format("%02d", getCurrentDay());
+	}
+
+	public String postPublishedDateOnUser() {
+		return String.format("%02d", getCurrentDay()) + "/" + String.format("%02d", getCurrentMonth()) + "/" + String.valueOf(getCurrentYear());
+	}
+	
+	public void switchToPostPatternIframe() {
+		switchToFrameIframe(driver, WpAdminPostNewPUI.POST_PATTERN_IFRAME);
 	}
 
 }

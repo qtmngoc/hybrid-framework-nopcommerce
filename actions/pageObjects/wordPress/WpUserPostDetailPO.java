@@ -47,4 +47,6 @@ public class WpUserPostDetailPO extends WpBasePage {
 	public boolean isPostCommentTextareaUndisplayed() {
 		return isElementUndisplayed(driver, WpUserPostDetailPUI.COMMENT_TEXTAREA);
 	}
+	
 }
+

@@ -6,7 +6,7 @@ import commons.wordPress.WpBasePage;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpUserHomePUI;
 
-public class WpUserHomePO extends WpBasePage{
+public class WpUserHomePO extends WpBasePage {
 	WebDriver driver;
 	
 	public WpUserHomePO(WebDriver driver) {
@@ -44,9 +44,13 @@ public class WpUserHomePO extends WpBasePage{
 	public boolean isPostCategoryDisplayed(String postTitle, String categoryName) {
 		return isElementDisplayed(driver, WpUserHomePUI.POST_CATEGORY_TEXT_BY_POST_TITLE, postTitle, categoryName);
 	}
+	
+	public boolean isPostMetaDisplayed(String postTitle, String publishedDateOrComment) {
+		return isElementDisplayed(driver, WpUserHomePUI.POST_META_TEXT_BY_POST_TITLE, postTitle, publishedDateOrComment);
+	}
 
-	public boolean isPostPublishedDateDisplayed(String postTitle, String publishedDate) {
-		return isElementDisplayed(driver, WpUserHomePUI.POST_PUBLISHED_DATE_TEXT_BY_POST_TITLE, postTitle, publishedDate);
+	public boolean isPostStickyDisplayed(String postTitle) {
+		return isElementDisplayed(driver, WpUserHomePUI.POST_STICKY_TAG_BY_TITLE, postTitle);
 	}
 
 	public WpUserPostDetailPO clickOnPostTitleLink(String postTitle) {

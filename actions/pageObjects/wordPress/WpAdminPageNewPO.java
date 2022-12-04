@@ -7,7 +7,7 @@ import commons.wordPress.WpGlobalConstants;
 import commons.wordPress.WpPageGeneratorManager;
 import pageUIs.wordPress.WpAdminPageNewPUI;
 
-public class WpAdminPageNewPO extends WpBasePage{
+public class WpAdminPageNewPO extends WpBasePage {
 	WebDriver driver;
 
 	public WpAdminPageNewPO(WebDriver driver) {
@@ -86,6 +86,10 @@ public class WpAdminPageNewPO extends WpBasePage{
 	public String getPageNowLiveMessage() {
 		return getElementText(driver, WpAdminPageNewPUI.PAGE_NOW_LIVE_MESSAGE);
 	}
+	
+	public String pagePublishedDate() {
+		return String.format("%02d", getCurrentDay()) + "/" + String.format("%02d", getCurrentMonth()) + "/" + String.valueOf(getCurrentYear());
+	}
 
 	public void uploadPageImage(String pageImage) {
 		getElement(driver, WpAdminPageNewPUI.ADD_NEW_IMAGE).sendKeys(WpGlobalConstants.UPLOAD_FILES + pageImage);
@@ -118,14 +122,10 @@ public class WpAdminPageNewPO extends WpBasePage{
 	
 	public void inputIntoSearchImageTextbox(String imageName) {
 		sendKeysToElement(driver, WpAdminPageNewPUI.SEARCH_IMAGE_TEXTBOX, imageName);
-		
 	}
 
 	public void uncheckAllowCommentsCheckbox() {
 		uncheckCheckbox(driver, WpAdminPageNewPUI.ALLOW_COMMENTS_CHECKBOX);
 	}
-
-
-
 
 }
