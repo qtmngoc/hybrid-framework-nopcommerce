@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import commons.wordPress.WpBaseTest;
+import commons.wordPress.WpGlobalConstants;
 import commons.wordPress.WpPageGeneratorManager;
 import pageObjects.wordPress.WpAdminDashboardPO;
 import pageObjects.wordPress.WpAdminLoginPO;
@@ -23,19 +24,15 @@ import reportConfig.wordPress.WpExtentTestManagerV5;
 
 public class Demo_02_Post_Classic_View extends WpBaseTest {
 	
-	@Parameters({ "browser", "adminUrl", "userUrl" })
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName, String adminUrl, String userUrl) {
-		this.adminUrl = adminUrl;	
-		this.userUrl = userUrl;
+	public void beforeClass(String browserName) {
 		this.browserName = browserName;
 		
 		driver = getBrowserDriver(browserName, adminUrl);
+		
 		adminLoginPage = WpPageGeneratorManager.getAdminLoginPage(driver);
-		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
-		
-		adminPostAllPage = adminDashboardPage.clickOnPostMenu();
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, WpGlobalConstants.ADMIN_USERNAME, WpGlobalConstants.ADMIN_PASSWORD);
 	}
 
 	@Test
@@ -44,6 +41,7 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		int s = 0;
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Posts' menu and 'Add new' button to go to Admin ADD NEW POST page.");
+		adminPostAllPage = adminDashboardPage.clickOnPostMenu();
 		adminPostNewPage = adminPostAllPage.clickOnAddNewButton();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + postTitle + "\" into post Title.");
@@ -113,12 +111,20 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + postTitle + "\" into Search field and click on 'Search Posts' button.");
 		adminPostAllPage.inputIntoSearchTextbox1(postTitle);		
 		adminPostAllPage.clickOnSearchPostsButton();
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Author, Category, Tag, and Published Date displayed are correct.");
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(postTitle, "Title", postTitle));
+		verifyTrue(adminPostAllPage.isPostImageResultTableDisplayed(postTitle, uploadedImageName));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(postTitle, "Author", authorName));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(postTitle, "Categories", postCategory));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(postTitle, "Tags", postTag));
+		verifyTrue(adminPostAllPage.getPostPublishedDate(postTitle).contains(adminPostPublishedDate));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open User HOME page.");
 		userHomePage = adminPostAllPage.openUserSite(driver, userUrl);
 		userHomePage.clickOnAcceptCookiesButton();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date displayed are correct.");
 		verifyTrue(userHomePage.isPostTitleDisplayed(postTitle));
 		verifyTrue(userHomePage.isPostImageDisplayed(postTitle, uploadedImageName));
 		verifyTrue(userHomePage.isPostCategoryDisplayed(postTitle, postCategory));
@@ -134,26 +140,30 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify '1 Post' result is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date displayed are correct.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(postTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(postTitle, uploadedImageName));
 		verifyTrue(userSearchPage.isPostCategoryDisplayed(postTitle, postCategory));
-		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(postTitle, userPostPublishedDate));
+		verifyTrue(userSearchPage.isPostOrPageMetaDisplayed(postTitle, userPostPublishedDate));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on \"" + postTitle + "\" link to go to User POST DETAILS page.");
 		userPostDetailsPage = userSearchPage.clickOnPostTitleLink(postTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Body, Author, Category, Tag, and Published Date displayed are correct.");
 		verifyTrue(userPostDetailsPage.isPostTitleDisplayed(postTitle));
 		verifyTrue(userPostDetailsPage.isPostImageDisplayed(uploadedImageName));
-		verifyTrue(userPostDetailsPage.isPostCategoryDisplayed(postCategory));
-		verifyTrue(userPostDetailsPage.isPostPublishedDateDisplayed(userPostPublishedDate));
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Body, Author, Tag, and Comment box are displayed.");
 		verifyTrue(userPostDetailsPage.isPostBodyDisplayed(postBody));
 		verifyTrue(userPostDetailsPage.isPostAuthorDisplayed(authorName));
+		verifyTrue(userPostDetailsPage.isPostCategoryDisplayed(postCategory));
 		verifyTrue(userPostDetailsPage.isPostTagDisplayed(postTag));
-		verifyTrue(userPostDetailsPage.isPostCommentTextareaDisplayed());
+		verifyTrue(userPostDetailsPage.isPostPublishedDateDisplayed(userPostPublishedDate));
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Like' button.");
+		userPostDetailsPage.clickOnLikeButton();
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + postComment + "\" into Comment box and click on 'Post Comment' button.");
+		userPostDetailsPage.inputIntoCommentTextarea(postComment);
+		userPostDetailsPage.clickOnPostCommentButton();
 	}
 	
 	@Test
@@ -239,21 +249,26 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		adminPostNewPage.clickOnWordpressLogo();
 		adminPostAllPage = adminPostNewPage.clickOnAllPostsLink();
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Sticky, Author, Category, Tag, Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify \"" + editTitle + "\" Title, Image, Author, Category, Tag, and Published Date displayed are correct.");
 		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Title", editTitle));
-		verifyTrue(adminPostAllPage.isPostStickyDisplayed(editTitle));
+		verifyTrue(adminPostAllPage.isPostImageResultTableDisplayed(editTitle, editImage));
 		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Author", authorName));
 		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Categories", editCategory));
 		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Tags", editTag));
 		verifyTrue(adminPostAllPage.getPostPublishedDate(editTitle).contains(adminPostPublishedDate));
 		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Sticky tag, number of Comments and Likes displayed are correct.");
+		verifyTrue(adminPostAllPage.isPostStickyDisplayed(editTitle));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Comments", "1"));
+		verifyTrue(adminPostAllPage.isPostInfoResultTableDisplayed(editTitle, "Likes", "1"));
+		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open User HOME page.");
 		userHomePage = adminPostAllPage.openUserSite(driver, userUrl);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Sticky star, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Sticky star, Category, and Published Date displayed are correct.");
 		verifyTrue(userHomePage.isPostTitleDisplayed(editTitle));
-		verifyTrue(userHomePage.isPostStickyDisplayed(editTitle));
 		verifyTrue(userHomePage.isPostImageDisplayed(editTitle, editImage));
+		verifyTrue(userHomePage.isPostStickyDisplayed(editTitle));
 		verifyTrue(userHomePage.isPostCategoryDisplayed(editTitle, editCategory));
 		verifyTrue(userHomePage.isPostMetaDisplayed(editTitle, userPostPublishedDate));
 		
@@ -267,28 +282,30 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify '1 Post' result is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date displayed are correct.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(editTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(editTitle, editImage));
 		verifyTrue(userSearchPage.isPostCategoryDisplayed(editTitle, editCategory));
-		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(editTitle, userPostPublishedDate));
+		verifyTrue(userSearchPage.isPostOrPageMetaDisplayed(editTitle, userPostPublishedDate));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on \"" + editTitle + "\" link to go to User POST DETAILS page.");
 		userPostDetailsPage = userSearchPage.clickOnPostTitleLink(editTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Category, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Title, Image, Body, Author, Category, Tag, Published Date, and Comment content displayed are correct.");
 		verifyTrue(userPostDetailsPage.isPostTitleDisplayed(editTitle));
 		verifyTrue(userPostDetailsPage.isPostImageDisplayed(editImage));
-		verifyTrue(userPostDetailsPage.isPostCategoryDisplayed(editCategory));
-		verifyTrue(userPostDetailsPage.isPostPublishedDateDisplayed(userPostPublishedDate));
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Body, Author, and Tag are displayed.");
 		verifyTrue(userPostDetailsPage.isPostBodyDisplayed(editBody));
 		verifyTrue(userPostDetailsPage.isPostAuthorDisplayed(authorName));
+		verifyTrue(userPostDetailsPage.isPostCategoryDisplayed(editCategory));
 		verifyTrue(userPostDetailsPage.isPostTagDisplayed(editTag));
+		verifyTrue(userPostDetailsPage.isPostPublishedDateDisplayed(userPostPublishedDate));
+		verifyTrue(userPostDetailsPage.getPostCommentContent().contains(postComment));
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify post Comment box is undisplayed.");
-		verifyTrue(userPostDetailsPage.isPostCommentTextareaUndisplayed());
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'You like this.', 'One thought', and 'Comments are closed.' messages are displayed.");
+		verifyTrue(userPostDetailsPage.isYouLikeThisMessageDisplayed());
+		userPostDetailsPage.switchToDefaultContent(driver);
+		verifyTrue(userPostDetailsPage.getOneThoughtMessage().contains("One thought"));
+		verifyEquals(userPostDetailsPage.getCommentsClosedMessage(), "Comments are closed.");
 	}
 	
 	@Test
@@ -356,7 +373,9 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	private String adminUrl, userUrl, browserName, adminPostPublishedDate, userPostPublishedDate, uploadedImageName;
+	private String browserName, adminPostPublishedDate, userPostPublishedDate, uploadedImageName;
+	private String adminUrl = WpGlobalConstants.ADMIN_PAGE_URL;
+	private String userUrl = WpGlobalConstants.USER_PAGE_URL;
 	private int randomNumber2 = Demo_01_Login.randomNumber1;
 	private String authorName = "Automation FC";
 	private String postTitle = "[Annie]_NewPostTitle_" + randomNumber2;
@@ -364,6 +383,7 @@ public class Demo_02_Post_Classic_View extends WpBaseTest {
 	private String postCategory = "[Annie] New Category 2022";
 	private String postTag = "annie_tag_" + randomNumber2; 
 	private String postImage = "annie_sunflower.jpg";
+	private String postComment = "Automation Testing \n*** Ngoc Quach ***";
 	private String editTitle = "[Annie]_EditPostTitle_" + randomNumber2;
 	private String editBody = "Edit post body " + randomNumber2;
 	private String editCategory = "[Annie] Edit Category 2022";

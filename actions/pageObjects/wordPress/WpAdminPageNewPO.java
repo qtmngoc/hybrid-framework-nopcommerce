@@ -51,6 +51,7 @@ public class WpAdminPageNewPO extends WpBasePage {
 	}
 
 	public void clickOnMediaLibraryItem() {
+		sleepInSecond(1);
 		clickOnElement(driver, WpAdminPageNewPUI.MEDIA_LIBRARY_ITEM);
 	}
 
@@ -85,10 +86,6 @@ public class WpAdminPageNewPO extends WpBasePage {
 
 	public String getPageNowLiveMessage() {
 		return getElementText(driver, WpAdminPageNewPUI.PAGE_NOW_LIVE_MESSAGE);
-	}
-	
-	public String pagePublishedDate() {
-		return String.format("%02d", getCurrentDay()) + "/" + String.format("%02d", getCurrentMonth()) + "/" + String.valueOf(getCurrentYear());
 	}
 
 	public void uploadPageImage(String pageImage) {
@@ -126,6 +123,14 @@ public class WpAdminPageNewPO extends WpBasePage {
 
 	public void uncheckAllowCommentsCheckbox() {
 		uncheckCheckbox(driver, WpAdminPageNewPUI.ALLOW_COMMENTS_CHECKBOX);
+	}
+
+	public String pagePublishedDateOnAdmin() {
+		return String.valueOf(getCurrentYear()) + "-" + String.format("%02d", getCurrentMonth()) + "-" + String.format("%02d", getCurrentDay());
+	}
+
+	public String pagePublishedDateOnUser() {
+		return String.format("%02d", getCurrentDay()) + "/" + String.format("%02d", getCurrentMonth()) + "/" + String.valueOf(getCurrentYear());
 	}
 
 }

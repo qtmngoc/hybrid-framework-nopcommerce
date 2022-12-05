@@ -18,19 +18,19 @@ public class WpUserSearchPO extends WpBasePage {
 	}
 	
 	public boolean isPostOrPageTitleDisplayed(String postTitle) {
-		return isElementDisplayed(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_TEXT, postTitle);
+		return isElementDisplayed(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_LINK, postTitle);
 	}
 
 	public boolean isPostOrPageImageDisplayed(String postTitle, String imageUploadedName) {
-		return isElementDisplayed(driver, WpUserSearchPUI.POST_IMAGE_BY_POST_TITLE, postTitle, imageUploadedName);
+		return isElementDisplayed(driver, WpUserSearchPUI.IMAGE_BY_TITLE, postTitle, imageUploadedName);
 	}
 
 	public boolean isPostCategoryDisplayed(String postTitle, String categoryName) {
 		return isElementDisplayed(driver, WpUserSearchPUI.POST_CATEGORY_TEXT_BY_POST_TITLE, postTitle, categoryName);
 	}
 
-	public boolean isPostOrPagePublishedDateDisplayed(String postTitle, String publishedDate) {
-		return isElementDisplayed(driver, WpUserSearchPUI.POST_PUBLISHED_DATE_TEXT_BY_POST_TITLE, postTitle, publishedDate);
+	public boolean isPostOrPageMetaDisplayed(String postTitle, String publishedDate) {
+		return isElementDisplayed(driver, WpUserSearchPUI.META_BY_TITLE, postTitle, publishedDate);
 	}
 
 	public WpUserHomePO clickOnHomePageLink() {
@@ -39,7 +39,7 @@ public class WpUserSearchPO extends WpBasePage {
 	}
 
 	public WpUserPostDetailPO clickOnPostTitleLink(String postTitle) {
-		clickOnElement(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_TEXT, postTitle);
+		clickOnElement(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_LINK, postTitle);
 		return WpPageGeneratorManager.getUserPostDetailPage(driver);
 	}
 
@@ -48,7 +48,7 @@ public class WpUserSearchPO extends WpBasePage {
 	}
 
 	public WpUserPageDetailPO clickOnPageTitleLink(String pageTitle) {
-		clickOnElement(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_TEXT, pageTitle);
+		clickOnElement(driver, WpUserSearchPUI.POST_OR_PAGE_TITLE_LINK, pageTitle);
 		return WpPageGeneratorManager.getUserPageDetailPage(driver);
 	}
 

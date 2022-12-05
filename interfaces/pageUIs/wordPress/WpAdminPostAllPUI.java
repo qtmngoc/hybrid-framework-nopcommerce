@@ -41,6 +41,7 @@ public class WpAdminPostAllPUI {
 	public static final String DELETE_POST_MESSAGE = "//div[@id='message']/p[contains(text(),'%s')]";
 	public static final String NO_POST_FOUND_MESSAGE = "//table//tr[@class='no-items']/td[text()='%s']";
 	public static final String POST_INFO_TEXT_BY_TITLE_AND_COLUMN_NAME = "//a[text()='%s']/ancestor::tr/td[@data-colname='%s']//*[text()='%s']";
+	public static final String POST_IMAGE_BY_TITLE = "//a[text()='%s']/ancestor::tr/td[@data-colname='Thumbnail']/img[contains(@src, '%s')]";
 	public static final String POST_PUBLISHED_DATE_BY_TITLE = "//a[text()='%s']/ancestor::tr/td[@data-colname='Date']";
 	public static final String SEARCH_TEXTBOX_1 = "//input[@id='post-search-input']";
 	public static final String NUMBER_SEARCH_RESULTS = "//div[@class='tablenav top']//span[@class='displaying-num']";

@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import commons.wordPress.WpBaseTest;
+import commons.wordPress.WpGlobalConstants;
 import commons.wordPress.WpPageGeneratorManager;
 import pageObjects.wordPress.WpAdminCategoryPO;
 import pageObjects.wordPress.WpAdminDashboardPO;
@@ -19,17 +20,15 @@ import reportConfig.wordPress.WpExtentTestManagerV5;
 
 public class Demo_03_Category extends WpBaseTest {
 	
-	@Parameters({ "browser", "adminUrl" })
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName, String adminUrl) {	
+	public void beforeClass(String browserName) {	
 		this.browserName = browserName;
 		
 		driver = getBrowserDriver(browserName, adminUrl);
+		
 		adminLoginPage = WpPageGeneratorManager.getAdminLoginPage(driver);
-		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
-		
-		adminCategoryPage = adminDashboardPage.clickOnPostsCategoriesMenuLink();
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, WpGlobalConstants.ADMIN_USERNAME, WpGlobalConstants.ADMIN_PASSWORD);
 	}
 	
 	@Test
@@ -38,6 +37,8 @@ public class Demo_03_Category extends WpBaseTest {
 		int s = 0;
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Posts' menu and 'Categories' submenu to go to Admin CATEGORY page.");
+		adminCategoryPage = adminDashboardPage.clickOnPostsCategoriesMenuLink();
+
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Add New Category' button to open the dialog.");
 		adminCategoryPage.clickOnAddNewCategoryButton();
 		
@@ -55,7 +56,6 @@ public class Demo_03_Category extends WpBaseTest {
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify newly created category is displayed.");
 		verifyTrue(adminCategoryPage.isCategoryDisplayed(parentCatName));
-
 	}
 	
 	@Test
@@ -218,6 +218,7 @@ public class Demo_03_Category extends WpBaseTest {
 	
 	private String browserName;
 	private int randomNumber3 = Demo_01_Login.randomNumber1;
+	private String adminUrl = WpGlobalConstants.ADMIN_PAGE_URL;
 	private String parentCatName = "Automation Parent " + randomNumber3;
 	private String parentCatDesc = "test parent category " + randomNumber3;
 	private String childCatName = "Automation Child " + randomNumber3;

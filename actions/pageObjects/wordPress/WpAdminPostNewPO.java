@@ -35,6 +35,7 @@ public class WpAdminPostNewPO extends WpBasePage {
 	}
 	
 	public void clickOnMediaLibraryItem() {
+		sleepInSecond(1);
 		clickOnElement(driver, WpAdminPostNewPUI.MEDIA_LIBRARY_ITEM);
 	}
 	
@@ -146,7 +147,7 @@ public class WpAdminPostNewPO extends WpBasePage {
 	}
 	
 	public String postPublishedDateOnAdmin() {
-		return String.valueOf(getCurrentYear()) + "-" + String.format("%02d", getCurrentMonth()) + "-" + String.format("%02d", getCurrentDay());
+		return String.valueOf(getCurrentYear()) + "/" + String.format("%02d", getCurrentMonth()) + "/" + String.format("%02d", getCurrentDay());
 	}
 
 	public String postPublishedDateOnUser() {

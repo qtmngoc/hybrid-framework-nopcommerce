@@ -19,6 +19,7 @@ public class WpAdminPageAllPO extends WpBasePage {
 	}
 
 	public void clickOnOpenSearchIcon() {
+		sleepInSecond(1);
 		clickOnElement(driver, WpAdminPageAllPUI.OPEN_SEARCH_ICON);
 	}
 	
@@ -76,6 +77,10 @@ public class WpAdminPageAllPO extends WpBasePage {
 	public boolean isCommentPreviewUndisplayed() {
 		return isElementUndisplayed(driver, WpAdminPageAllPUI.COMMENT_TEXTAREA_PREVIEW);
 	}
+
+	public String getPageCommentContentPreview() {
+		return getElementText(driver, WpAdminPageAllPUI.COMMENT_CONTENT);
+	}
 	
 	public void clickonClosePreviewButton() {
 		clickOnElement(driver, WpAdminPageAllPUI.CLOSE_PREVIEW_BUTTON);
@@ -101,6 +106,10 @@ public class WpAdminPageAllPO extends WpBasePage {
 
 	public String getNoResultsMessage() {
 		return getElementText(driver, WpAdminPageAllPUI.NO_RESULTS_MESSAGE);
+	}
+
+	public boolean isPagePublishedDateDisplayed(String pageTitle, String publishedDate) {
+		return isElementDisplayed(driver, WpAdminPageAllPUI.PUBLISHED_DATE_BY_TITLE, pageTitle, publishedDate);
 	}
 
 }

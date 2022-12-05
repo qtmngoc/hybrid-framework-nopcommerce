@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import commons.wordPress.WpBaseTest;
+import commons.wordPress.WpGlobalConstants;
 import commons.wordPress.WpPageGeneratorManager;
 import pageObjects.wordPress.WpAdminDashboardPO;
 import pageObjects.wordPress.WpAdminLoginPO;
@@ -18,12 +19,13 @@ import reportConfig.wordPress.WpExtentTestManagerV5;
 
 public class Demo_01_Login extends WpBaseTest {
 	
-	@Parameters({ "browser", "adminUrl" })
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName, String adminUrl) {	
+	public void beforeClass(String browserName) {	
 		this.browserName = browserName;
 		
 		driver = getBrowserDriver(browserName, adminUrl);
+		
 		adminLoginPage = WpPageGeneratorManager.getAdminLoginPage(driver);
 	}
 
@@ -33,6 +35,7 @@ public class Demo_01_Login extends WpBaseTest {
 		int s = 0;
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Admin LOGIN page.");
+		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter an empty value into 'Email Address or Username' field.");
 		adminLoginPage.inputIntoUsernameTextbox("");
 		
@@ -116,8 +119,9 @@ public class Demo_01_Login extends WpBaseTest {
 	
 	private String browserName;
 	static int randomNumber1 = generateFakeNumber();
-	static String username = "automationeditor";
-	static String password = "automationfc";
+	private String adminUrl = WpGlobalConstants.ADMIN_PAGE_URL;
+	private String username = WpGlobalConstants.ADMIN_USERNAME;
+	private String password = WpGlobalConstants.ADMIN_PASSWORD;
 	private String nonExistentUsername = "annie.2022." + randomNumber1;
 	private String incorrectPassword = "2022." + randomNumber1;
 	

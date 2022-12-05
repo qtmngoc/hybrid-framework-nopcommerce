@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import commons.wordPress.WpBaseTest;
+import commons.wordPress.WpGlobalConstants;
 import commons.wordPress.WpPageGeneratorManager;
 import pageObjects.wordPress.WpAdminDashboardPO;
 import pageObjects.wordPress.WpAdminLoginPO;
@@ -23,19 +24,15 @@ import reportConfig.wordPress.WpExtentTestManagerV5;
 
 public class Demo_04_Page_Default_View extends WpBaseTest {
 	
-	@Parameters({ "browser", "adminUrl", "userUrl" })
+	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName, String adminUrl, String userUrl) {
-		this.adminUrl = adminUrl;	
-		this.userUrl = userUrl;
+	public void beforeClass(String browserName) {
 		this.browserName = browserName;
 		
 		driver = getBrowserDriver(browserName, adminUrl);
+		
 		adminLoginPage = WpPageGeneratorManager.getAdminLoginPage(driver);
-		
-		adminDashboardPage = adminLoginPage.loginToSystem(driver, Demo_01_Login.username, Demo_01_Login.password);
-		
-		adminPageAllPage = adminDashboardPage.clickOnPageMenuLink();
+		adminDashboardPage = adminLoginPage.loginToSystem(driver, WpGlobalConstants.ADMIN_USERNAME, WpGlobalConstants.ADMIN_PASSWORD);	
 	}
 	
 	@Test
@@ -44,6 +41,7 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		int s = 0;
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Pages' menu and 'Add new page' button to go to Admin ADD NEW PAGE page.");
+		adminPageAllPage = adminDashboardPage.clickOnPageMenuLink();
 		adminPageNewPage = adminPageAllPage.clickOnAddNewPageButton();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Blank page' button.");
@@ -78,6 +76,12 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		adminPageNewPage.switchToPagePatternIframe();
 		verifyTrue(adminPageNewPage.isImageUploaded(uploadedImageName));
 		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Expand 'Discussion' panel.");
+		adminPageNewPage.clickOnPanelByText("Discussion");
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Select 'Allow comments' checkbox.");
+		adminPageNewPage.checkAllowCommentsCheckbox();
+		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Publish' and 'Pre-publish' buttons.");
 		adminPageNewPage.clickOnPublishOrUpdateButton();
 		adminPageNewPage.clickOnPrePublishButton();
@@ -85,7 +89,9 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'Page published.' and '" + pageTitle + " is now live.' messages are displayed.");
 		verifyTrue(adminPageNewPage.isPagePublishedOrUpdatedMessageDisplayed("Page published."));
 		verifyEquals(adminPageNewPage.getPageNowLiveMessage(), pageTitle + " is now live.");
-		publishedDate = adminPageNewPage.pagePublishedDate();
+		
+		adminPagePublishedDate = adminPageNewPage.pagePublishedDateOnAdmin();
+		userPagePublishedDate = adminPageNewPage.pagePublishedDateOnUser();
 	}
 	
 	@Test
@@ -102,8 +108,9 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		adminPageAllPage.clickOnOpenSearchIcon();
 		adminPageAllPage.inputIntoSearchTextbox(pageTitle);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify \"" + pageTitle + "\" is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title and Published Date displayed are correct.");
 		verifyTrue(adminPageAllPage.isPageTitleDisplayed(pageTitle));
+		verifyTrue(adminPageAllPage.isPagePublishedDateDisplayed(pageTitle, adminPagePublishedDate));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'View page' item.");
 		adminPageAllPage.clickOnEllipsisMenu(pageTitle, "View page");
@@ -111,7 +118,7 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Select 'Tablet' item from Web Preview dropdown.");
 		adminPageAllPage.selectPreviewOption("Tablet");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Body are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Body displayed are correct.");
 		adminPageAllPage.switchToWebPreviewIframe();
 		verifyTrue(adminPageAllPage.isPageTitlePreviewDisplayed(pageTitle));
 		verifyTrue(adminPageAllPage.isPageImagePreviewDisplayed(uploadedImageName));
@@ -135,18 +142,25 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify '1 Post' result is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Published Date displayed are correct.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(pageTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(pageTitle, uploadedImageName));
-		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(pageTitle, publishedDate));
+		verifyTrue(userSearchPage.isPostOrPageMetaDisplayed(pageTitle, userPagePublishedDate));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on \"" + pageTitle + "\" link to go to User PAGE DETAILS page.");
 		userPageDetailPage = userSearchPage.clickOnPageTitleLink(pageTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Body are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Body displayed are correct.");
 		verifyTrue(userPageDetailPage.isPageTitleDisplayed(pageTitle));
-		verifyTrue(userPageDetailPage.isPageImageDisplayed(pageTitle, uploadedImageName));
+		verifyTrue(userPageDetailPage.isPageImageDisplayed(uploadedImageName));
 		verifyTrue(userPageDetailPage.isPageBodyDisplayed(pageBody));
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Like' button.");
+		userPageDetailPage.clickOnLikeButton();
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Enter \"" + pageComment + "\" into Comment box and click on 'Post Comment' button.");
+		userPageDetailPage.inputIntoCommentTextarea(pageComment);
+		userPageDetailPage.clickOnPostCommentButton();
 	}
 	
 	@Test
@@ -157,10 +171,6 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Admin DASHBOARD page and click on 'Pages' menu to go to Admin ALL PAGES page.");
 		adminDashboardPage = userPageDetailPage.openAdminSite(driver, adminUrl);	
 		adminPageAllPage = adminDashboardPage.clickOnPageMenuLink();
-
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click to expand 'Search pages...' field and enter \"" + pageTitle + "\".");
-		adminPageAllPage.clickOnOpenSearchIcon();
-		adminPageAllPage.inputIntoSearchTextbox(pageTitle);
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on \"" + pageTitle + "\" link to go to Admin EDIT PAGE page.");
 		adminPageNewPage = adminPageAllPage.clickOnPageTitleLink(pageTitle);
@@ -205,8 +215,8 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Expand 'Discussion' panel.");
 		adminPageNewPage.clickOnPanelByText("Discussion");
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Select 'Allow comments' checkbox.");
-		adminPageNewPage.checkAllowCommentsCheckbox();
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Deselect 'Allow comments' checkbox.");
+		adminPageNewPage.uncheckAllowCommentsCheckbox();
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Update' button.");
 		adminPageNewPage.clickOnPublishOrUpdateButton();
@@ -223,14 +233,11 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on WordPress logo and 'View Pages' link to go to Admin ALL PAGES page.");
 		adminPageNewPage.clickOnWordpressLogo();
 		adminPageAllPage = adminPageNewPage.clickOnViewPagesLink();
-		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click to expand 'Search pages...' field and enter \"" + editTitle + "\".");
-		adminPageAllPage.switchToDefaultContent(driver);
-		adminPageAllPage.clickOnOpenSearchIcon();
-		adminPageAllPage.inputIntoSearchTextbox(editTitle);
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify \"" + editTitle + "\" is displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify \"" + editTitle + "\" Title and Published Date displayed are correct.");
+		adminPageAllPage.switchToDefaultContent(driver);
 		verifyTrue(adminPageAllPage.isPageTitleDisplayed(editTitle));
+		verifyTrue(adminPageAllPage.isPagePublishedDateDisplayed(editTitle, adminPagePublishedDate));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Open Ellipsis menu and click on 'View page' item.");
 		adminPageAllPage.clickOnEllipsisMenu(editTitle, "View page");
@@ -238,12 +245,12 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Select 'Phone' item from Web Preview dropdown.");
 		adminPageAllPage.selectPreviewOption("Phone");
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, Body, and Comment box are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, Body, and Comment content displayed are correct.");
 		adminPageAllPage.switchToWebPreviewIframe();
 		verifyTrue(adminPageAllPage.isPageTitlePreviewDisplayed(editTitle));
 		verifyTrue(adminPageAllPage.isPageImagePreviewDisplayed(editImage));
 		verifyTrue(adminPageAllPage.isPageBodyPreviewDisplayed(editBody));
-		verifyTrue(adminPageAllPage.isPageCommentPreviewDisplayed());
+		verifyTrue(adminPageAllPage.getPageCommentContentPreview().contains(pageComment));
 		
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on 'Close' preview button.");
 		adminPageAllPage.switchToDefaultContent(driver);
@@ -262,19 +269,25 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify '1 Post' result is displayed.");
 		verifyTrue(userSearchPage.isOnePostMessageDisplayed("1 Post"));
 
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Published Date are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, and Published Date displayed are correct.");
 		verifyTrue(userSearchPage.isPostOrPageTitleDisplayed(editTitle));
 		verifyTrue(userSearchPage.isPostOrPageImageDisplayed(editTitle, editImage));
-		verifyTrue(userSearchPage.isPostOrPagePublishedDateDisplayed(editTitle, publishedDate));
+		verifyTrue(userSearchPage.isPostOrPageMetaDisplayed(editTitle, userPagePublishedDate));
 
 		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Click on \"" + editTitle + "\" link to go to User PAGE DETAILS page.");
 		userPageDetailPage = userSearchPage.clickOnPageTitleLink(editTitle);
 		
-		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, Body, and Comment box are displayed.");
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify page Title, Image, Body, and Comment content displayed are correct.");
 		verifyTrue(userPageDetailPage.isPageTitleDisplayed(editTitle));
-		verifyTrue(userPageDetailPage.isPageImageDisplayed(editTitle, editImage));
+		verifyTrue(userPageDetailPage.isPageImageDisplayed(editImage));
 		verifyTrue(userPageDetailPage.isPageBodyDisplayed(editBody));
-		verifyTrue(userPageDetailPage.isPageCommentTextareaDisplayed());
+		verifyTrue(userPageDetailPage.getPageCommentContent().contains(pageComment));
+		
+		WpExtentTestManagerV5.getTest().log(Status.INFO, "Step " + String.format("%02d", s=s+1) + ": Verify 'You like this.', 'One thought', and 'Comments are closed.' messages are displayed.");
+		verifyTrue(userPageDetailPage.isYouLikeThisMessageDisplayed());
+		userPageDetailPage.switchToDefaultContent(driver);
+		verifyTrue(userPageDetailPage.getOneThoughtMessage().contains("One thought"));
+		verifyEquals(userPageDetailPage.getCommentsClosedMessage(), "Comments are closed.");
 	}
 	
 	@Test
@@ -334,11 +347,14 @@ public class Demo_04_Page_Default_View extends WpBaseTest {
 		closeBrowserAndDriver();
 	}
 	
-	private String adminUrl, userUrl, browserName, publishedDate, uploadedImageName;
+	private String browserName, adminPagePublishedDate, userPagePublishedDate, uploadedImageName;
+	private String adminUrl = WpGlobalConstants.ADMIN_PAGE_URL;
+	private String userUrl = WpGlobalConstants.USER_PAGE_URL;
 	private int randomNumber4 = Demo_01_Login.randomNumber1;
 	private String pageTitle = "[Annie]_NewPageTitle_" + randomNumber4;
 	private String pageBody = "Coding Demo: page body " + randomNumber4;
 	private String pageImage = "annie_catdog.jpg";
+	private String pageComment = "Automation Testing \n*** Ngoc Quach ***";
 	private String editTitle = "[Annie]_EditPageTitle_" + randomNumber4;
 	private String editBody = "Edit page body " + randomNumber4;
 	private String editImage = "annie_fruit";

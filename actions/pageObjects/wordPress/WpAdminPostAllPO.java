@@ -151,9 +151,13 @@ public class WpAdminPostAllPO extends WpBasePage {
 	public String getNumberOfSearchResults() {
 		return getElementText(driver, WpAdminPostAllPUI.NUMBER_SEARCH_RESULTS);
 	}
-
+	
 	public boolean isPostInfoResultTableDisplayed(String postTitle, String columnName, String infoValue) {
 		return isElementDisplayed(driver, WpAdminPostAllPUI.POST_INFO_TEXT_BY_TITLE_AND_COLUMN_NAME, postTitle, columnName, infoValue);
+	}
+
+	public boolean isPostImageResultTableDisplayed(String postTitle, String uploadedImageName) {
+		return isElementDisplayed(driver, WpAdminPostAllPUI.POST_IMAGE_BY_TITLE, postTitle, uploadedImageName);
 	}
 	
 	public String getPostPublishedDate(String postTitle) {

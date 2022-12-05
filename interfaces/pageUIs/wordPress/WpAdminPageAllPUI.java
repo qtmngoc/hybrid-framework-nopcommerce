@@ -7,7 +7,7 @@ public class WpAdminPageAllPUI {
 	public static final String CLOSE_SEARCH_ICON = "//div[@aria-label='Close Search']/*";
 	public static final String SEARCH_TEXTBOX = "//input[@aria-label='Search']";
 	public static final String PAGE_TITLE_TEXT = "//a[@class='page__title' and text()='%s']";
-	public static final String PUBLISHED_DATE_BY_TITLE = "//a[text()='%s']/parent::div//time[contains(@datetime, '%s')]";
+	public static final String PUBLISHED_DATE_BY_TITLE = "//a[text()='%s']/parent::div//div[contains(@title, '%s')]";
 	public static final String ELLIPSIS_MENU_BY_TITLE = "//a[text()='%s']/parent::div/following-sibling::span/button[@title='Toggle menu']";
 	public static final String DELETE_ELLIPSIS_MENU_BY_TITLE = "//span[text()='%s']/parent::div/following-sibling::span/button[@title='Toggle menu']";
 	public static final String ELLIPSIS_MENU_ITEM = "//div[@class='popover__menu']//button[text()='%s']";
@@ -19,8 +19,9 @@ public class WpAdminPageAllPUI {
 	public static final String VISIT_SITE_BUTTON = "//a[text()='Visit site']";
 	public static final String WEB_PREVIEW_IFRAME = "//iframe[@class='web-preview__frame']";
 	public static final String PAGE_TITLE_PREVIEW = "//h1[@class='post-title' and text()='%s']";
-	public static final String PAGE_IMAGE_PREVIEW = "//img[contains(@src, '%s')]";
+	public static final String PAGE_IMAGE_PREVIEW = "//figure[@class='post-image']//img[contains(@src, '%s')]";
 	public static final String PAGE_BODY_PREVIEW = "//div[@class='post-content']/p[contains(string(),'%s')]";
 	public static final String COMMENT_TEXTAREA_PREVIEW = "//textarea[@id='comment']";
+	public static final String COMMENT_CONTENT = "//div[@class='comment-content']/p";
 
 }

@@ -7,30 +7,21 @@
 		<listener class-name="reportConfig.wordPress.WpExtentTestListenerV5" />
 	</listeners>
 
-	<parameter name="adminUrl" value="https://automationfc.wordpress.com/wp-admin/" />
-	<parameter name="userUrl" value="https://automationfc.wordpress.com/" />
-
-	<test name="Run on Chrome">
-		<parameter name="browser" value="Chrome" />
-		<classes>
-			<class name="com.wordpress.Demo_04_Page_Default_View" />
-		</classes>
-	</test>
-	
-<!--	<test name="Run on Chrome">
-		<parameter name="browser" value="Chrome" />
-		<packages>
-			<package name="com.wordpress" />
-		</packages>
-	</test>
-
-
+<!--
 	<test name="Run on Firefox">
 		<parameter name="browser" value="Firefox" />	
 		<packages>
 			<package name="com.wordpress" />
 		</packages>
 	</test>
+	
+	<test name="Run on Chrome">
+		<parameter name="browser" value="Chrome" />
+		<packages>
+			<package name="com.wordpress" />
+		</packages>
+	</test>
+-->
 
 	<test name="Run on Edge">
 		<parameter name="browser" value="Edge" />
@@ -38,6 +29,5 @@
 			<package name="com.wordpress" />
 		</packages>
 	</test> 
--->
 
 </suite> 
