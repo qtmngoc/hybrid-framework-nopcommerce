@@ -59,7 +59,7 @@ public class Level_15_Extent_Report_V5_Screenshot extends NcBaseTest {
 		userRegisterPage.clickOnRegisterButton();
 
 		NcExtentTestManagerV5.getTest().log(Status.INFO, "Register - Step 08: Verify registration success message is displayed");
-		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
+		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed.");
 	}
 
 	@Test
@@ -67,8 +67,7 @@ public class Level_15_Extent_Report_V5_Screenshot extends NcBaseTest {
 		NcExtentTestManagerV5.startTest(method.getName(), "User_02_Login");
 
 		NcExtentTestManagerV5.getTest().log(Status.INFO, "Login - Step 01: Navigate to Login page");
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		NcExtentTestManagerV5.getTest().log(Status.INFO, "Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);

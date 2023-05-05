@@ -39,8 +39,7 @@ public class Level_12_Assert_Verify extends NcBaseTest {
 		userRegisterPage.clickOnRegisterButton();
 		verifyEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed...");
 
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		userLoginPage.inputIntoEmailTextbox(email);
 		userLoginPage.inputIntoPasswordTextbox(password);

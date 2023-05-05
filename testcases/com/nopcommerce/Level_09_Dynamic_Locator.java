@@ -45,8 +45,7 @@ public class Level_09_Dynamic_Locator extends NcBaseTest {
 		userRegisterPage.clickOnRegisterButton();
 		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
 
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		userLoginPage.inputIntoEmailTextbox(email);
 		userLoginPage.inputIntoPasswordTextbox(password);

@@ -81,8 +81,6 @@ public class Level_04_Multiple_Browsers extends NcBaseTest{
 		registerPage.clickOnRegisterButton();
 
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-
-		registerPage.clickOnLogoutLink();
 	}
 
 	@AfterClass

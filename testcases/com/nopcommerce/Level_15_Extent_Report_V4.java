@@ -52,8 +52,7 @@ public class Level_15_Extent_Report_V4 extends NcBaseTest {
 
 	@Test
 	public void User_02_Login(Method method) {
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		userLoginPage.inputIntoEmailTextbox(email);
 

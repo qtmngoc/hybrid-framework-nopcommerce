@@ -1,7 +1,7 @@
 /bin/
 /test-output/
-/allure-results/
-/reportNGImages/
+/allureResults/
+/reportNGScreenshots/
 /scriptLogs/
 /extentReportV2/
 /extentReportV3/

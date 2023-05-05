@@ -482,7 +482,7 @@ public class NcBasePage {
 	}
 	
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
-		String filePath = NcGlobalConstants.UPLOAD_FILES;
+		String filePath = NcGlobalConstants.UPLOAD_PATH;
 		String fullFileName = "";
 		for (String file : fileNames) {
 			fullFileName = fullFileName + filePath + file + "\n";

@@ -17,49 +17,69 @@ import org.testng.Reporter;
 import commons.nopCommerce.NcBaseTest;
 
 import commons.nopCommerce.NcGlobalConstants;
+import commons.wordPress.WpBaseTest;
 
-public class NcReportNGListener implements ITestListener {
+public class NcReportNGListener extends WpBaseTest implements ITestListener {
 
 	@Override
-	public void onFinish(ITestContext arg0) {
+	public void onStart(ITestContext context) {
+		//System.out.println("---------- " + context.getName() + " STARTED test ----------");
 	}
 
 	@Override
-	public void onStart(ITestContext arg0) {
+	public void onFinish(ITestContext context) {
+		//System.out.println("---------- " + context.getName() + " FINISHED test ----------");
 	}
 
 	@Override
-	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
+	public void onTestStart(ITestResult result) {
+		//System.out.println("---------- " + result.getName() + " STARTED test ----------");
 	}
 
 	@Override
-	public void onTestFailure(ITestResult result) {
+	public void onTestSuccess(ITestResult result) {
+		//System.out.println("---------- " + result.getName() + " SUCCESS test ----------");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {		
+		//System.out.println("---------- " + result.getName() + " FAILED test ----------");
 		System.setProperty("org.uncommons.reportng.escape-output", "false");
 
 		Object testClass = result.getInstance();
 		WebDriver webDriver = ((NcBaseTest) testClass).getDriverInstance();
 
-		// Image file
 		/*
-		String screenshotImagePath = captureScreenshot(webDriver, result.getName());
+		// Image file
+		String screenshotImagePath = captureScreenshotAsFile(webDriver, result.getName());
 		Reporter.getCurrentTestResult();
 		Reporter.log("<br><a target=\"_blank\" href=\"file:///" + screenshotImagePath + "\">" + "<img src=\"file:///" + screenshotImagePath + "\" " + "height='100' width='150'/> " + "</a></br>");
 		Reporter.setCurrentTestResult(null);
 		*/
 
 		// Base 64
-		String screenshotBase64Path = captureScreenshotBase64(webDriver, result.getName());
+		String screenshotBase64Path = captureScreenshotAsBase64(webDriver, result.getName());
 		Reporter.getCurrentTestResult();
 		Reporter.log("<br><a href=\"data:image/png;base64," + screenshotBase64Path + "\">" + "<img src=\"data:image/png;base64," + screenshotBase64Path + "\" " + "height='100' width='150'/> " + "</a></br>");
-		Reporter.setCurrentTestResult(null);	
+		Reporter.setCurrentTestResult(null);
+	}
+	
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		//System.out.println("---------- " + result.getName() + " SKIPPED test ----------");
 	}
 
-	public String captureScreenshot(WebDriver driver, String screenshotName) {
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		//System.out.println("---------- " + result.getName() + " FAILED WITH SUCCESS PERCENTAGE test ----------");
+	}
+
+	public String captureScreenshotAsFile(WebDriver driver, String screenshotName) {
 		try {
 			Calendar calendar = Calendar.getInstance();
 			SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
 			File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			String screenPath = NcGlobalConstants.REPORTNG_SCREENSHOT + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
+			String screenPath = NcGlobalConstants.REPORTNG_SCREENSHOT_PATH + screenshotName + "_" + formater.format(calendar.getTime()) + ".png";
 			FileUtils.copyFile(source, new File(screenPath));
 			return screenPath;
 		} catch (IOException e) {
@@ -68,20 +88,8 @@ public class NcReportNGListener implements ITestListener {
 		}
 	}
 
-	public String captureScreenshotBase64(WebDriver driver, String screenshotName) {
+	public String captureScreenshotAsBase64(WebDriver driver, String screenshotName) {
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-	}
-
-	@Override
-	public void onTestSkipped(ITestResult arg0) {
-	}
-
-	@Override
-	public void onTestStart(ITestResult arg0) {
-	}
-
-	@Override
-	public void onTestSuccess(ITestResult arg0) {
 	}
 
 }

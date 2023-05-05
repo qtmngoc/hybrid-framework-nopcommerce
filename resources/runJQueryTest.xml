@@ -10,7 +10,7 @@
 	<test name="Run on Edge">
 		<parameter name="browser" value="Edge" />
 		<classes>
-			<class name="com.jquery.Level_11_Upload_Files" />
+			<class name="com.jquery.Level_10_Data_Table_Append_Grid_New" />
 		</classes>
 	</test>
 

@@ -48,7 +48,7 @@ public class Level_16_Allure_Report_Screenshot extends NcBaseTest {
 		userRegisterPage.inputIntoConfirmPasswordTextbox(password);
 
 		userRegisterPage.clickOnRegisterButton();
-		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
+		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed.");
 	}
 	
 	@Description("User_02_Login")
@@ -56,8 +56,7 @@ public class Level_16_Allure_Report_Screenshot extends NcBaseTest {
 	@Severity(SeverityLevel.NORMAL)
 	@Test
 	public void User_02_Login(Method method) {
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		userLoginPage.inputIntoEmailTextbox(email);
 		userLoginPage.inputIntoPasswordTextbox(password);

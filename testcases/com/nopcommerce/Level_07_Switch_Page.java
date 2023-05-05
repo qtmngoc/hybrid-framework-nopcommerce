@@ -44,8 +44,6 @@ public class Level_07_Switch_Page extends NcBaseTest {
 		registerPage.inputIntoConfirmPasswordTextbox(password);
 		registerPage.clickOnRegisterButton();
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-
-		homePage = registerPage.clickOnLogoutLink();
 	}
 
 	@Test

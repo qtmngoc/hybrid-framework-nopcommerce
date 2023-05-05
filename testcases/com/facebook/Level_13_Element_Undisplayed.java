@@ -35,6 +35,7 @@ public class Level_13_Element_Undisplayed extends FbBaseTest {
 		loginPage.inputIntoEmailTextbox("");
 		loginPage.sleepInSecond(2);
 		verifyTrue(loginPage.isConfirmEmailTextboxUndisplayed());
+		//verifyFalse(loginPage.isConfirmEmailTextboxDisplayed()); -> not wait
 	}
 
 	@Test

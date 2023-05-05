@@ -10,6 +10,7 @@ import org.testng.annotations.Parameters;
 import commons.nopCommerce.NcBaseTest;
 import commons.nopCommerce.NcPageGeneratorManager;
 import pageObjects.nopCommerce.NcUserHomePO;
+import pageObjects.nopCommerce.NcUserLoginPO;
 import pageObjects.nopCommerce.NcUserRegisterPO;
 
 public class Common_01_Register_Cookie extends NcBaseTest {
@@ -22,34 +23,44 @@ public class Common_01_Register_Cookie extends NcBaseTest {
 
 		firstName = "Automation";
 		lastName = "Tester";
-		email = "automation.tester." + generateFakeNumber() + "@mail.com";
+		email = "automation.cookie." + generateFakeNumber() + "@mail.com";
 		password = "26032017";
 		
-		log.info("Pre-condition - Step 01: Navigate to Register page");
+		log.info("Create a user account - Step 01: Open Home page and navigate to Register page");
+		userHomePage = NcPageGeneratorManager.getUserHomePage(driver);
 		userRegisterPage = userHomePage.clickOnRegisterLink();
 
-		log.info("Pre-condition - Step 02: Enter '" + firstName + "' into First Name text box");
+		log.info("Create a user account - Step 02: Enter '" + firstName + "' into First Name text box");
 		userRegisterPage.inputIntoFirstNameTextbox(firstName);
 
-		log.info("Pre-condition - Step 03: Enter '" + lastName + "' into Last Name text box");
+		log.info("Create a user account - Step 03: Enter '" + lastName + "' into Last Name text box");
 		userRegisterPage.inputIntoLastNameTextbox(lastName);
 
-		log.info("Pre-condition - Step 04: Enter '" + email + "' into Email text box");
+		log.info("Create a user account - Step 04: Enter '" + email + "' into Email text box");
 		userRegisterPage.inputIntoEmailTextbox(email);
 
-		log.info("Pre-condition - Step 05: Enter '" + password + "' into Password text box");
+		log.info("Create a user account - Step 05: Enter '" + password + "' into Password text box");
 		userRegisterPage.inputIntoPasswordTextbox(password);
 
-		log.info("Pre-condition - Step 06: Enter '" + password + "' into Confirm Password text box");
+		log.info("Create a user account - Step 06: Enter '" + password + "' into Confirm Password text box");
 		userRegisterPage.inputIntoConfirmPasswordTextbox(password);
 
-		log.info("Pre-condition - Step 07: Click on Register button");
+		log.info("Create a user account - Step 07: Click on Register button");
 		userRegisterPage.clickOnRegisterButton();
-
-		log.info("Pre-condition - Step 08: Verify registration success message is displayed");
-		verifyEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
 		
-		log.info("Pre-condition - Step 09: Get cookies");
+		log.info("Create a user account - Step 08: Click on Log In link");
+		userLoginPage = userRegisterPage.clickOnLoginLink();
+		
+		log.info("Create a user account - Step 09: Enter '" + email + "' into Email text box");
+		userLoginPage.inputIntoEmailTextbox(email);
+		
+		log.info("Create a user account - Step 10: Enter '" + password + "' into Password text box");
+		userLoginPage.inputIntoPasswordTextbox(password);
+		
+		log.info("Create a user account - Step 11: Click on Log In button");
+		userHomePage = userLoginPage.clickOnLoginButton();
+		
+		log.info("Create a user account - Step 12: Get cookies");
 		loggedCookies = userHomePage.getCookies(driver);
 		
 		driver.quit();
@@ -58,6 +69,7 @@ public class Common_01_Register_Cookie extends NcBaseTest {
 	private WebDriver driver;
 	private NcUserHomePO userHomePage;
 	private NcUserRegisterPO userRegisterPage;
+	private NcUserLoginPO userLoginPage;
 	private String firstName, lastName, email, password;
 	public static Set<Cookie> loggedCookies;
 

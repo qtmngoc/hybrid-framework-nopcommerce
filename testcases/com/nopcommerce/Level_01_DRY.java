@@ -69,7 +69,6 @@ public class Level_01_DRY {
 		driver.findElement(By.cssSelector("button#register-button")).click();
 
 		Assert.assertEquals(driver.findElement(By.cssSelector("div.result")).getText(), "Your registration completed");
-		driver.findElement(By.cssSelector("a.ico-logout")).click();
 	}
 
 	@Test

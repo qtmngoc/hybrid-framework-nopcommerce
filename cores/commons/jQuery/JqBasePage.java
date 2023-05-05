@@ -229,9 +229,13 @@ public class JqBasePage {
 	protected String getElementText(WebDriver driver, String dynamicXpath, String... dynamicValues) {
 		return waitForElementVisible(driver, dynamicXpath, dynamicValues).getText();
 	}
-
+	
 	protected String getElementCssValue(WebDriver driver, String xpathLocator, String propertyName) {
 		return waitForElementVisible(driver, xpathLocator).getCssValue(propertyName);
+	}
+
+	protected String getElementCssValue(WebDriver driver, String dynamicXpath, String propertyName, String... dynamicValues) {
+		return waitForElementVisible(driver, dynamicXpath, dynamicValues).getCssValue(propertyName);
 	}
 
 	public String getHexColorFromRgba(String rgbaValue) {

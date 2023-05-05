@@ -89,7 +89,7 @@ public class WpAdminPageNewPO extends WpBasePage {
 	}
 
 	public void uploadPageImage(String pageImage) {
-		getElement(driver, WpAdminPageNewPUI.ADD_NEW_IMAGE).sendKeys(WpGlobalConstants.UPLOAD_FILES + pageImage);
+		getElement(driver, WpAdminPageNewPUI.ADD_NEW_IMAGE).sendKeys(WpGlobalConstants.UPLOAD_PATH + pageImage);
 	}
 
 	public void clickOnWordpressLogo() {

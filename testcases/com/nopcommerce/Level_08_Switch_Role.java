@@ -46,14 +46,12 @@ public class Level_08_Switch_Role extends NcBaseTest {
 		userRegisterPage.inputIntoConfirmPasswordTextbox(userPassword);
 		userRegisterPage.clickOnRegisterButton();
 		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
-
-		userHomePage = userRegisterPage.clickOnLogoutLink();
 	}
 
 	@Test
 	public void Role_02_User_To_Admin() {
 		// User: Home - login -> Home
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 		userHomePage = userLoginPage.loginAsUser(userEmail, userPassword);
 		Assert.assertTrue(userHomePage.isMyAccountLinkDisplayed());
 

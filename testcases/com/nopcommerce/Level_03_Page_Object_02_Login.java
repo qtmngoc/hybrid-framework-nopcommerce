@@ -61,9 +61,6 @@ public class Level_03_Page_Object_02_Login {
 		System.out.println("Pre-condition - Step 04: Verify success message displayed");
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
-		System.out.println("Pre-condition - Step 05: Click on Logout link");
-		registerPage.clickOnLogoutLink();
-
 		homePage = new NcUserHomePO(driver);
 	}
 

@@ -8,6 +8,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import commons.nopCommerce.NcBaseTest;
+import commons.nopCommerce.NcGlobalConstants;
 import commons.nopCommerce.NcPageGeneratorManager;
 import pageObjects.nopCommerce.NcUserCustomerInfoPO;
 import pageObjects.nopCommerce.NcUserHomePO;
@@ -19,8 +20,9 @@ public class Level_19_Pattern_Object extends NcBaseTest {
 	@Parameters("browser")
 	@BeforeClass
 	public void beforeClass(String browserName) {
+		driver = getBrowserDriver(browserName, NcGlobalConstants.USER_PAGE_URL);
+		
 		log.info("Pre-condition - Step 00: Open NopCommerce Home page");
-		driver = getBrowserDriver(browserName);
 		userHomePage = NcPageGeneratorManager.getUserHomePage(driver);
 
 		gender = "Female";
@@ -74,16 +76,12 @@ public class Level_19_Pattern_Object extends NcBaseTest {
 		
 		log.info("Register - Step 12: Verify registration success message is displayed");
 		Assert.assertEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
-		
-		log.info("Register - Step 13: Navigate to Home page by Log out");
-		userRegisterPage.clickOnLinkByText(driver, "Log out");
-		userHomePage = NcPageGeneratorManager.getUserHomePage(driver);
 	}
 	
 	@Test
 	public void User_02_Login() {
 		log.info("Login - Step 01: Navigate to Login page");
-		userHomePage.clickOnLinkByText(driver, "Log in");
+		userRegisterPage.clickOnLinkByText(driver, "Log in");
 		userLoginPage = NcPageGeneratorManager.getUserLoginPage(driver);
 		
 		log.info("Login - Step 02: Enter '" + email + "' into Email text box");

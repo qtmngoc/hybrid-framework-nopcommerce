@@ -71,8 +71,7 @@ public class Level_15_Extent_Report_V3_Screenshot extends NcBaseTest {
 		// test = extent.createTest("User_02_Login");
 
 		// test.log(Status.INFO, "Login - Step 01: Navigate to Login page");
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 
 		// test.log(Status.INFO, "Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);

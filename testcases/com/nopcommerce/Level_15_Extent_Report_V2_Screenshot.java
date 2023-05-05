@@ -68,8 +68,7 @@ public class Level_15_Extent_Report_V2_Screenshot extends NcBaseTest {
 		// ExtentTestManagerV2.startTest(method.getName(), "User_02_Login");
 		
 		// ExtentTestManagerV2.getTest().log(LogStatus.INFO, "Login - Step 01: Navigate to Login page");
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 		
 		// ExtentTestManagerV2.getTest().log(LogStatus.INFO, "Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);

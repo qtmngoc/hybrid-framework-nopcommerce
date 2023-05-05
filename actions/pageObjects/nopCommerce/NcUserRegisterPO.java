@@ -74,9 +74,14 @@ public class NcUserRegisterPO extends NcBasePage {
 		return getElementText(driver, NcUserRegisterPUI.EXISTING_EMAIL_ERROR_MESSAGE);
 	}
 	
-	public NcUserHomePO clickOnLogoutLink() {
+	/*public NcUserHomePO clickOnLogoutLink() {
 		clickOnElement(driver, NcUserRegisterPUI.LOGOUT_LINK);
 		return NcPageGeneratorManager.getUserHomePage(driver);
+	}*/
+	
+	public NcUserLoginPO clickOnLoginLink() {
+		clickOnElement(driver, NcUserRegisterPUI.LOGIN_LINK);
+		return NcPageGeneratorManager.getUserLoginPage(driver);
 	}
 	
 }

@@ -5,10 +5,13 @@
 
 	<listeners>
 		<listener class-name="commons.nopCommerce.NcMethodListener" />
+		
 		<listener class-name="reportConfig.nopCommerce.NcReportNGListener" />
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" /> 
+		
 		<!-- <listener class-name="reportConfig.nopCommerce.NcExtentTestListenerV5" /> -->
+		
 		<!-- <listener class-name="reportConfig.nopCommerce.NcAllureTestListener" /> -->
 	</listeners>
 
@@ -17,26 +20,22 @@
 		<classes>
 			<class name="com.nopcommerce.Level_19_Pattern_Object" />
 		</classes>
-	</test>
+	</test> 
 
-	<!--
-	<test name="Run on Chrome">
+<!--	<test name="Run on Chrome">
 		<parameter name="browser" value="Chrome" />
 		<classes>
 			<class name="com.nopcommerce.common.Common_01_Register_Cookie" />
-			<class name="com.nopcommerce.Level_17_Share_Data_C" />
+			<class name="com.nopcommerce.Level_17_Share_Data_Cookie" />
 		</classes>
 	</test>
-	-->
 
-	<!--
 	<test name="Run on Edge">
 		<parameter name="browser" value="Edge" />
 		<classes>
 			<class name="com.nopcommerce.common.Common_01_Register_End_User" />
-			<class name="com.nopcommerce.Level_17_Share_Data_A" />
+			<class name="com.nopcommerce.Level_17_Share_Data_End_User" />
 		</classes>
-	</test> 
-	-->
+	</test> -->
 
 </suite> 

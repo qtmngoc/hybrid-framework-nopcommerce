@@ -476,7 +476,7 @@ public class WpBasePage {
 	}
 	
 	public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
-		String filePath = WpGlobalConstants.UPLOAD_FILES;		
+		String filePath = WpGlobalConstants.UPLOAD_PATH;		
 		String fullFileName = "";
 		for (String file : fileNames) {
 			fullFileName = fullFileName + filePath + file + "\n";

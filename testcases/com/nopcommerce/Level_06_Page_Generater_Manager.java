@@ -43,8 +43,6 @@ public class Level_06_Page_Generater_Manager extends NcBaseTest {
 		registerPage.inputIntoConfirmPasswordTextbox(correctPassword);
 		registerPage.clickOnRegisterButton();
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
-
-		homePage = registerPage.clickOnLogoutLink();
 	}
 
 	@Test

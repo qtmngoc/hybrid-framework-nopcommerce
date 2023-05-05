@@ -10,7 +10,7 @@ public class NcExtentManagerV5 {
 	public static final ExtentReports extentReports = new ExtentReports();
 
 	public synchronized static ExtentReports createExtentReports() {
-		ExtentSparkReporter reporter = new ExtentSparkReporter(NcGlobalConstants.PROJECT_PATH + "/extentReportV5/nopCommerce/ExtentReport.html");
+		ExtentSparkReporter reporter = new ExtentSparkReporter(NcGlobalConstants.EXTENT_REPORT_PATH + "NopCommerce.html");
 		reporter.config().setReportName("NopCommerce HTML Report");
 		reporter.config().setDocumentTitle("NopCommerce HTML Report");
 		reporter.config().setTimelineEnabled(true);

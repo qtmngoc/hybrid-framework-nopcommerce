@@ -52,15 +52,12 @@ public class Level_14_Log_ReportNG extends NcBaseTest {
 		
 		log.info("Register - Step 08: Verify registration success message is displayed");
 		verifyEquals(userRegisterPage.getRegisterSuccessMessage(), "Your registration completed");
-
-		log.info("Register - Step 09: Click on Logout link");
-		userHomePage = userRegisterPage.clickOnLogoutLink();
 	}
 	
 	@Test
 	public void User_02_Login() {
 		log.info("Login - Step 01: Navigate to Login page");
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 		
 		log.info("Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);
@@ -77,7 +74,7 @@ public class Level_14_Log_ReportNG extends NcBaseTest {
 		log.info("Login - Step 06: Navigate to My Account page");
 		userCustomerInfoPage = userHomePage.clickOnMyAccountLink();
 		
-		log.info("Login - Step 07: Verify Customer Info page is displayed");
+		log.info("Login - Step 07: Verify Customer Info page is not displayed");
 		verifyFalse(userCustomerInfoPage.isCustomerInfoHeaderDisplayed());
 	}
 

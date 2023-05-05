@@ -57,10 +57,8 @@ public class Level_14_ReportNG_Screenshot extends NcBaseTest {
 	
 	@Test
 	public void User_02_Login() {
-		userHomePage = userRegisterPage.clickOnLogoutLink();
-		
 		log.info("Login - Step 01: Navigate to Login page");
-		userLoginPage = userHomePage.clickOnLoginLink();
+		userLoginPage = userRegisterPage.clickOnLoginLink();
 		
 		log.info("Login - Step 02: Enter '" + email + "' into Email text box");
 		userLoginPage.inputIntoEmailTextbox(email);

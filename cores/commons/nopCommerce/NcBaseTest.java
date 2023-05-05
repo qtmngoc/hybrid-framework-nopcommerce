@@ -2,6 +2,7 @@ package commons.nopCommerce;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -13,6 +14,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.Assert;
@@ -27,11 +30,12 @@ public class NcBaseTest {
 	protected final Log log;
 	
 	@BeforeSuite
-	public void initBeforeSuite() {
-		deleteAllureReport();
+	public void beforeSuite() {
+		deleteFilesInReportFolder(NcGlobalConstants.REPORTNG_SCREENSHOT_PATH);
+		deleteFilesInReportFolder(NcGlobalConstants.ALLURE_RESULT_PATH);
 	}
 	
-	protected NcBaseTest() {
+	public NcBaseTest() {
 		log = LogFactory.getLog(getClass());
 	}
 
@@ -40,7 +44,7 @@ public class NcBaseTest {
 
 		switch (browser) {
 		case FIREFOX:
-			WebDriverManager.firefoxdriver().arch64().setup();
+			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
 			break;
 		case CHROME:
@@ -156,10 +160,9 @@ public class NcBaseTest {
 		return status;
 	}
 	
-	protected void deleteAllureReport() {
+	private void deleteFilesInReportFolder(String pathFolder) {
 		try {
-			String pathFolderDownload = NcGlobalConstants.PROJECT_PATH + "/allure-results";
-			File file = new File(pathFolderDownload);
+			File file = new File(pathFolder);
 			File[] listOfFiles = file.listFiles();
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if(listOfFiles[i].isFile()) {
@@ -167,10 +170,22 @@ public class NcBaseTest {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e.getMessage());
 		}
 	}
 	
+	protected void showBrowserConsoleLogs(WebDriver driver) {
+		if (driver.toString().contains("chrome") || driver.toString().contains("edge")) {
+			LogEntries logs = driver.manage().logs().get("browser");
+			List<LogEntry> logList = logs.getAll();
+			for (LogEntry logging : logList) {
+				if (logging.getLevel().toString().toLowerCase().contains("error")) {
+					log.info("---------- " + logging.getLevel().toString() + "---------- \n" + logging.getMessage());
+				}
+			}
+		}
+	}
+
 	protected void closeBrowserAndDriver() {
 		String cmd = "";
 		try {

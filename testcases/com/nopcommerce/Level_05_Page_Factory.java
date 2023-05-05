@@ -53,8 +53,6 @@ public class Level_05_Page_Factory extends NcBaseTest {
 
 		Assert.assertEquals(registerPage.getRegisterSuccessMessage(), "Your registration completed");
 
-		registerPage.clickOnLogoutLink();
-
 		homePage = new NcHomePageFactory(driver);
 	}
 

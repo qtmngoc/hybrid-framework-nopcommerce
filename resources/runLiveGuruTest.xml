@@ -9,7 +9,7 @@
 	<test name="Run on Chrome">
 		<parameter name="browser" value="Chrome" />
 		<classes>
-			<class name="com.liveguru.Level_07_Page_Navigation" />
+			<class name="com.liveguru.Level_10_Data_Table" />
 		</classes>
 	</test>
 

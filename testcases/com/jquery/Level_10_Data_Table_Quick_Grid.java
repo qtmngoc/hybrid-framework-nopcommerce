@@ -34,27 +34,17 @@ public class Level_10_Data_Table_Quick_Grid extends JqBaseTest {
 
 	@Test
 	public void Table_02_Input_Into_Header() {
-		homePage.refreshCurrentPage(driver);
-		
-		homePage.inputIntoHeaderTextboxByLabel("Females", "317651");
-		homePage.inputIntoHeaderTextboxByLabel("Country", "Mozambique");
-		homePage.inputIntoHeaderTextboxByLabel("Males", "316154");
-		homePage.inputIntoHeaderTextboxByLabel("Total", "633808");
-		homePage.sleepInSecond(1);
-		
-		homePage.inputIntoHeaderTextboxByLabel("Females", "384187");
-		homePage.inputIntoHeaderTextboxByLabel("Country", "Afghanistan");
-		homePage.inputIntoHeaderTextboxByLabel("Males", "407124");
-		homePage.inputIntoHeaderTextboxByLabel("Total", "791312");
-		homePage.sleepInSecond(1);
+		homePage.inputIntoHeaderTextboxByLabel("Country", "Nigeria");
+		homePage.clickOnCountry("Nigeria");
+		System.out.println(homePage.getValueOfModal());
 	}
 
 	@Test
 	public void Table_03_Get_Value() {
 		homePage.refreshCurrentPage(driver);
 		
-		homePage.getRowCountryOnAllPages();
-		homePage.getRowValueOnAllPages();
+		System.out.println(homePage.getRowCountryOnAllPages());
+		System.out.println(homePage.getRowValueOnAllPages());
 	}
 
 	@AfterClass
@@ -63,5 +53,5 @@ public class Level_10_Data_Table_Quick_Grid extends JqBaseTest {
 	}
 
 	private WebDriver driver;
-	JqHomePageObject homePage;
+	private JqHomePageObject homePage;
 }
